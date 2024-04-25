@@ -9,7 +9,7 @@ Plasma is often called the fourth state of matter after solid, liquid, and gas. 
 	\label{fig:plasma-properties}
 \end{figure}
 
-Plasma is a common state of matter. We can find on Fig.\ref{fig:plasma-properties}, examples of natural plasma include nebula, stars, sun, etc. We are able to see entire galaxies in the sky because they are in plasma state, and plasma is capable of emitting light. \cite{chen_introduction_2016} Artificially generated plasma can be found in fluorescent lights, Neon signs, fusion reactors. These plasmas have different densities and temperatures.
+Plasma is a common state of matter. We can find on Fig.~\ref{fig:plasma-properties}, examples of natural plasma include nebula, stars, sun, etc. We are able to see entire galaxies in the sky because they are in plasma state, and plasma is capable of emitting light. \cite{chen_introduction_2016} Artificially generated plasma can be found in fluorescent lights, Neon signs, fusion reactors. These plasmas have different densities and temperatures.
 
 Plasma has various scientific and technological uses. It is used in plasma physics research, nuclear fusion experiments, plasma cutting and welding, plasma medicine for treating diseases, and even in spacecraft propulsion systems.
 
@@ -50,7 +50,7 @@ The next adiabatic invariant is the quantity defined as \cite{chen_introduction_
 \begin{equation}
 	J=\int_a^b v_\parallel ds
 \end{equation}
-where $a$ and $b$ are the two turning points in magnetic mirror, see Fig.\ref{fig:particle-in-mirror}.
+where $a$ and $b$ are the two turning points in magnetic mirror, see Fig.~\ref{fig:particle-in-mirror}.
 
 \begin{figure}[htbp]
 	\centering
@@ -100,7 +100,7 @@ In the process we assume isotropic pressure, and no viscosity exists in the plas
 As we can see the fluid description only depends on the macroscopic properties of plasma, such as the fluid velocity along the magnetic field line $\mathbf{v}$, mass density $\rho$, and pressure $p$ of the plasma. This simplifies the problem.
 
 \section{Instability of Plasma Flow}
-The instability of plasma flow refers to the tendency of a plasma system to deviate from a stable, equilibrium state and exhibit perturbations or fluctuations in its behavior. It can be understood as the simple mechanical analogy with a ball on crest / in valley. On the left of Fig.\ref{fig:stability-visualization} shows us a stable equilibrium, small perturbations given to the system will not push the ball far away from the equilibrium position, the valley. Hence, the equilibrium is stable. On the right, any small perturbations will cause the ball to fall downhill, hence the equilibrium is unstable. The instabilities in plasma can arise from various factors, such as the interaction of particles with electromagnetic fields, collective effects, or the presence of gradients in plasma parameters. A famous example of instability is the two stream instability. The configuration starts with two oppositely traveling beams of ions and electrons. As time evolves, chaotic behavior develops as shown in Fig.\ref{fig:two-stream-instability}.
+The instability of plasma flow refers to the tendency of a plasma system to deviate from a stable, equilibrium state and exhibit perturbations or fluctuations in its behavior. It can be understood as the simple mechanical analogy with a ball on crest / in valley. On the left of Fig.~\ref{fig:stability-visualization} shows us a stable equilibrium, small perturbations given to the system will not push the ball far away from the equilibrium position, the valley. Hence, the equilibrium is stable. On the right, any small perturbations will cause the ball to fall downhill, hence the equilibrium is unstable. The instabilities in plasma can arise from various factors, such as the interaction of particles with electromagnetic fields, collective effects, or the presence of gradients in plasma parameters. A famous example of instability is the two stream instability. The configuration starts with two oppositely traveling beams of ions and electrons. As time evolves, chaotic behavior develops as shown in Fig.~\ref{fig:two-stream-instability}.
 
 \begin{figure}[htbp]
 	\centering
@@ -120,12 +120,12 @@ Magnetic nozzle is one of the most actively researched configurations in plasma 
 
 
 \subsection*{Linear Instability}
-In this thesis, we will focus on the so-called linear instability. Meaning that the perturbation grows / decays only in exponential form. The following is a brief description of the process for analyzing linear instability. The detail treatment will be given in Chap.\ref{chap:theoretical-analysis}.
+In this thesis, we will focus on the so-called linear instability. Meaning that the perturbation grows / decays only in exponential form. The following is a brief description of the process for analyzing linear instability. The detail treatment will be given in Chap.~\ref{chap:theoretical-analysis}.
 
 \begin{enumerate}
 	\item State equations of motion: The linear instability analysis starts from the equations of motion which describes the plasma system. In this thesis, the equations of motion are time-dependent fluid equations involving the number density $n$ and velocity $v$ of the plasma flow along the central axis of the nozzle.
 	\item Give perturbations to the system: Suppose the system has an equilibrium state $n_0$ and $v_0$. The system will be given small perturbations, they serve as small deviations on number density and velocity, $\tilde{n}$ and $\tilde{v}$. All variables $n$ and $v$ in the equations of motion will be substituted by perturbed quantities, $n_0+\tilde{n}$ and $v_0+\tilde{v}$.
-	\item Linearize equations of motion: Expand the equations of motion, and discard the second and higher order terms, often called nonlinear terms, such as $\tilde{n}\tilde{v}$, $\tilde{n}\partial_z\tilde{v}$, $\tilde{v}\partial_z\tilde{n}$ and etc. We obtain the so-called linearized equations of motion. These equations contain only the linear terms.
+	\item Linearize equations of motion: Expand the equations of motion, and discard the second and higher order terms, often called nonlinear terms, such as $\tilde{n}\tilde{v}$, $\tilde{n}\partial_z\tilde{v}$, $\tilde{v}\partial_z\tilde{n}$ etc. We obtain the so-called linearized equations of motion. These equations contain only the linear terms.
 	\item Assume perturbation takes exponential form: Let perturbations take the form $\exp(-i\omega t)$. This indicates that the perturbations are oscillating with frequency $\omega$ in time. Any time derivative in the linearized equations of motion simply becomes $\partial_t = -i\omega$. Now we obtain equations involving perturbations, $\tilde{n}$ and $\tilde{v}$, and their spatial derivatives, and $\omega$.
 	\item Analyze the possible values of $\omega$: The oscillation frequency $\omega$ could be a complex number. If the imaginary part of the temporal frequency is greater than zero, i.e. $\Im(\omega) > 0$, then the system is unstable. This is because the perturbation grows exponentially $\exp(\Im(\omega)t)$ in time. On the other hand, if the imaginary part of the temporal frequency is less than or equal to zero, $\Im(\omega) \leq 0$, then the system is said to be stable. Since the perturbations will not be growing, $\Im(\omega)=0$, or even damped, $\Im(\omega) < 0$.
 \end{enumerate}
@@ -134,7 +134,7 @@ In the later chapters, we devoted much effort to analyze the temporal frequency 
 
 \section{Magnetic Nozzle}
 In this thesis, we are going to deal with plasma flow in magnetic nozzle.
-A magnetic nozzle is a device that uses a magnetic field to shape and control the flow of charged particles in a plasma propulsion system, see Fig.\ref{fig:magnetic-nozzle}. By employing magnetic mirrors, the magnetic nozzle can efficiently direct and accelerate the plasma particles, generating thrust for propulsion. The magnetic field in the nozzle helps collimate and focus the plasma exhaust, increasing its velocity and enhancing the performance of the propulsion system.
+A magnetic nozzle is a device that uses a magnetic field to shape and control the flow of charged particles in a plasma propulsion system, see Fig.~\ref{fig:magnetic-nozzle}. By employing magnetic mirrors, the magnetic nozzle can efficiently direct and accelerate the plasma particles, generating thrust for propulsion. The magnetic field in the nozzle helps collimate and focus the plasma exhaust, increasing its velocity and enhancing the performance of the propulsion system.
 
 \begin{figure}[htbp]
 	\centering
@@ -153,9 +153,9 @@ Since we are interested in the plasma flow near the central axis of the nozzle, 
 \begin{equation}
 	B_z(z) = B_0 \left[1 + R\exp(-\left(\frac{z}{\delta}\right)^2)\right], \quad -1\leq z \leq 1
 \end{equation}
-where $1+R$ is the magnetic mirror ratio, it is the ratio of the magnitude of magnetic field at the center of the nozzle to that at the end of the nozzle, $1+R = B(0)/B(1)$. The mirror ratio $R$ controls the spread of the plasma flow at the exit. On the other hand, $\delta$ determines the spread of the magnetic field. Larger the $\delta$, flatter the magnetic field. An example of magnetic field is shown in Fig.(\ref{fig:magnetic-field}).
+where $1+R$ is the magnetic mirror ratio, it is the ratio of the magnitude of magnetic field at the center of the nozzle to that at the end of the nozzle, $1+R = B(0)/B(1)$. The mirror ratio $R$ controls the spread of the plasma flow at the exit. On the other hand, $\delta$ determines the spread of the magnetic field. Larger the $\delta$, flatter the magnetic field. An example of magnetic field is shown in Fig.~(\ref{fig:magnetic-field}).
 
-The radial profile of magnetic field, $B_r$, is given by the divergence-free condition, Eq.(\ref{eq:divergence-free-condition}). In this thesis will focus on the axial magnetic field only.
+The radial profile of magnetic field, $B_r$, is given by the divergence-free condition, Eq.~(\ref{eq:divergence-free-condition}). In this thesis will focus on the axial magnetic field only.
 
 \begin{figure}[htbp]
 	\centering
@@ -172,39 +172,32 @@ The analytical solution gives 4 different kinds of velocity profiles,
 	\item Accelerating profile: Plasma flow enters the nozzle with subsonic speed and exits the nozzle with supersonic speed. Points before the nozzle throat are subsonic, and the flow reaches ion sound speed at the nozzle throat, then the flow is supersonic after the nozzle throat.
 	\item Decelerating profile: Plasma flow enters the nozzle with supersonic speed and exits the nozzle with subsonic speed. Similar to the accelerating profile, but the velocity is decreasing.
 \end{itemize}
-See Fig.\ref{fig:velocity-profiles} for these profiles.
+See Fig.~\ref{fig:velocity-profiles} for these profiles.
 
-The velocity of plasma flow in the magnetic nozzle is given by the Lambert W function, Eq.(\ref{eq:velocity-profile}). The Lambert W function has 2 different branches, corresponding to the subsonic and supersonic branches in the velocity profiles. The expression of velocity profile will be derived in Chap.\ref{chap:theoretical-analysis}.
+The velocity of plasma flow in the magnetic nozzle is given by the Lambert W function, Eq.~(\ref{eq:velocity-profile}). The Lambert W function has 2 different branches. The $k=0$ branch corresponds to the subsonic parts in the velocity profile, and the $k=-1$ branch gives the supersonic parts. The expression of velocity profile will be derived in Chap.~\ref{chap:theoretical-analysis} and more details will be discussed.
 
 \section{Flow in Similar Configuration: Bondi-Parker Flow}
 Consider a massive celestial object in the space. This celestial object will attract matter in the space because it is massive. Hence, creating an accretion flow. If the celestial object is a star, it can also eject matter into space. Solar wind is an example to this since it is a stream of charged particles, primarily electrons and protons, flowing outward from the Sun. Bondi derived a steady-state solution for accretion flow which is governed by Bernoulli's equation in spherical symmetry around a point mass in 1952. Hence, the inward accretion flow is also called Bondi flow. Then Parker solved a similar problem but with outward wind in 1958. Then the outward wind is given the name, Parker flow. \cite{aikawa_stability_1979,bondi_spherically_1952,keto_stability_2020} The Bondi and Parker flow (also called Bondi-Parker flow) is similar to that in magnetic nozzle. It is interesting to compare the two configurations.
 
-\subsection{Governing Equations and Velocity Profiles}
-The governing equations for one-dimensional, spherically symmetric, stationary isothermal flow neglecting self-gravity are \cite{velli_hydrodynamics_2001},
-\begin{align*} \label{eq:bondi-parker}
-	\pdv{r}(\rho vr^2) = 0, \quad p = c^\rho \\
-	v\pdv{v}{r} = -\frac{1}{\rho}\pdv{p}{r} - \frac{GM}{r^2}
-\end{align*}
-where $v,\rho,p$ are velocity, density, pressure, $c$ the constant sound speed, $M$ the mass of the star or other central object, and $GM/r^2$ the gravitational acceleration. For a static atmosphere, the pressure profile is given by $p=p_0\exp(-g/c^2 + g/rc^2)$. In terms of mach number $M=v/c$ the flow equations may be written as
-\[ \left(M - \frac{1}{M}\right)M' = \frac{2}{r} - \frac{g}{r^2c^2} \]
+If we compare the velocity profiles for Bondi-Parker flow and the flow in magnetic nozzle. We found they are similar. The Bondi-Parker flow can also be grouped into the following types: subsonic, supersonic, and transonic (accelerating and decelerating). See Fig.~\ref{fig:BP-flow-velocity}. For subsonic profiles, every point on the curve is slower than sound speed. While every point on the supersonic velocity profile is faster than sound speed. Lastly, there are two different transonic profiles: accelerating profile and decelerating profile. The accelerating profile describes the accelerating plasma flow which is at subsonic speed at the mass point, e.g. a star, and is accelerated to supersonic speed far away. The decelerating profile shows that a plasma flow ejected supersonically from a mass point and then decelerated to subsonic speed far away.
 
-It has a singular point at the sonic point, $r=\frac{g}{2c^2}, M=1$. The equilibrium velocity profiles in such configuration are shown in Fig.\ref{fig:BP-flow-velocity}. For the transonic flow in magnetic nozzle, there also exists a singularity and it is located at the throat of the nozzle, $z=0$, we will illustrate this in Chap.\ref{chap:singular-perturbation}.
+The velocity profiles of one-dimensional, spherically symmetric, stationary isothermal Parker flow neglecting self-gravity can be expressed using Lambert W function,
+\begin{equation}
+	v(r) = \sqrt{-\frac{KT}{m}W_k\left[ -\left(\frac{r}{r_c}\right)^2 \exp\left[4\left(1-\frac{r_c}{r}\right)-1\right] \right]}, \quad
+	k = 0,-1
+\end{equation}
+where $r$ stands for the distance measured from the center of the mass point, e.g. star. The position $r_c=GMm/2KT$ is the critical position and the velocity at this point is exactly the sonic speed $v(r_c)=\sqrt{KT/m}$, where $M$ is the mass of the mass point, $m$ is the mass of a single particle in the flow, and $T$ is the temperature of the flow. The Bondi flow is simply $-v(r)$ since it is accretion flow, the particles are flowing inwardly towards the mass point.
 
-If we compare the velocity profiles for Bondi-Parker flow and the flow in magnetic nozzle. We found they are similar. The flow in magnetic nozzle can also be grouped into three different types: subsonic, supersonic, and transonic. See Fig.\ref{fig:velocity-profiles}. For subsonic profiles, every point on the curve is slower than sound speed. While every point on the supersonic velocity profile is faster than sound speed. Lastly, there are two different transonic profiles: accelerating profile and decelerating profile. The accelerating profile describes the accelerating plasma flow which is at subsonic speed at the entrance of the nozzle and is accelerated to supersonic speed at the exit of the nozzle. The decelerating profile is similar.
+As we can see the expression of velocity profile for Bondi-Parker flow is similar to that of the magnetic nozzle, Eq.~(\ref{eq:velocity-profile}). The expression is governed by the Lambert W function. Similarly, the $k=0$ branch corresponds to the subsonic part in the velocity profile, and the $k=-1$ branch corresponds to the supersonic part of the profile.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{figures/steady-state-BP-flow}
-	\caption{Representative trajectories of the steady-state BP flow in non-dimensional units. \cite{keto_stability_2020} The upward pink line represents an outward wind, it accelerates from subsonic to supersonic. The downward pink line represents an accretion flow, it accelerates towards the mass point. The green lines below the pink lines represent subsonic flows, and the green lines above represent supersonic flows. Orange lines are physically impossible scenarios.}
+	\caption{Representative trajectories of the steady-state BP flow in non-dimensional units. The velocities are shown in absolute values. Adapted from \cite{keto_stability_2020}. The upward pink line represents an accelerating flow, it accelerates from subsonic to supersonic. The downward pink line represents a decelerating flow. The green lines below the pink lines represent subsonic flows, and the green lines above represent supersonic flows. Orange lines are physically impossible scenarios. If the sign of the velocity is positive, then it is an outward (Parker) flow, otherwise it is an inward (Bondi) flow.}
 	\label{fig:BP-flow-velocity}
 \end{figure}
 
-\subsection{The Stability of Bondi-Parker Flow}
-In this subsection we will focus our attention to the outgoing flow because it is similar to the flow in magnetic nozzle. In the research \cite{velli_from_1994,del_dynamical_1998} of instabilities of Bondi-Parker flow, they are using Dirichlet boundary conditions, meaning that the perturbation is 0 at the surface of the celestial object and at infinity.
-
-Under such boundary conditions, the decelerating outflow solution for Bondi-Parker flow is physically impossible because it is unstable. Moreover, the subsonic breeze is also unstable due the unfavorable stratification. Last but not least, the supersonic shocked wind and transonic flow are stable. \cite{velli_hydrodynamics_2001}
-
-In our research, all types of flows but decelerating flow are stable.
+The instabilities of the Bondi-Parker flow has been extensively studied. \cite{bbondi_spherically_1952,velli_from_1994,velli_hydrodynamics_2001,del_dynamical_1998,keto_stability_2020} Hopefully these studies can provide insights into our problem.
 
 \section{Goals of this Thesis}
 Fusion is considered the next-generation source of a clean, safe and abundant energy providing an opportunity to address climate change problems. A new high-tech industry has appeared in the last decade fueled by over \$4 billion of private investments, with the second world largest and several other smaller companies founded in Canada. To achieve controlled fusion, one of the key science problems is to understand and learn to predict the non-linear behavior of plasma due to waves and instabilities. The general objective of my research is to understand the behavior and learn to control the turbulent flows of plasmas in magnetically controlled fusion system, in particular, open magnetic mirrors. I study the instabilities of the flow in a magnetic mirror configuration under different boundary conditions which is an open question and is under debate in application to fusion systems and also related to the solar wind flows.

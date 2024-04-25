@@ -3,3 +3,10 @@ Larmor
 collisionless
 paraxial
 discretizations
+transonic
+Bondi-Parker
+Bondi
+Eq
+Vlasov
+collimate
+collisional

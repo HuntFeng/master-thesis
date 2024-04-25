@@ -1,8 +1,8 @@
 \chapter{Singular Perturbation} \label{chap:singular-perturbation}
-This chapter is dedicated to analyze the polynomial eigenvalue problem with transonic velocity profiles. We will first show the existence of the singularity of Eq.(\ref{eq:polynomial-eigenvalue-problem}), then we will discuss the concept of singular perturbation and the way we solve the problem.
+This chapter is dedicated to analyze the polynomial eigenvalue problem with transonic velocity profiles. We will first show the existence of the singularity of Eq.~(\ref{eq:polynomial-eigenvalue-problem}), then we will discuss the concept of singular perturbation and the way we solve the problem.
 
 \section{Presence of Singularity in Transonic cases} \label{sec:presence-of-singularity}
-In order to see the existence of the singularity, we rearrange the terms the polynomial eigenvalue problem, Eq.(\ref{eq:polynomial-eigenvalue-problem}),
+In order to see the existence of the singularity, we rearrange the terms the polynomial eigenvalue problem, Eq.~(\ref{eq:polynomial-eigenvalue-problem}),
 \begin{equation} \label{eq:singular-perturbation-problem}
 	\begin{aligned}
 		  & (1-v_0^2)\pdv[2]{\tilde{v}}{z}                                                                                                                                        \\
@@ -13,12 +13,12 @@ In order to see the existence of the singularity, we rearrange the terms the pol
 \end{equation}
 This is a second order ordinary differential equation defined on region $[-1,1]$.
 
-For transonic (accelerating and decelerating) velocity profiles (Fig.\ref{fig:velocity-profiles}), the plasma flow is at sonic point at the throat of the nozzle, $v_0(0)=1$. Therefore, the highest order term vanishes at $z=0$. This causes the failure of spectral method, see Fig.(\ref{chap:discussion}). It can be proved that $z=0$ is a regular singular point.
+For transonic (accelerating and decelerating) velocity profiles (Fig.~\ref{fig:velocity-profiles}), the plasma flow is at sonic point at the throat of the nozzle, $v_0(0)=1$. Therefore, the highest order term vanishes at $z=0$. This causes the failure of spectral method, see Fig.~(\ref{chap:discussion}). It can be proved that $z=0$ is a regular singular point.
 
 \begin{figure} [htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{figures/results-bad-accelerating-v}
-	\caption{An attempt to solve the polynomial eigenvalue problem, Eq.(\ref{eq:polynomial-eigenvalue-problem}) using finite-difference. Eigenfunctions are squeezed to the center of the nozzle due to the existence of the singularity at $z=0$.}
+	\caption{An attempt to solve the polynomial eigenvalue problem, Eq.~(\ref{eq:polynomial-eigenvalue-problem}) using finite-difference. Eigenfunctions are squeezed to the center of the nozzle due to the existence of the singularity at $z=0$.}
 	\label{fig:failure-of-spectral-method}
 \end{figure}
 
@@ -32,9 +32,9 @@ In de Labal nozzle, the governing equations for quasi-one-dimensional flow of a 
 	\rho\pdv{v}{t}	+ \rho\pdv{v}{z}    & = -\pdv{p}{z}  \label{eq:fluid-momentum}   \\
 	p                                  & = \rho^\gamma \label{eq:fluid-energy}
 \end{align}
-where $\rho$ is the density, $v$ is the velocity, $p$ is the pressure, $A$ is the cross section of the nozzle, and $\gamma=1.4$ is the heat capacity ratio for air. The governing equations, Eq.(\ref{eq:fluid-continuity}), (\ref{eq:fluid-momentum}), and (\ref{eq:fluid-energy}) above are conservation of density, momentum and energy, respectively.
+where $\rho$ is the density, $v$ is the velocity, $p$ is the pressure, $A$ is the cross section of the nozzle, and $\gamma=1.4$ is the heat capacity ratio for air. The governing equations, Eq.~(\ref{eq:fluid-continuity}), (\ref{eq:fluid-momentum}), and (\ref{eq:fluid-energy}) above are conservation of density, momentum and energy, respectively.
 
-We can reduce Eq.(\ref{eq:fluid-momentum}) to Bernoulli's equation
+We can reduce Eq.~(\ref{eq:fluid-momentum}) to Bernoulli's equation
 \begin{equation} \label{eq:bernoulli}
 	\pdv{\Phi}{t} + \frac{1}{2}\left(\pdv{\Phi}{z}\right)^2 + h(\rho) = 0
 \end{equation}
@@ -57,22 +57,22 @@ It turns out, scalar field perturbations in the minimally geometric deformed bra
 where $r^*$ is the tortoise coordinate.
 
 \section{Singular Perturbation Problem}
-In the previous section, we introduced transonic fluid flow as an acoustic analogy of black hole and transformed the Eq.\ref{eq:bernoulli} to a Schr{\"o}dinger-type wave equation. This is an overkill for our problem. In this section, we will introduce a simpler way to deal with the singularity.
+In the previous section, we introduced transonic fluid flow as an acoustic analogy of black hole and transformed the Eq.~\ref{eq:bernoulli} to a Schr{\"o}dinger-type wave equation. This is an overkill for our problem. In this section, we will introduce a simpler way to deal with the singularity.
 
-Consider Eq.(\ref{eq:polynomial-eigenvalue-problem}) as a boundary value problem by fixing the value of $\omega$,
-The boundary value problem Eq.(\ref{eq:singular-perturbation-problem}) is defined on region $[-1,1]$, but the boundary values are defined on $z=-1$ and $z=0$. This is because to extract a regular solution near the singularity, we need to assume the solution is finite at the throat of the nozzle, $z=0$. This condition serves as a boundary value to the problem. Together with the boundary condition at the entrance of the nozzle, $\tilde{v}(-1) = 0$, the solutions to the boundary value problem, Eq.(\ref{eq:singular-perturbation-problem}) is fully determined up to a set of eigenvalues.
+Consider Eq.~(\ref{eq:polynomial-eigenvalue-problem}) as a boundary value problem by fixing the value of $\omega$,
+The boundary value problem Eq.~(\ref{eq:singular-perturbation-problem}) is defined on region $[-1,1]$, but the boundary values are defined on $z=-1$ and $z=0$. This is because to extract a regular solution near the singularity, we need to assume the solution is finite at the throat of the nozzle, $z=0$. This condition serves as a boundary value to the problem. Together with the boundary condition at the entrance of the nozzle, $\tilde{v}(-1) = 0$, the solutions to the boundary value problem, Eq.~(\ref{eq:singular-perturbation-problem}) is fully determined up to a set of eigenvalues.
 
 As we discuss in the earlier section, Sec.\ref{sec:presence-of-singularity}, $(1-v_0^2)$ is 0 at the nozzle throat $z=0$ since $v_0(z)$ is now a transonic velocity profile. This makes the problem a first order ordinary differential equation,
 \[
 	\left( 2i\omega - 4\eval{\pdv{v_0}{z}}_{z=0} \right)\pdv{\tilde{v}}{z}
 	+ \left[2i\omega\eval{\pdv{v_0}{z}}_{z=0} - 2\eval{\pdv[2]{v_0}{z}}_{z=0} \right]\tilde{v}  = 0
 \]
-It is clear that the solution to this first order ODE has a totally different characteristics than the solution in the neighborhood of $z=0$. That means we cannot simply set $(1-v_0^2)$ to 0 and get an asymptotic approximation to the solution of Eq.(\ref{eq:singular-perturbation-problem}) near $z=0$. This is exactly the characteristics of singular perturbation problem.
+It is clear that the solution to this first order ODE has a totally different characteristics than the solution in the neighborhood of $z=0$. That means we cannot simply set $(1-v_0^2)$ to 0 and get an asymptotic approximation to the solution of Eq.~(\ref{eq:singular-perturbation-problem}) near $z=0$. This is exactly the characteristics of singular perturbation problem.
 
 \section{Expansion at Singularity}
-The singularity is a regular singular point, we are able to extract finite solution near the singularity. In order to do so, we need to expand terms in Eq.(\ref{eq:singular-perturbation-problem}) about the singularity.
+The singularity is a regular singular point, we are able to extract finite solution near the singularity. In order to do so, we need to expand terms in Eq.~(\ref{eq:singular-perturbation-problem}) about the singularity.
 
-The first task is to linearize the terms with $v_0$ about the singularity. The linearization of $v_0(z) = 1 + v_0'(0)z$ is a good approximation to the original function $v_0(z)$ because the transonic velocity profiles are straight in the neighborhood of $z=0$, as we can see from Fig.\ref{fig:velocity-profiles}. Therefore, through some simple algebra we obtain,
+The first task is to linearize the terms with $v_0$ about the singularity. The linearization of $v_0(z) = 1 + v_0'(0)z$ is a good approximation to the original function $v_0(z)$ because the transonic velocity profiles are straight in the neighborhood of $z=0$, as we can see from Fig.~\ref{fig:velocity-profiles}. Therefore, through some simple algebra we obtain,
 \begin{equation}
 	\begin{aligned}
 		1-v_0^2              & = -2v_0'(0)z    \\
@@ -82,7 +82,7 @@ The first task is to linearize the terms with $v_0$ about the singularity. The l
 	\end{aligned}
 \end{equation}
 
-Then Eq.(\ref{eq:singular-perturbation-problem}) becomes
+Then Eq.~(\ref{eq:singular-perturbation-problem}) becomes
 \begin{equation} \label{eq:perturbed-equation-full}
 	\begin{aligned}
 		- & 2v_0'(0)z\pdv[2]{\tilde{v}}{z}                                              \\
@@ -92,7 +92,7 @@ Then Eq.(\ref{eq:singular-perturbation-problem}) becomes
 	\end{aligned}
 \end{equation}
 
-In fact, we can further simply the equation by dropping all $z$ terms except the first term (second-order derivative term). It can be shown that dropping the $z$ terms in Eq.(\ref{eq:perturbed-equation-full}) does not affect the first order correction ($\tilde{v}$ is the same up to $z$ term), it is an acceptable approximation.
+In fact, we can further simply the equation by dropping all $z$ terms except the first term (second-order derivative term). It can be shown that dropping the $z$ terms in Eq.~(\ref{eq:perturbed-equation-full}) does not affect the first order correction ($\tilde{v}$ is the same up to $z$ term), it is an acceptable approximation.
 
 \[ - 2v_0'(0)z\pdv[2]{\tilde{v}}{z}
 	+ (2i\omega - 4v_0'(0))\pdv{\tilde{v}}{z}
@@ -109,7 +109,7 @@ where
 	b = \frac{\omega^2 + 2i\omega v_0'(0) - 2v_0''(0)}{-2v_0'(0)}
 \]
 
-Use Frobenius method, we assume the velocity perturbation can be written as a power series in $z$,  $\tilde{v} = \sum_{n\geq 0}c_nz^{n+r}$. By substituting the power series into Eq.(\ref{eq:perturbed-equation}) we have
+Use Frobenius method, we assume the velocity perturbation can be written as a power series in $z$,  $\tilde{v} = \sum_{n\geq 0}c_nz^{n+r}$. By substituting the power series into Eq.~(\ref{eq:perturbed-equation}) we have
 \[ \sum_{n \geq 0} (n+r)(n+r+1) c_n z^{n+r-1} + a(n+r)c_nz^{n+r-1} + bc_nz^{n+r} = 0\]
 Shift the power of the last term we get
 \[ \sum_{n \geq 0} (n+r)(n+r+1) c_n z^{n+r-1} + a(n+r)c_nz^{n+r-1} + \sum_{n \geq 1} bc_{n-1}z^{n+r-1} = 0\]
@@ -164,10 +164,10 @@ Suppose an eigenvalue problem can be formulated as
 \]
 where $\mathbf{u}\in\mathbb{R}^2$. Fixed an $\omega$, we can approximate $\mathbf{u}(z_r)$ by applying algorithms such as Runge-Kutta or Leap-frog.
 
-Define $F$ by $F(\mathbf{u}_l;\omega)=\tilde{v}(z_r;\omega)$. This function $F$ takes in the initial value $\mathbf{u}_l$ and a fixed $\omega$, and outputs the "landing point" $\tilde{v}(z_r;\omega)$. If $\omega$ is an eigenvalue of Eq.(\ref{eq:boundary-eigenvalue-problem}), then $\tilde{v}(z_r;\omega) = \tilde{v}_r$. Now we can find eigenvalues to Eq.(\ref{eq:boundary-eigenvalue-problem}) by solving the roots to the scalar equation
+Define $F$ by $F(\mathbf{u}_l;\omega)=\tilde{v}(z_r;\omega)$. This function $F$ takes in the initial value $\mathbf{u}_l$ and a fixed $\omega$, and outputs the "landing point" $\tilde{v}(z_r;\omega)$. If $\omega$ is an eigenvalue of Eq.~(\ref{eq:boundary-eigenvalue-problem}), then $\tilde{v}(z_r;\omega) = \tilde{v}_r$. Now we can find eigenvalues to Eq.~(\ref{eq:boundary-eigenvalue-problem}) by solving the roots to the scalar equation
 \[h(\omega) = F(\mathbf{u}_l;\omega) - \tilde{v}_r\]
 
-Having this higher view of shooting method in mind, we first transform Eq.(\ref{eq:polynomial-eigenvalue-problem}) to a IVP,
+Having this higher view of shooting method in mind, we first transform Eq.~(\ref{eq:polynomial-eigenvalue-problem}) to a IVP,
 \begin{align*}
 	v' & = u                        \\
 	u' & = \frac{-1}{1-v_0^2}\left[
