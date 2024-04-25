@@ -1,0 +1,2 @@
+{"rule":"COPYRIGHT","sentence":"^\\Q(c) Chaotic behavior occurs.\\E$"}
+{"rule":"IT_IS","sentence":"^\\QMoreover, spectral pollution and its filtering will as also be investigated.\\E$"}

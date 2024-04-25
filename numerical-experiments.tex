@@ -1,5 +1,5 @@
 \chapter{Numerical Experiments} \label{chap:numerical-experiments}
-In this chapter, we will solve the eigenvalue problem, Eq.(\ref{eq:eigenvalue-problem}), with different discretizations. There will be three major categories of methods used. Finite difference (FD) method, finite element (FE) method and spectral element method (SE).
+In this chapter, we will solve the eigenvalue problem, Eq.~(\ref{eq:eigenvalue-problem}), with different discretizations. There will be three major categories of methods used. Finite difference (FD) method, finite element (FE) method and spectral element method (SE).
 
 The finite difference method will be used together with equally spaced nodes. The finite element method will use B-spline as basis functions. Finally, the spectral element method uses sine functions as the spectral elements.
 
@@ -38,9 +38,9 @@ For left-fixed and right-open (fixed-open) boundary condition, the parameters ar
 
 \section{Constant Velocity Case}
 \subsection{Dirichlet Boundary}
-Because the existence of exact solution to problems Eq.(\ref{eq:constant-v-problem-dirichlet}). The case with constant velocity profile is used as a sanity check. It allows us to verify the correctness of each method's implementation. This also serves as a reference to the accuracy spectral methods can achieve.
+Because the existence of exact solution to problems Eq.~(\ref{eq:constant-v-problem-dirichlet}). The case with constant velocity profile is used as a sanity check. It allows us to verify the correctness of each method's implementation. This also serves as a reference to the accuracy spectral methods can achieve.
 
-From Fig.(\ref{fig:constant-v-dirichlet}), we see that the order of growth rates obtained by different methods is about $~10^{-14}$ for both subsonic and supersonic cases. We will use these numbers as a reference to the accuracy of our numerical methods. If a method produces growth rates with order close to $10^{-14}$, we consider the growth rates to be 0.
+From Fig.~(\ref{fig:constant-v-dirichlet}), we see that the order of growth rates obtained by different methods is about $~10^{-14}$ for both subsonic and supersonic cases. We will use these numbers as a reference to the accuracy of our numerical methods. If a method produces growth rates with order close to $10^{-14}$, we consider the growth rates to be 0.
 
 \begin{table} [H]
 	\centering
@@ -126,7 +126,7 @@ From Fig.(\ref{fig:constant-v-dirichlet}), we see that the order of growth rates
 
 \section{Subsonic Case}
 \subsection{Dirichlet Boundary}
-When setting the mid-point velocity to be $M_m=0.5$, we have the subsonic velocity profile. This velocity profile is the orange line shown in Fig.\ref{fig:velocity-profiles}. With Dirichlet boundary condition, $\tilde{v}(\pm 1) =0$. The flow in magnetic nozzle is stable. Fig.\ref{fig:subsonic-v-dirichlet} shows the first few eigenvalues obtained by different discretizations.
+When setting the mid-point velocity to be $M_m=0.5$, we have the subsonic velocity profile. This velocity profile is the orange line shown in Fig.~\ref{fig:velocity-profiles}. With Dirichlet boundary condition, $\tilde{v}(\pm 1) =0$. The flow in magnetic nozzle is stable. Fig.~\ref{fig:subsonic-v-dirichlet} shows the first few eigenvalues obtained by different discretizations.
 
 The order of growth rates obtained by different methods is $10^{-13}$, we can consider it to be stable.
 \begin{figure} [H]
@@ -147,7 +147,7 @@ The order of growth rates obtained by different methods is $10^{-13}$, we can co
 
 \section{Supersonic Case}
 \subsection{Dirichlet Boundary}
-When the velocity profile is supersonic, shown as purple line in Fig.\ref{fig:velocity-profiles}, spurious modes appeared as predicted in Chap.\ref{chap:theoretical-analysis}. Using the convergence test, we successfully eliminates all unstable modes. Fig.(\ref{fig:supersonic-v-dirichlet}) shows the first few filtered eigenvalues. As we can see the flow is stable.
+When the velocity profile is supersonic, shown as purple line in Fig.~\ref{fig:velocity-profiles}, spurious modes appeared as predicted in Chap.~\ref{chap:theoretical-analysis}. Using the convergence test, we successfully eliminates all unstable modes. Fig.~(\ref{fig:supersonic-v-dirichlet}) shows the first few filtered eigenvalues. As we can see the flow is stable.
 \begin{figure} [H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/fixed-fixed-supersonic-v}
@@ -165,7 +165,7 @@ When the velocity profile is supersonic, shown as purple line in Fig.\ref{fig:ve
 
 
 \section{Accelerating Case}
-Starting from the singular point, we shoot the solution to the left boundary. We find the set of eigenvalues such that $\tilde{v}(-1)=0$. With these eigenvalues, we can extend the solution to the supersonic region $(0,1]$. The first few eigenmodes are drawn in Fig.\ref{fig:results-accelerating-v}.
+Starting from the singular point, we shoot the solution to the left boundary. We find the set of eigenvalues such that $\tilde{v}(-1)=0$. With these eigenvalues, we can extend the solution to the supersonic region $(0,1]$. The first few eigenmodes are drawn in Fig.~\ref{fig:results-accelerating-v}.
 \begin{figure} [H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/results-accelerating-v}
@@ -174,7 +174,7 @@ Starting from the singular point, we shoot the solution to the left boundary. We
 \end{figure}
 
 \section{Decelerating Case}
-Again, we set the perturbations at the entrance of the nozzle to 0, $\tilde{v}(-1)=0$. Then we apply the same procedure as accelerating case, we obtained the following Fig.\ref{fig:results-decelerating-v}. The results indicates that the decelerating case is physically impossible with the selected boundary condition.
+Again, we set the perturbations at the entrance of the nozzle to 0, $\tilde{v}(-1)=0$. Then we apply the same procedure as accelerating case, we obtained the following Fig.~\ref{fig:results-decelerating-v}. The results indicates that the decelerating case is physically impossible with the selected boundary condition.
 \begin{figure} [H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/results-decelerating-v}
