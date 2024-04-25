@@ -10,3 +10,6 @@ Eq
 Vlasov
 collimate
 collisional
+quasineutral
+Debye
+Quasineutrality

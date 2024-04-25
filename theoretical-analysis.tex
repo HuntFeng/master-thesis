@@ -2,6 +2,96 @@
 
 In this chapter, we start from the fluid description of plasma, and derive the governing equations for the flow in magnetic nozzle. After this, we linearize the governing equations and reformulate the problem as a polynomial eigenvalue problem. Then a special case is discussed analytically.
 
+\section{Kinetic Theory}
+\subsection{Single Particle Motion Along Magnetic Field Line}
+Plasma consists of charged particles, and is governed by electromagnetic force. Assume magnetic field only, the particle motion is governed by Lorentz force and the particles will gyrate along the magnetic field lines. The equation of motion of a charged particle in magnetic field is given by
+\[ m\dv{\mathbf{v}_p}{t} = q\mathbf{v}_p\times \mathbf{B} \]
+where $m$ is the mass of charged particle, $q$ is the charge of particles, and $\mathbf{v}_p$ is the velocity of the particle.
+
+Consider a magnetic field pointing in z-direction, $\mathbf{B}=B\mathbf{\hat{z}}$. Since the magnetic force is perpendicular to both $\mathbf{v}_p$ and $\mathbf{B}$, we can separate the equation of motion into two directions,
+\[
+	q\mathbf{v_{\perp}\times B} = \frac{mv_{\perp}^2}{r}\mathbf{\hat{r}},
+	\quad
+	\mathbf{v}_{\parallel} = v_{\parallel} \mathbf{\hat{z}} \]
+where $\mathbf{v}_{\perp}$ is the velocity perpendicular to the magnetic field, and $\mathbf{v}_{\parallel}$ is the velocity parallel to the magnetic field, and $\mathbf{\hat{r}}$ is a unit vector pointing from the central axis of the helical motion to the trajectory of the particle. In this way, we see that the charged particle is doing circular motion in the plane of $\mathbf{\hat{r}}$, gyrating along the magnetic field line with Larmor radius $r$ and Larmor frequency $\omega_c = \abs{q}B/m$. On the other hand, the particle is flowing freely in the direction of $\mathbf{B}$ since there is no force in this direction. The charged particle is doing helical motion along the magnetic field line.
+
+\subsection{Adiabatic Invariants}
+The charged particles always travel on the same magnetic field line in the magnetic nozzle. To show this we will introduce two adiabatic invariants.
+
+\subsubsection*{Magnetic Moment}
+In classical mechanics, the action integral $\oint pdq$ taken over a period of a periodic motion is a constant. Here $p$ and $q$ are generalized momentum and coordinate. In single particle motion along magnetic field line, one obvious periodic motion is the Larmor gyration. Take $p$ to be the angular momentum $mv_\perp r$ and $q$ to be the angular coordinate $\theta$, the action integral becomes
+
+\begin{equation}
+	\oint pdq = \oint mv_\perp r_L d\theta = 2\pi r_L mv_\perp = 2\pi \frac{mv_\perp^2}{\omega_c} = 4\pi\frac{m}{\abs{q}}\left(\frac{mv_\perp^2}{2B}\right)
+\end{equation}
+
+Define the quantity magnetic moment as
+
+\begin{equation}
+	\mu = \frac{mv_\perp^2}{2B}
+\end{equation}
+
+We see that the magnetic moment $\mu$ is constant as long as $q/m$ is constant.
+
+\subsubsection*{Longitudinal Invariant}
+The next adiabatic invariant is the quantity defined as \cite{chen_introduction_2016}
+\begin{equation}
+	J=\int_a^b v_\parallel ds
+\end{equation}
+where $a$ and $b$ are the two turning points in magnetic mirror, see Fig.~\ref{fig:particle-in-mirror}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/particle-in-mirror.png}
+	\caption{A particle bouncing between turning points $a$ and $b$ in a magnetic field. Adapted from \cite{chen_introduction_2016}.}
+	\label{fig:particle-in-mirror}
+\end{figure}
+
+Since the particle's energy is conserved and is equal to $mv_\perp^2/2$ at the turning point, the invariance of $\mu$ indicates that $\abs{B}$ remains the same at the turning point. However, upon drifting back to the same longitude, a particle may find itself on another line of force at a different altitude. This cannot happen if $J$ is conserved. $J$ determines the length of the line of force between turning points, and no two lines have the same length between points with the same $\abs{B}$. Consequently, the particle returns to the same line of force even in a slightly asymmetric field.
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/gyrate-along-b-field}
+	\caption{A charged particle gyrates about the magnetic field line. The velocity along the field line is $\mathbf{v}_{\parallel}$ and the gyrate frequency, radius is given by the radial equation, $q\mathbf{v_{\perp}\times B} = \mathbf{\hat{r}} mv_\perp^2/r$. Moreover, for static, nonuniform magnetic field, the charged particle will stay on the same of magnetic field line as it gyrates.}
+	\label{fig:gyrate-along-b-field}
+\end{figure}
+
+\subsection{From Kinetic Theory to Fluid Description}
+Although the previous treatment is useful for single particle, to describe the collective behavior of a large amount of particles, we need to do that in the framework of kinetic theory. In kinetic theory, the charged particles in plasma obey a certain distribution function,
+\[f(\mathbf{x}, \mathbf{v}_p, t)\]
+It describes the probability density at position $\mathbf{x}$ with velocity $\mathbf{v}$ at time $t$.
+
+Suppose a collisionless plasma in 3-dimensional space is at thermal equilibrium, then the particles can be characterized by Maxwell-Boltzmann distribution
+\[ f_M(\mathbf{x}, \mathbf{v}_p, t) = \frac{n(\mathbf{x}, t)}{(\pi v_{th}^2)^{3/2}} \exp(-\left(\frac{v}{v_{th}}\right)^2) \]
+where $n(\mathbf{x},t)$ is number density of the particles, $v_{th} = \sqrt{2k_BT/m}$ is the thermal velocity, and $v=\sqrt{v_x^2+v_y^2+v_z^2}$.
+
+The moments of the distribution function are suitable macroscopic properties of the plasma. For example, the plasma number density and momentum can be viewed as
+
+\[ n(\mathbf{x}, t) = \int_{\mathbb{R}^3} f(\mathbf{x}, \mathbf{v}_p, t) d^3\mathbf{v}_p \]
+\[ n\mathbf{v}(\mathbf{x}, t) = \int_{\mathbb{R}^3} \mathbf{v}_p f(\mathbf{x}, \mathbf{v}_p, t) d^3\mathbf{v}_p \]
+where $\mathbf{v}$ is the fluid velocity of the charged particle. It is the bulk velocity of the plasma. The charged particles flow along the magnetic field line, it is intuitive to think of $\mathbf{v}$ as the plasma flow velocity along the magnetic field line.
+
+In this thesis we assume collisionless plasma. The distribution function $f$ in a collisionless plasma satisfies the so-called collisionless Vlasov equation, $\dv*{t} f(\mathbf{x}, \mathbf{v}, t) = 0$. Expand it explicitly, it is
+\begin{equation} \label{eq:vlasov}
+	\pdv{f}{t} + \mathbf{v}\pdv{f}{\mathbf{x}} + \frac{q}{m}(\mathbf{E} + \mathbf{v}\times\mathbf{B})\pdv{f}{\mathbf{v}} = 0
+\end{equation}
+where $q(\mathbf{E} + \mathbf{v}\times\mathbf{B})$ is the Lorentz force experience by the species, the collision term $C(f)$ is dropped.
+
+Integrate both sides with respect to volume element in velocity space, $d^3\mathbf{v}$, we get the conservation of density.
+\begin{equation}
+	\pdv{n}{t} + \div(n\mathbf{v}) = 0
+\end{equation}
+
+If we multiply $\mathbf{v}$ on both sides and integrate with respect to $d^3\mathbf{v}$, we get the conservation of momentum.
+\begin{equation}
+	n\pdv{\mathbf{v}}{t} + \mathbf{v}\cdot\grad{\mathbf{v}} = \frac{q}{m}(\mathbf{E+v\times B}) - \grad{p}
+\end{equation}
+In the process we assume isotropic pressure, and no viscosity exists in the plasma.
+
+As we can see the fluid description only depends on the macroscopic properties of plasma, such as the fluid velocity along the magnetic field line $\mathbf{v}$, number density $n$, and pressure $p$ of the plasma. This simplifies the problem.
+
+
 \section{Fluid Description for Flow}
 In this section, we will derive the governing equations of the flow in magnetic nozzle, starting from the fluid description for plasma.
 
