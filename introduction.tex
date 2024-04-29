@@ -71,7 +71,7 @@ We are now able to give more detail definition for plasma. According to \cite{ch
 	\item The gas behaves like plasma rather than a neutral gas, $\omega_p\tau > 1$ where $\omega_p$ typical plasma oscillation frequency and $\tau$ is the mean free time of collisions between neutral atoms.
 \end{enumerate}
 
-\section{Instability of Plasma Flow}
+\section{Instability of Plasma Flow} \label{sec:instability-of-plasma-flow}
 The instability of plasma flow refers to the tendency of a plasma system to deviate from a stable, equilibrium state and exhibit perturbations or fluctuations in its behavior. It can be understood as the simple mechanical analogy with a ball on crest / in valley. On the left of Fig.~\ref{fig:stability-visualization} shows us a stable equilibrium, small perturbations given to the system will not push the ball far away from the equilibrium position, the valley. Hence, the equilibrium is stable. On the right, any small perturbations will cause the ball to fall downhill, hence the equilibrium is unstable. The instabilities in plasma can arise from various factors, such as the interaction of particles with electromagnetic fields, collective effects, or the presence of gradients in plasma parameters. A famous example of instability is the two stream instability. The configuration starts with two oppositely traveling beams of ions and electrons. As time evolves, chaotic behavior develops as shown in Fig.~\ref{fig:two-stream-instability}.
 
 \begin{figure}[htbp]
@@ -121,7 +121,7 @@ The magnetic nozzle by its nature is 3-dimensional. We assume the magnetic field
 	\div\mathbf{B} = \frac{1}{r}\pdv{(rB_r)}{r} + \pdv{B_z}{z} = 0
 	\label{eq:divergence-free-condition}
 \end{equation}
-Since we are interested in the plasma flow near the central axis of the nozzle, paraxial approximation is taken. Meaning that we take the derivative along the magnetic field line $\nabla_\parallel = \pdv*{z}$ when near the central axis. Hence, in this thesis we will treat the flow in magnetic nozzle as a 1-dimensional problem. The axial magnetic field along the central axis is modeled as
+Since we are interested in the plasma flow near the central axis of the nozzle, with paraxial approximation taken, the derivative along the magnetic field line $\nabla_\parallel = \pdv*{z}$ when near the central axis. \cite{smolyakov_quasineutral_2021} Hence, in this thesis we will treat the flow in magnetic nozzle as a 1-dimensional problem. The axial magnetic field along the central axis is modeled as
 \begin{equation}
 	B_z(z) = B_0 \left[1 + R\exp(-\left(\frac{z}{\delta}\right)^2)\right], \quad -1\leq z \leq 1
 \end{equation}
