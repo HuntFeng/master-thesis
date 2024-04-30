@@ -13,8 +13,6 @@ collisional
 quasineutral
 Debye
 Quasineutrality
-Nondimensionalization
-nondimensionalize
-nondimensionalized
-nondimensionalization
 Transonic
+Frobenius
+indicial
