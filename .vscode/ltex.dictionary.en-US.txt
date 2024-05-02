@@ -23,3 +23,4 @@ Kryszig
 resolvent
 Chebyshev
 Galerkin
+interpolant

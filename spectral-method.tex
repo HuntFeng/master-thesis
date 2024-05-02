@@ -43,12 +43,19 @@ To solve Eq.~(\ref{eq:pep-matrix-equation}), we simply augment the coefficient v
 We can apply standard eigenvalue problem solver to this question to obtain the eigenvalues $\omega$ and the coefficients $\mathbf{c}$ by cutting the associated eigenvectors $[\mathbf{c}, \omega\mathbf{c}]^T$ by half.
 
 \section{Spectral Collocation Method}
-One of the methods we are going to use is called the Chebyshev collocation method. This is obtained by setting the basis functions to Chebyshev polynomials, $u_k=T_k$, and test functions satisfies $\psi_k(z_j)=\delta_{jk}$, where the collocation points are the Chebyshev points, i.e. $z_j=\cos(j\pi/N)$. By doing this, the coefficient vector $\mathbf{c}$ becomes a vector containing the values of $\tilde{v}$ at the collocation points, i.e. $\mathbf{c}=[v(z_0), \cdots, v(z_N)]^T$, and the differential operators in Eq.~(\ref{eq:operator-matrix}) become Chebyshev differentiation matrices.
+One of the methods we are going to use is called the Chebyshev collocation method.
+Given a set of Chebyshev points, $\{z_j=\cos(j\pi/N)\}_{j=0}^{N}$, and let $\{h_j\}$ be the Lagrange basis polynomials associated with $\{z_j\}_{j=0}^{N}$, and define matrix $D_{kj} = h'_j(z_k)$. By setting $\tilde{v}(z) = \sum_{j=0}^{N}c_jh_j(z)$, we see that
+\begin{align}
+	\tilde{v}(z_k)   & = \sum_{j=0}^{N}\tilde{v}_jh_j(z_k) = c_k                         \\
+	\tilde{v}'(z_k)  & = \sum_{j=0}^{N}\tilde{v}_jh'_j(z_k) = \sum_{j=0}^{N}D_{kj}c_j    \\
+	\tilde{v}''(z_k) & = \sum_{j=0}^{N}\tilde{v}_jh''_j(z_k) = \sum_{j=0}^{N}D^2_{kj}c_j
+\end{align}
+We see that the coefficient vector $\mathbf{c}$ becomes a vector containing the values of $\tilde{v}$ evaluated at the collocation points, i.e. $\mathbf{c}=[v(z_0), \cdots, v(z_N)]^T$, and the matrix $D$ and $D^2$ act as the differential operators $\pdv{z}$ and $\pdv[2]{z}$, respectively. The matrix $D$ is called Chebyshev differentiation matrix since it acts as $\pdv{z}$ and evaluates at Chebyshev points.
 
 \subsubsection*{Chebyshev Differentiation Matrix}
-Thanks to \cite{trefethen_spectral_2000}, the construction of Chebyshev differentiation matrix is given in Fig.~\ref{fig:chebyshev-differentiation-matrix}. The Chebyshev differentiation matrix approximates the derivative of a function at the assigned Chebyshev points $\{z_j\}_{j=0}^{N}$. Suppose $\mathbf{v} = [v(z_0), \cdots, v(z_N)]^T$, then the $N$-point, $D_N$, Chebyshev differentiation matrix gives $D_N\mathbf{v} \approx [v'(z_0),\cdots, v'(z_N)]^T$. Higher order differentiation can be achieved by taking powers of $D_N$. For example, second order differentiation matrix is given by $D_N^2$.
+The Chebyshev differentiation matrix finds the derivative of the Lagrange interpolant of the given data points $(z_j,\tilde{v}(z_j))$ where $\{z_j = \cos(j\pi/N)\}_{j=0}^{N}$ are the Chebyshev points. Suppose $\mathbf{v} = [v(z_0), \cdots, v(z_N)]^T$, then the $N$-point, $D_N$, Chebyshev differentiation matrix gives $D_N\mathbf{v} \approx [v'(z_0),\cdots, v'(z_N)]^T$. Higher order differentiation can be achieved by taking powers of $D_N$. Thanks to \cite{trefethen_spectral_2000}, the construction of Chebyshev differentiation matrix is given in Fig.~\ref{fig:chebyshev-differentiation-matrix}.
 
-Chebyshev differentiation matrix is basically finite difference matrix but instead of having the equal-spaced nodes, Chebyshev evaluates the derivative at Chebyshev nodes. This small change improves the accuracy dramatically. On Fig.~\ref{fig:chebyshev-vs-fd} we see that the Chebyshev achieve higher accuracy.
+If we instead use the equal-spaced points, $\{z_j=2j/N\}_{j=0}^{N}$, then the matrix defined by $D_{kj} = h'_j(x_k)$ will be the usual finite difference differentiation matrix. However, Chebyshev differentiation matrix has superior accuracy due to the wise choice of collocation points. On Fig.~\ref{fig:chebyshev-vs-fd} we see that the Chebyshev achieve higher accuracy.
 
 \begin{figure} [htbp]
 	\centering
@@ -60,12 +67,12 @@ Chebyshev differentiation matrix is basically finite difference matrix but inste
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{figures/chebyshev-vs-fd.png}
-	\caption{Comparison of accuracy between Chebyshev differentiation matrix and 2nd order finite difference differentiation matrix. Both methods are applied to compute the derivative of function $f(x)=\ln(2+\sin(x))$ on $[-1,1]$. Chebyshev differentiation achieve higher accuracy and converge faster than finite difference.}
+	\caption{Comparison of accuracy between Chebyshev differentiation matrix and 2nd order finite difference differentiation matrix. Both methods are applied to compute the derivative of function $f(x)=\ln(2+\sin(x))$ on $[-1,1]$. Chebyshev differentiation achieve higher accuracy and cojnverge faster than finite difference.}
 	\label{fig:chebyshev-vs-fd}
 \end{figure}
 
 \subsubsection*{Dirichlet Boundary}
-To implement Dirichlet boundary condition, there is no need to modify anything. In practice, for a $(N+1)\times(N+1)$ Chebyshev differentiation matrix $D_N$, we only take its interior $N\times N$ by stripping the first and last columns and rows. See Fig.~\ref{fig:interior-of-chebyshev-differentiation-matrix}. Same procedure applies to higher order differentiation.
+To implement Dirichlet boundary condition, $\tilde{v}(\pm 1)=0$, to Eq.~(\ref{eq:pep-matrix-equation}), we only need to remove the first and last columns and rows of each matrix, $\mathbf{0,1,M}$, and $\mathbf{N}$. The reason is originated from the Chebyshev differentiation matrix, Fig.~\ref{fig:interior-of-chebyshev-differentiation-matrix}. For a $(N+1)\times(N+1)$ Chebyshev differentiation matrix $D_N$, the first and last row has no effect since the first and last value of $\tilde{v}$ are $0$. We only need the interior of $D_N$ which is an $N\times N$ matrix. After solving Eq.~(\ref{eq:pep-matrix-equation}), we get the eigenvalues $\omega$ and their associated eigenfunctions evaluated at the interior collocation points $\mathbf{c} = [\tilde{v}_1,\cdots,\tilde{v}_{N-1}]^T$. We will need to prepend and append 0 to the eigenfunctions, $[0, \tilde{v}_1,\cdots\tilde{v}_{N-1}, 0]^T$. Listing.~\ref{code:spectral-collocation-dirichlet} has the pseudocode for solving Eq.~(\ref{eq:pep-matrix-equation}).
 
 \begin{figure} [htpb]
 	\centering
@@ -74,11 +81,13 @@ To implement Dirichlet boundary condition, there is no need to modify anything. 
 	\label{fig:interior-of-chebyshev-differentiation-matrix}
 \end{figure}
 
-Listing.~\ref{code:spectral-collocation-dirichlet} has the pseudocode for solving Eq.~(\ref{eq:pep-matrix-equation}).
 
-\begin{lstlisting}[language=Python, float, floatplacement=H, caption={Pseudocode for solving polynomial eigenvalue problem with Dirichlet boundary condition.}, label=code:spectral-collocation-dirichlet]
+\begin{lstlisting}[language=Python, float, floatplacement=H, caption={Pseudocode for solving polynomial eigenvalue problem using spectral collocation with Dirichlet boundary condition.}, label=code:spectral-collocation-dirichlet]
 import numpy as np
-x, D1, D2 = Chebyshev(N)	
+# collocation points, differentiation matrices	
+N = 101 # number of points
+x, D1, D2 = Chebyshev(N) 
+# solve polynomial eigenvalue problem
 A11 = np.zeros_like(D1)
 A12 = np.eye(*D1.shape)
 A21 = -np.diag(1-v0**2)@D2 \
@@ -89,7 +98,7 @@ A22 = -2j*(np.diag(v0)@D1 + np.diag(D1@v0))
 A = np.block([[A11[1:-1,1:-1], A12[1:-1,1:-1]],
               [A21[1:-1,1:-1], A22[1:-1,1:-1]]])
 omega, V = np.linalg.eig(A)
-# pad the two ends by 0 (dirichlet boundary)
+# pad two ends of eigenfunctions by 0 (dirichlet boundary)
 V = np.pad(V,((1,1),(0,0)))
 \end{lstlisting}
 
@@ -122,14 +131,17 @@ This indicates the new differentiation matrices should be
 After getting the eigenfunctions $\mathbf{c} = [\tilde{v}_1, \cdots, \tilde{v}_N]^T$, we need to prepend $\tilde{v}_0$ to $\mathbf{c}$ using Eq.~(\ref{eq:expression-for-first-value}). See Listing.~\ref{code:spectral-collocation-fixed-open} for pseudocode.
 
 
-\begin{lstlisting}[language=Python, float, floatplacement=H, caption={Pseudocode for solving polynomial eigenvalue problem with fixed-open boundary condition.}, label=code:spectral-collocation-fixed-open]
+\begin{lstlisting}[language=Python, float, floatplacement=H, caption={Pseudocode for solving polynomial eigenvalue problem using spectral collocation with fixed-open boundary condition.}, label=code:spectral-collocation-fixed-open]
 import numpy as np
+# collocation points, differentiation matrices	
+N = 101 # number of points
 x, D1, D2 = Chebyshev(N)	
+# modify second row to ensure v'(1)=0 
 D1v = D1
 D2v = D2
 D1v[1,:] = D1[1,:] - D1[1,0]/D1[0,0]*D1[0,:]
 D2v[1,:] = D2[1,:] - D2[1,0]/D1[0,0]*D1[0,:]
-
+# only the differential operators acting on v needs to be modified
 A11 = np.zeros_like(D1)
 A12 = np.eye(*D1.shape)
 A21 = -np.diag(1-v0**2)@D2v \
@@ -137,11 +149,10 @@ A21 = -np.diag(1-v0**2)@D2v \
         + np.diag((1-1/v0**2)*(D1@v0)**2) \
         + np.diag((v0+1/v0)*(D2@v0))
 A22 = -2j*(np.diag(v0)@D1v + np.diag(D1@v0))
-
 A = np.block([[A11[:-1,:-1], A12[:-1,:-1]],
               [A21[:-1,:-1], A22[:-1,:-1]]])
 omega, V = np.linalg.eig(A)
-# pad 0 to the last row then modify them
+# add v(1) to eigenfunctions
 V = np.pad(V,((1,0),(0,0)))
 for j in range(V.shape[1]):
     V[0,j] = -(D1[0,1:]@V[1:,j])/D1[0,0]
@@ -155,6 +166,17 @@ Another spectral method we used in the numerical experiments is the Legendre-Gal
 \end{equation}
 where the parameters $\{a_k,b_k\}$ are chosen to satisfy the boundary conditions. The test functions are the same as the basis functions.
 
+Suppose the boundary conditions are
+\[ a_{-}\tilde{v}(-1) + b_{-}\tilde{v}'(-1) = 0, a_{+}\tilde{v}(1) + b_{+}\tilde{v}'(1) = 0  \]
+Then the parameters $\{a_k,b_k\}$ can be worked out by simple linear algebra,
+\begin{equation}
+	\begin{aligned}
+		a_k & = \frac{(2k+3)(a_{+}b_{-} + a_{-}b_{+})}{\text{DET}_k}                                             \\
+		b_k & = \frac{-2a_{-}a_{+} + (k+1)^2(a_{+}b_{-} - a_{-}b_{+}) + b_{-}b_{+}k(k+1)^2(k+2)/2}{\text{DET}_k}
+	\end{aligned}
+\end{equation}
+where $\text{DET}_k = 2a_{+}a_{-} + a_{-}b_{+}(k+2)^2 - a_{+}b_{-}(k+2)^2 - b_{-}b_{+}(k+1)(k+2)^2(k+3)/2$.
+
 \subsubsection*{Dirichlet Boundary}
 The necessary parameters to make $u_k(\pm 1) = 0$ are $a_k=0, b_k=-1$. The basis functions are therefore,
 \begin{equation}
@@ -162,12 +184,48 @@ The necessary parameters to make $u_k(\pm 1) = 0$ are $a_k=0, b_k=-1$. The basis
 \end{equation}
 
 \subsubsection*{Fixed-Open Boundary}
-The necessary parameters to make $u_k'(\pm 1) = 0$ are $a_k=(2k+3)/(k+2)^2, b_k=-(k+1)^2/(k+2)^2$. The basis functions are therefore,
+The necessary parameters to make $u_k(-1)=u_k'(1)=0$ are $a_k=(2k+3)/(k+2)^2, b_k=-(k+1)^2/(k+2)^2$. The basis functions are therefore,
 \begin{equation}
 	u_k(z) = L_k(z) + \frac{2k+3}{(k+2)^2}L_{k+1}(z) - \frac{(k+1)^2}{(k+2)^2}L_{k+2}(z)
 \end{equation}
 
-The spatial derivatives in Eq.~(\ref{eq:operator-matrix}) should utilize the Chebyshev differentiation matrix, it ensures better accuracy.
+By setting $\tilde{v}(z) = \sum_{j=0}^{N} c_ku_k(z)$, $\tilde{v}$ satisfies the boundary conditions automatically. There is no need to modify the matrices in Eq.~(\ref{eq:pep-matrix-equation}). After solving Eq.~(\ref{eq:pep-matrix-equation}), the eigenvector $\mathbf{c}$ can be used to reconstruct the eigenfunctions. See Listing.~\ref{code:spectral-galerkin} for more details.
+
+\begin{lstlisting}[language=Python, float, floatplacement=H, caption={Pseudocode for solving polynomial eigenvalue problem using Lengendre-Galerkin method}, label=code:spectral-galerkin]
+import numpy as np
+from scipy.special import lengendre # lengendre polynomials
+from scipy.integrate import simpson # simpson quadrature
+# collocation points, differentiation matrices
+N = 25 # number of basis functions
+M = 101 # number of points
+x, D1, D2 = Chebyshev(M, "symmetric", "CH")
+# use this basis for drichlet boundary
+u = lambda x,k: (legendre(k) + (2*k+3)/(k+2)**2*legendre(k+1) - (k+1)**2/(k+2)**2*legendre(k+2))(x)
+# use this basis for fixed-open boundary
+u = lambda x,k: (legendre(k) - legendre(k+2))(x)
+# solve polynomial eigenvalue problem
+A11 = np.zeros_like(D1)
+A12 = np.eye(*D1.shape)
+A21 = np.zeros((N,N),dtype=complex)
+A22 = np.zeros((N,N),dtype=complex)
+for i in range(N):
+    for j in range(N):
+		A21[i,j] = simpson(
+			- u(x,i)*(1-v0**2)*(D2@u(x,j))
+			+ u(x,i)*(3*v0+1/v0)*(D1@v0)*(D1@u(x,j))
+			+ u(x,i)*(1-1/v0**2)*(D1@v0)**2*u(x,j) 
+			+ u(x,i)*(v0+1/v0)*(D2@v0)*u(x,j),
+			x=x)
+		A22[i,j] = -2j*simpson(u(x,i)*v0*(D1@u(x,j)) + u(x,i)*(D1@v0)*u(x,j),x=x)
+A = np.block([[A11, A12],
+              [A21, A22]])
+omega, C = np.linalg.eig(A)
+# construct eigenfunctions
+V = np.zeros((x.size, C.shape[1]),dtype=complex)
+for i in range(C.shape[1]):
+    for k in range(N):
+        V[:, i] += C[k,i]*u(x, k)
+\end{lstlisting}
 
 
 \section{Spectral Theory in Finite-Dimensional Normed Spaces}
