@@ -163,7 +163,7 @@ where $p_e$ is the electron pressure. There are some simplifications, first is t
 \end{align}
 Adding these two equations we obtain
 \begin{equation}
-	\pdv{v}{t} + v\pdv{v}{z} = -\pdv{p_e}{z}
+	\pdv{v}{t} + v\pdv{v}{z} = -\frac{1}{m_in}\pdv{p_e}{z}
 \end{equation}
 
 Assume isothermal, then the electron pressure, also called the equation of state, is
@@ -271,8 +271,14 @@ By ignoring the nonlinear terms, we obtain
 	- v_0\frac{\partial_z B}{B} - \tilde{v}\frac{\partial_z B}{B} - \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = 0
 \]
 
+Using the equilibrium condition Eq.~(\ref{eq:equilibrium-conservation-of-density}), $\partial_zv_0+v_0\partial_zn_0/n_0$ cancels $-v_0\partial_zB/B$,
+\[ \frac{1}{n_0}\pdv{\tilde{n}}{t}
+	+ \frac{\tilde{n}}{n_0}\pdv{v_0}{z} + \pdv{\tilde{v}}{z}
+	+ \frac{\tilde{v}}{n_0}\pdv{n_0}{z} + \frac{v_0}{n_0}\pdv{\tilde{n}}{z}
+	- \tilde{v}\frac{\partial_z B}{B} - \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = 0
+\]
 
-Using the equilibrium condition Eq.~(\ref{eq:equilibrium-conservation-of-density}), some of the terms are canceled. Moreover, the last term can be written as
+Moreover, the last term can be written as
 \[ \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = \frac{\tilde{n}}{n_0}\left( \frac{\partial_z n_0}{n_0}v_0 + \pdv{v_0}{z} \right) \]
 Now, we get the linearized conservation of mass,
 \begin{equation} \label{eq:linearized-conservation-of-density}
@@ -283,11 +289,11 @@ where
 \[ \tilde{Y} \equiv \frac{1}{n_0}\pdv{\tilde{n}}{z} - \frac{\partial_z n_0}{n_0^2}\tilde{n} = \pdv{z}(\frac{\tilde{n}}{n_0}) \]
 
 To linearize the conservation of momentum, we follow the same logic by substituting $n=n_0+\tilde{n}$, and $v=v_0+\tilde{v}$ in Eq.~(\ref{eq:conservation-of-momentum}),
-\[ (n_0+\tilde{n})\pdv{(v_0+\tilde{v})}{t} + (n_0+\tilde{n})(v_0+\tilde{v})\pdv{(v_0+\tilde{v})}{z} = -\pdv{n}{z} \]
+\[ (n_0+\tilde{n})\pdv{(v_0+\tilde{v})}{t} + (n_0+\tilde{n})(v_0+\tilde{v})\pdv{(v_0+\tilde{v})}{z} = -\pdv{(n_0+\tilde{n})}{z} \]
 
-Again, ignore second order perturbations and rearange terms, we have
-\[ \pdv{v_0}{t} + v_0\pdv{v_0}{z} + \tilde{v}\pdv{v_0}{z}
-	= -\frac{1}{n_0}\pdv{n_0}{z} -\frac{1}{n_0}\pdv{\tilde{n}}{z} -v_0\frac{v_0}{z} - \frac{\tilde{n}}{n_0}v_0\pdv{v_0}{z} \]
+Again, ignore second order perturbations and rearrange terms, we have
+\[ \pdv{\tilde{v}}{t} + v_0\pdv{\tilde{v}}{z} + \tilde{v}\pdv{v_0}{z}
+	= -\frac{1}{n_0}\pdv{n_0}{z} -\frac{1}{n_0}\pdv{\tilde{n}}{z} -v_0\pdv{v_0}{z} - \frac{\tilde{n}}{n_0}v_0\pdv{v_0}{z} \]
 Using the equilibrium condition Eq.~(\ref{eq:equilibrium-conservation-of-momentum}) on the RHS, we get the linearized conservation of momentum,
 \begin{equation} \label{eq:linearized-conservation-of-momentum}
 	\pdv{\tilde{v}}{t} + \pdv{(v_0\tilde{v})}{z} = -\tilde{Y}
@@ -329,21 +335,22 @@ Using the equilibrium condition Eq.~(\ref{eq:equilibrium-conservation-of-density
 \]
 
 Rearrange terms, we have
-\[
+\begin{equation}
 	-i\omega\frac{\tilde{n}}{n_0}
 	+ i\omega v_0\tilde{v}
 	+ (1-v_0^2)\pdv{\tilde{v}}{z}
 	- \left(v_0+\frac{1}{v_0}\right)\pdv{v_0}{z}\tilde{v} = 0
-\]
+	\label{eq:intermediate-step-time-derivative-of-Y}
+\end{equation}
 
 Now we take $\pdv*{t}$ on Eq.~(\ref{eq:linearized-conservation-of-momentum}). Recall the fact that $\tilde{Y} = \partial_z(\tilde{n}/n_0)$, we have
 \[
 	\omega^2\tilde{v} + i\omega\left(v_0\pdv{\tilde{v}}{z} + \tilde{v}\pdv{v_0}{z}\right)
 	= \pdv{t}\pdv{z}(\frac{\tilde{n}}{n_0})
 \]
-Apply $\partial_t$ operator first, we get
+Switch the order of $\partial_t$ and $\partial_z$, and recall $-i\omega \tilde{n}/n_0$ can be obtained from Eq.~(\ref{eq:intermediate-step-time-derivative-of-Y}), we get
 \[
-	\omega^2\tilde{v} + i\omega\left(v_0\pdv{\tilde{v}}{z} + \tilde{v}\pdv{v_0}{fz}\right)
+	\omega^2\tilde{v} + i\omega\left(v_0\pdv{\tilde{v}}{z} + \tilde{v}\pdv{v_0}{z}\right)
 	= \pdv{z}(-i\omega v_0\tilde{v}
 	- (1-v_0^2)\pdv{\tilde{v}}{z}
 	+ \left(v_0+\frac{1}{v_0}\right)\pdv{v_0}{z}\tilde{v})

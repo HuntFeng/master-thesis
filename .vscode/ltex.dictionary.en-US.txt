@@ -19,3 +19,7 @@ nondimensionalized
 nondimensionalization
 Transonic
 eigenmodes
+Kryszig
+resolvent
+Chebyshev
+Galerkin
