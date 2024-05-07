@@ -19,21 +19,20 @@ Using the above approximation in Eq.~(\ref{eq:polynomial-eigenvalue-problem}), a
 	\label{eq:pep-matrix-equation}
 \end{equation}
 where $\mathbf{c} = [c_0, \cdots, c_N]^T$ is a vector of coefficients, and
-\begin{equation}
-	\begin{aligned}
-		M_{jk} & = 2i\int_{-1}^{1}dz \; \psi_{j}\left(v_0\pdv{}{z} +\pdv{v_0}{z} \right)u_{k} \\
-		N_{jk} & = \int_{-1}^{1}dz \; \psi_{j} \left[(1-v_0^2)\pdv[2]{}{z}
-			-\left(3v_0 + \frac{1}{v_0}\right)\pdv{v_0}{z}\pdv{}{z}
-			- \left(1-\frac{1}{v_0^2}\right)\left(\pdv{v_0}{z}\right)^2
-			- \left(v_0+\frac{1}{v_0}\right)\pdv[2]{v_0}{z}\right] u_{k}
-	\end{aligned}
-	\label{eq:operator-matrix}
-\end{equation}
+\begin{align}
+	M_{jk} & = 2i\int_{-1}^{1}dz \; \psi_{j}\left(v_0\pdv{}{z} +\pdv{v_0}{z} \right)u_{k}
+	\label{eq:operator-matrix-M}                                                          \\
+	N_{jk} & = \int_{-1}^{1}dz \; \psi_{j} \left[(1-v_0^2)\pdv[2]{}{z}
+		-\left(3v_0 + \frac{1}{v_0}\right)\pdv{v_0}{z}\pdv{}{z}
+		- \left(1-\frac{1}{v_0^2}\right)\left(\pdv{v_0}{z}\right)^2
+		- \left(v_0+\frac{1}{v_0}\right)\pdv[2]{v_0}{z}\right] u_{k}
+	\label{eq:operator-matrix-N}
+\end{align}
 
 Depending on the choice of the test function, spectral method can be further classified, \cite{shen_tang_etal_spectral_2011}
 \begin{itemize}
 	\item Galerkin: The test functions are the same as the trial ones, i.e. $\psi_k=u_k$.
-	\item Collocation:  The test functions $\{\psi_k\}$ are orthogonal basis polynomials such that $\psi_k(z_j)=\delta_{jk}$, where ${z_j}$ are preassigned collocation points.
+	\item Collocation:  The test functions $\{\psi_k\}$ are Lagrange basis polynomials such that $\psi_k(z_j)=\delta_{jk}$, where ${z_j}$ are preassigned collocation points.
 \end{itemize}
 
 To solve Eq.~(\ref{eq:pep-matrix-equation}), we simply augment the coefficient vector to $[\mathbf{c}, \omega\mathbf{c}]^T$. Then the matrix equation can be written as an algebraic eigenvalue problem,
@@ -182,14 +181,47 @@ The necessary parameters to make $u_k(\pm 1) = 0$ are $a_k=0, b_k=-1$. The basis
 \begin{equation}
 	u_k(z) = L_k(z) - L_{k+2}(z)
 \end{equation}
+The first 5 basis functions are shown in Fig.~\ref{fig:legendre-dirichlet}.
+\begin{figure} [htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/legendre-dirichlet.png}
+	\caption{Compact Legendre combinations satisfying Dirichlet boundary condition.}
+	\label{fig:legendre-dirichlet}
+\end{figure}
 
 \subsubsection*{Fixed-Open Boundary}
 The necessary parameters to make $u_k(-1)=u_k'(1)=0$ are $a_k=(2k+3)/(k+2)^2, b_k=-(k+1)^2/(k+2)^2$. The basis functions are therefore,
 \begin{equation}
 	u_k(z) = L_k(z) + \frac{2k+3}{(k+2)^2}L_{k+1}(z) - \frac{(k+1)^2}{(k+2)^2}L_{k+2}(z)
 \end{equation}
+The first 5 basis functions are shown in Fig.~\ref{fig:legendre-fixed-open}.
+\begin{figure} [htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/legendre-fixed-open.png}
+	\caption{Compact Legendre combinations satisfying fixed-open boundary condition.}
+	\label{fig:legendre-fixed-open}
+\end{figure}
 
-By setting $\tilde{v}(z) = \sum_{j=0}^{N} c_ku_k(z)$, $\tilde{v}$ satisfies the boundary conditions automatically. There is no need to modify the matrices in Eq.~(\ref{eq:pep-matrix-equation}). After solving Eq.~(\ref{eq:pep-matrix-equation}), the eigenvector $\mathbf{c}$ can be used to reconstruct the eigenfunctions. See Listing.~\ref{code:spectral-galerkin} for more details.
+By setting $\tilde{v}(z) = \sum_{j=0}^{N} c_ku_k(z)$, $\tilde{v}$ satisfies the boundary conditions automatically. There is no need to modify the matrices in Eq.~(\ref{eq:pep-matrix-equation}).
+
+To evaluate the matrix elements, inner products are calculated by numerical integration, in this thesis Simpson's rule is used. Eq.~(\ref{eq:operator-matrix-M}) and Eq.~(\ref{eq:operator-matrix-N}) become
+
+\begin{align}
+	M_{jk} & = 2i \sum_{m}^{M} w_m \Delta z_m \left[\psi_{j}\left(v_0\pdv{}{z} +\pdv{v_0}{z} \right)u_{k}\right]_{z_m} \\
+	N_{jk} & = \sum_{m}^{M} w_m \Delta z_m \left\{
+	\psi_{j} \left[(1-v_0^2)\pdv[2]{}{z} -\left(3v_0 + \frac{1}{v_0}\right)\pdv{v_0}{z}\pdv{}{z}
+		- \left(1-\frac{1}{v_0^2}\right)\left(\pdv{v_0}{z}\right)^2 - \left(v_0+\frac{1}{v_0}\right)\pdv[2]{v_0}{z}\right] u_{k} \right\}_{z_m}
+\end{align}
+where $M$ is the number of points, $\Delta z_m = 2/M$, and $w_m$ are coefficients corresponding to the quadrature rule employed. In this case,
+\begin{equation}
+	w_n = \begin{cases}
+		1/3, \text{if $m=0,M$}                     \\
+		4/3, \text{if $m$ is odd}                  \\
+		2/3, \text{if $m\neq 0,M$ and $m$ is even} \\
+	\end{cases}
+\end{equation}
+
+After solving Eq.~(\ref{eq:pep-matrix-equation}), the eigenvector $\mathbf{c}$ can be used to reconstruct the eigenfunctions. See Listing.~\ref{code:spectral-galerkin} for more details.
 
 \begin{lstlisting}[language=Python, float, floatplacement=H, caption={Pseudocode for solving polynomial eigenvalue problem using Lengendre-Galerkin method}, label=code:spectral-galerkin]
 import numpy as np
