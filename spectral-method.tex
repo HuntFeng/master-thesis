@@ -39,7 +39,7 @@ To solve Eq.~(\ref{eq:pep-matrix-equation}), we simply augment the coefficient v
 \begin{equation} \label{eq:eigenvalue-problem}
 	\mqty[ \mathbf{0} & \mathbf{1}\\ -\mathbf{N} & -\mathbf{M} ]\mqty[ \mathbf{c}\\ \omega\mathbf{c}] = \omega\mqty[ \mathbf{c}\\ \omega\mathbf{c}]
 \end{equation}
-We can apply standard eigenvalue problem solver to this question to obtain the eigenvalues $\omega$ and the coefficients $\mathbf{c}$ by cutting the associated eigenvectors $[\mathbf{c}, \omega\mathbf{c}]^T$ by half.
+We can apply standard eigenvalue problem solver to this question to obtain the eigenvalues $\omega$ and their corresponding eigenvectors $[\mathbf{c}, \omega\mathbf{c}]^T$. Therefore, the eigenfunctions $\tilde{v} = \sum_k c_ku_k(z)$ to the original problem can be recovered by extracting coefficients $\mathbf{c}$ from the eigenvectors.
 
 \section{Spectral Collocation Method}
 One of the methods we are going to use is called the Chebyshev collocation method.
@@ -289,7 +289,12 @@ In this section, we will discuss an important phenomenon we observe throughout t
 Spectral pollution refers to the phenomenon which some eigenvalues are not converging to the correct value when the mesh density is increased. The wrong eigenvalues are referred as spurious modes. When solving eigenvalue problems using spectral methods with finite difference or finite element approximations, spectral pollution might occur. \cite{llobet_spectral_1990} The cause of the spectral pollution is originated from the improper discretization of the differential operators. In the following sections, we are going to take a closer look at the differential operators in finite difference method, and reveal the occurrence of spurious modes when solving Eq.~(\ref{eq:constant-v-problem-dirichlet}).
 
 \subsection{Analysis of Numerical Spectrum}
-In this section, we will analyze the analytical and numerical dispersion relation of Eq.~(\ref{eq:constant-v-problem-dirichlet}). It is a special case, i.e. $v_0=$constant, of a more general problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). The analytical dispersion relation can be obtained by substituting $\tilde{v} = \exp(-i\omega t + kx)$ into Eq.~(\ref{eq:constant-v-problem-dirichlet}),
+In this section, we will analyze the analytical and numerical dispersion relation of the following problem,
+\[
+	\omega^2\tilde{v} + 2i\omega v_0\pdv{\tilde{v}}{z} + (1-v_0^2)\pdv[2]{\tilde{v}}{z} = 0, \quad v(\pm 1) = 0
+\]
+
+It is a special case, i.e. $v_0=$constant, of a more general problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). The analytical dispersion relation can be obtained by substituting $\tilde{v} = \exp(-i\omega t + kx)$ into the above equation,
 \begin{equation} \label{dispersion-relation}
 	\omega = k(v_0 \pm 1)
 \end{equation}
@@ -336,7 +341,7 @@ Given $h$ (fixed the mesh resolution), we see that
 	\label{fig:results-bad}
 \end{figure}
 
-One way to filter the spurious modes is to remove all modes with $k>h/2 \arcsin(1/v_0)$, see Fig.~\ref{fig:results-filter-k}. However, this is not a good way to deal with general cases because it requires the solution to the discretized problem Eq.~(\ref{eq:discretized-eq-G}). For general problem with non-constant velocity profile, it is hard to solve the discretized problem directly.
+One way to filter the spurious modes is to remove all modes with $k>h/2 \arcsin(1/v_0)$, see Fig.~\ref{fig:results-filter-k}. However, this is not possible in general cases because it requires the exact solution to the discretized problem Eq.~(\ref{eq:discretized-eq-G}) which is not available for non-constant velocity profile.
 
 \begin{figure}[H]
 	\centering
@@ -353,7 +358,7 @@ One way to filter the spurious modes is to remove all modes with $k>h/2 \arcsin(
 \end{figure}
 
 \subsection{Convergence Test}
-A better way to filter the spurious modes is by doing a "convergence test". Since the frequency Eq.~(\ref{dispersion-relation-G}) is changing with mesh resolution $h$. From Fig.~\ref{fig:convergence-test} we see that only the true eigenmodes converge while the eigenvalues of spurious eigenmodes changes dramatically under different resolutions. By simply solving the discretized problem using spectral method under different mesh resolution, we can pick up the true eigenmodes by observing their convergence, and filter out the spurious eigenmodes which change dramatically.
+To filter the spurious modes is by doing a "convergence test". Since the frequency Eq.~(\ref{dispersion-relation-G}) is changing with mesh resolution $h$. From Fig.~\ref{fig:convergence-test} we see that only the true eigenmodes converge while the eigenvalues of spurious eigenmodes changes dramatically under different resolutions. By simply solving the discretized problem using spectral method under different mesh resolution, we can pick up the true eigenmodes by observing their convergence, and filter out the spurious eigenmodes which change dramatically with varying resolution.
 
 \begin{figure} [htbp]
 	\centering

@@ -1,2 +1,3 @@
 - [ ] fix discontinuous page number (maybe using school template will do)
-- [ ] 
+- [ ] improve image quality
+- [ ] paraphrase sentences from chen
