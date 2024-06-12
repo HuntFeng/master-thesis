@@ -1,3 +1,0 @@
-{"rule":"COPYRIGHT","sentence":"^\\Q(c) Chaotic behavior occurs.\\E$"}
-{"rule":"IT_IS","sentence":"^\\QMoreover, spectral pollution and its filtering will as also be investigated.\\E$"}
-{"rule":"ADVERB_OR_HYPHENATED_ADJECTIVE","sentence":"^\\QLet \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q be a complex normed space (could be any dimension), and \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q with domain \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
