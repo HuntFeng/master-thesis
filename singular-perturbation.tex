@@ -1,5 +1,5 @@
 \chapter{Singular Perturbation} \label{chap:singular-perturbation}
-This chapter is dedicated to analyze the polynomial eigenvalue problem with transonic velocity profiles. We will first show the existence of the singularity of Eq.~(\ref{eq:polynomial-eigenvalue-problem}), then we will discuss the concept of singular perturbation and the way we solve the problem.
+When dealing with the accelerating velocity profile, spectral methods struggle to yield meaningful results because of the singularity at the nozzle throat ($z=0$). This chapter is dedicated to analyze the polynomial eigenvalue problem with transonic velocity profile. We start by showing the existence of the singularity of Eq.~(\ref{eq:polynomial-eigenvalue-problem}), and how spectral methods introduced in previous chapter failed to resovle solutions. Then we will discuss the concept of singular perturbation and will pickup regular solutions to Eq.~(\ref{eq:polynomial-eigenvalue-problem}) near the nozzle throat $z=0$ using Frobenius method. Finally, we will introduce shooting method and use it together with the regular solutions to find eigenmodes.
 
 \section{Presence of Singularity in Transonic cases} \label{sec:presence-of-singularity}
 In order to see the existence of the singularity, we rearrange the terms the polynomial eigenvalue problem, Eq.~(\ref{eq:polynomial-eigenvalue-problem}),
@@ -168,3 +168,13 @@ After finding $\omega$, we can extend the numerical solution $\tilde{v}$ to the 
 	\mathbf{\tilde{u}}(0)=\mqty[\tilde{v}(0) \\ \tilde{u}(0)], \dv{z}\mathbf{\tilde{u}}(0) =\mqty[\tilde{v}'(0) \\ \tilde{u}'(0)]
 \end{equation}
 Since $\omega$ is already found, the initial conditions are given. The function $\mathbf{f}$ is continuous in $z$ on $[0,1]$ and is Lipschitz in $\mathbf{\tilde{u}}$ due to the fact $\mathbf{f}$ is continuous on a compact region $[0,1]$. Hence, the solution to this I.V.P. exists and is unique.
+
+
+\section{Plasma Flow with Accelerating Velocity Profile}
+Starting from the singular point, we shoot the regular solution to the left boundary. We find the set of eigenvalues such that $\tilde{v}(-1)=0$. With these eigenvalues, we can extend the solution to the supersonic region $(0,1]$. The first few eigenmodes are drawn in Fig.~\ref{fig:results-accelerating-v}. The eigenmodes indicates that the accelerating plasma flow is stable.
+\begin{figure} [H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/results-accelerating-v}
+	\caption{Showing the first 5 eigenmodes, they are stable.}
+	\label{fig:results-accelerating-v}
+\end{figure}

@@ -1,3 +1,9 @@
 - [ ] fix discontinuous page number (maybe using school template will do)
+- [ ] correct inline citation format
 - [ ] improve image quality
 - [ ] paraphrase sentences from chen
+- [x] split chapter 5
+    - [x] constant velocity cases move to spectral pollution
+    - [x] subsonic / supersonic cases move to spectral method
+    - [x] accelerating case to move singular perturbation
+- [x] say something in the spectral methods, are spurious modes occur as expected
