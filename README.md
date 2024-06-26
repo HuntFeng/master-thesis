@@ -1,6 +1,10 @@
 - [ ] fix discontinuous page number (maybe using school template will do)
 - [ ] correct inline citation format
 - [ ] improve image quality
+    - [x] intro 
+    - [x] poly-eig-problem
+    - [ ] spectral method
+    - [ ] singular-perturbation
 - [ ] paraphrase sentences from chen
 - [x] split chapter 5
     - [x] constant velocity cases move to spectral pollution
