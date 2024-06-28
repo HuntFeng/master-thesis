@@ -1,5 +1,5 @@
-\chapter{Theoretical Analysis} \label{chap:theoretical-analysis}
-In this chapter, we first examine the single particle motion along the magnetic field, subsequently to a kinetic description of plasma. Following this, we derive the fluid description of plasma. After this, we establish the governing equations for flow in the magnetic nozzle. Following their derivation, we proceed to linearize these governing equations and reframe the problem as a polynomial eigenvalue problem. Finally, we analytically explore a special case.
+\chapter{Polynomial Eigenvalue Problem} \label{chap:polynomial-eigenvalue-problem}
+Magnetic field lines guide the motion of charged particles in plasma. In this chapter, we first examine the single particle motion along the magnetic field, subsequently to a kinetic description of plasma. Following this, we derive the fluid description of plasma using the fact that fluid velocity follows the magnetic field line $\mathbf{v} = v\mathbf{B}/B$. After this, we establish the governing equations for flow in the magnetic nozzle. Following their derivation, we proceed to linearize these governing equations and reframe the problem as a polynomial eigenvalue problem. Finally, we analytically explore a special case.
 
 \section{Kinetic Theory}
 \subsection{Single Particle Motion in Uniform Magnetic and Electric Fields} \label{sec:single-particle-motion}
@@ -73,7 +73,7 @@ where $a$ and $b$ are the two turning points in magnetic mirror, see Fig.~\ref{f
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.7\textwidth]{figures/particle-in-mirror.png}
+	\includegraphics[width=0.4\textwidth]{figures/particle-in-mirror.tikz}
 	\caption{A particle bouncing between turning points $a$ and $b$ in a magnetic field. Adapted from \cite{chen_introduction_2016}.}
 	\label{fig:particle-in-mirror}
 \end{figure}
@@ -207,7 +207,7 @@ It is denoted as $W_k(x)$, where $k = 0,-1$ are its two branches. See Fig.~\ref{
 \begin{figure} [htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/lambert-w.png}
-	\caption{The graph of $y=W(x)$ for real $x<6$ and $y>-4$. The upper branch (blue) with $y\geq-1$ is the graph of the function $W_0(x)$ (principal branch), the lower branch (magenta) with $y\leq -1$ is the graph of the function $W_{-1}(x)$. The left most point of the curve is at $(-1/e,-1)$.}
+	\caption{The graph of $y=W(x)$ for real $x<5$ and $y>-4$. The upper branch (blue) with $y\geq-1$ is the graph of the function $W_0(x)$ (principal branch), the lower branch (orange) with $y\leq -1$ is the graph of the function $W_{-1}(x)$. The left most point of the curve is at $(-1/e,-1)$.}
 	\label{fig:lambert-w}
 \end{figure}
 
@@ -370,7 +370,7 @@ Expand the RHS and collect terms, we get
 
 In mathematical terms, Eq.~(\ref{eq:polynomial-eigenvalue-problem}) is a polynomial eigenvalue problem, where $\omega$ is an eigenvalue to the problem, and the velocity perturbation $\tilde{v}$ is an eigenfunction associated with the eigenvalue $\omega$. In the later chapters we will discuss the methods to tackle this problem.
 
-\section{Analytical Solutions to Constant Velocity Case}
+\section{Analytical Solutions to Constant Velocity Case} \label{sec:analytical-solutions}
 In this section we are going to tackle the simplest case of the polynomial eigenvalue problem, Eq.~(\ref{eq:polynomial-eigenvalue-problem}), the constant velocity case.
 
 The constant velocity profile can be viewed as the limit of $v_0(z)$ as the spread of magnetic field goes to infinity, $\delta\to\infty$. As the parameter $\delta$ approaches infinity, the width of the magnetic field enlarges and eventually becomes flat. In other words, a constant magnetic field. We can easily see that the velocity profile $v_0(z)$ becomes a constant as well.
@@ -390,7 +390,7 @@ In this subsection, the so-called Dirichlet boundary condition will be used. It 
 \end{equation}
 At the left end (entrance of the nozzle), $z=-1$, we assume there are no perturbations. As for the right end (exit of the nozzle), $z=1$, setting the velocity perturbation to 0 might not be the best boundary condition to describe the physical process of the plasma flow in the nozzle, it nevertheless serves as a starting point to the problem and is also useful to test numerical solutions.
 
-With the two boundary conditions, we find the solution to this problem,
+With the two boundary conditions, the solution to the second order constant coefficients differential equation Eq.~(\ref{eq:constant-v-problem-dirichlet}) will be a linear combination of terms of the form $e^{ik(z+1)}$,
 \begin{equation} \label{eq:constant-v-solution-dirichlet}
 	\tilde{v}(z) = C\left[ \exp\left(i\omega\frac{z+1}{v_0+1}\right) - \exp\left(i\omega\frac{z+1}{v_0-1}\right) \right]
 \end{equation}
@@ -426,7 +426,7 @@ Fixed-Open boundary condition assumes that there are no perturbations at the ent
 	\tilde{v}(-1) = \pdv{\tilde{v}}{z}\,(1) = 0
 \end{equation}
 
-The form of the solution to this problem is the same as Eq.~(\ref{eq:constant-v-solution-dirichlet}), the only difference is the eigenvalues. In this case, the eigenvalues are
+The solution to this problem is similar to Eq.~(\ref{eq:constant-v-solution-dirichlet}), the only difference is the eigenvalues. In this case, the eigenvalues are
 \begin{equation}
 	\omega_n = (v_0^2 - 1) \left[\frac{n\pi}{2} - \frac{1}{4}i\ln(\frac{v_0-1}{v_0+1})\right], \quad n\in\mathbb{Z}
 	\label{eq:eigvals-constant-v-fixed-open}

@@ -8,6 +8,7 @@
 \usepackage{setspace}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{tikz, tikzscale, pgfplots}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -45,7 +46,7 @@
 \newtheorem*{remark}{Remark}
 
 
-\title{Instability of Flow In Magnetic Nozzle}
+\title{Spectral Stability of Plasma Flows In the Magnetic Nozzle}
 \author{Hunt Feng}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,19 +59,15 @@
 \tableofcontents % remove this when using school template
 % move abstract before the document in school template
 \abstract{
-    Spectral method is a common technique for analyzing the instability of a dynamical system. By discretizing the linearized equations motion of magnetic nozzle, the instability problem becomes a polynomial eigenvalue problem. Given Dirichlet boundary condition, we found that the flow with subsonic and supersonic velocity profiles are stable. Given fixed-open boundary condition, the subsonic flow is stable, but the supersonic flow is unstable. Different discretizations, such as finite difference, finite element and spectral element method agree with each other. By studying the convergence of different modes, we successfully eliminated the spurious unstable modes.
-
-    However, spectral method is not enough to analyze the full problem. The problem has a singularity at the throat of the nozzle if the flow is transonic. The existence of singularity prevents the use of spectral method. We then expand the solution at the singularity and found the regular solution. Using that together with shooting method, we are able to solve the polynomial eigenvalue problem. The flow with accelerating velocity profile is stable.
-}
+	In this thesis, spectral stability of plasmas is understood as an eigen-value problem of linearized plasma equations describing time dynamics near some equilibrium state. Presence of eigen values with positive imaginary part would indicate the instability when small fluctuations will grow (typically exponentially) in time. A particular focus is the stability of plasma with stationary flows, in particular, flows in the magnetic nozzle. Magnetic nozzle, or magnetic mirror configurations, with converging-diverging magnetic field are used to accelerate plasma in plasma propulsion systems (magnetic Laval nozzle) and in fusion devices aiming to confine plasma and reach controlled thermonuclear fusion. We consider the linear stability of plasma flows under different boundary conditions. The linearized plasma equations are discretized and spectral stability  problem is reduced to a polynomial eigenvalue problem. We found that the subsonic and supersonic flows are stable for Dirichlet boundary conditions. The subsonic flow is stable for the mixed (fixed-open) boundary conditions, but the supersonic flow is unstable. We show that different spectral methods, i.e. spectral collocation and spectral Galerkin methods, agree. Phenomena of spectral pollution resulting in spurious unstable modes is discussed. By studying the convergence of different modes, we successfully eliminated the spurious modes. The stability problem of the transonic velocity profile has an additional difficulty due to the singularity at the sonic point, i.e. at the point when the flow velocity is equal to the local sound velocity. At this point, the coefficient in front of the highest derivative of the differential eigen-value equation becomes zero. In this case, the direct application of the spectral  methods is problematic. To solve this problem, we solve the equation near the singularity by the Frobenius method and then use the regular solution with  the shooting method to find the eigen-values. We find that the transonic accelerating velocity profile is stable.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FIRST CHAPTER OF THESIS BEGINS HERE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{introduction}
-\include{theoretical-analysis}
+\include{polynomial-eigenvalue-problem}
 \include{spectral-method}
 \include{singular-perturbation}
-\include{numerical-experiments}
 \include{discussion}
 
 \bibliographystyle{plain}

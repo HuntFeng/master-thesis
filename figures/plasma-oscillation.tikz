@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+    \foreach \x in {0,...,1} {
+      \foreach \y in {0,...,3}
+          {
+                \draw[thick, fill=gray] (7*\x, 2*\y) rectangle (7*\x+2, 2*\y+1.5);
+                \draw[thick] (7*\x+3, 2*\y) rectangle (7*\x+5, 2*\y+1.5);   
+           }
+\node at (7*\x+1, 8) {\Huge $-$};
+\node at (7*\x+4, 8) {\Huge $+$};   
+\node at (-1,-1) {\Huge $\mathbf{E}$};
+\draw[very thick, ->] (7*\x+4, -1) -- (7*\x+1, -1);
+}   
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+	\begin{axis} [
+			view={0}{0},
+   xtick=\empty,
+ ytick=\empty,
+ ztick=\empty,
+axis line style={draw=none}
+		]
+\addplot3[thick, domain=-7:7, samples=100, samples y=0] ({x}, {0}, {0.5*cos(deg(0.5*x)) + 0.6});
+\addplot3[thick, domain=-7:7, samples=100, samples y=0] ({x}, {0}, {-0.5*cos(deg(0.5*x)) - 0.5});
+\addplot3[thick, ->, domain=-10:-4, samples=100, samples y=0] ({0.2*x}, {0.2*cos(deg(4*x))}, {0.5*cos(deg(0.2*0.5*x)) + 0.6 + 0.2*sin(deg(4*x))});
+\addplot3 [black, mark = *, nodes near coords=$a$,every node near coord/.style={anchor=-90}] coordinates {( -6.28, 0, 0.1)};
+\addplot3 [black, mark = *, nodes near coords=$b$,every node near coord/.style={anchor=-90}] coordinates {( 6.28, 0, 0.1)};
+	\end{axis}
+\end{tikzpicture}

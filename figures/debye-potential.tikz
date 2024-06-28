@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+	% Draw the coordinate system
+	\draw[thick, ->] (-5,0) -- (5,0) node[right] {$x$};
+	\draw[thick, ->] (0,-1) -- (0,4) node[above] {$\phi$};
+
+	% Draw the circle at the origin
+	\draw[thick] (0,0) circle (0.3);
+
+	% Define the function
+	\draw[domain=-5:5, samples=100, smooth, variable=\x, thick]
+	plot ({\x},{3*exp(-abs(\x)/1.5)});
+
+	% Draw the y-intercept label
+	\node at (0.3,3) {$\phi_0$};
+\end{tikzpicture}
