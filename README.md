@@ -3,7 +3,7 @@
 - [ ] improve image quality
     - [x] intro 
     - [x] poly-eig-problem
-    - [ ] spectral method
+    - [x] spectral method
     - [ ] singular-perturbation
 - [ ] paraphrase sentences from chen
 - [x] split chapter 5
