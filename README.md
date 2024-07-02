@@ -9,3 +9,4 @@
     - [ ] polynomial-eigenvalue-problem
     - [ ] spectral-method
     - [ ] singular-perturbation
+- [ ] introduce spectral instability
