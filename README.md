@@ -1,10 +1,8 @@
 - [ ] fix discontinuous page number (maybe using school template will do)
-- [ ] correct inline citation format
+- [x] correct inline citation format
     - [x] introduction
-    - [ ] polynomial-eigenvalue-problem
-    - [ ] spectral-method
-    - [ ] singular-perturbation
-    - [ ] discussion
+    - [x] polynomial-eigenvalue-problem
+    - [x] spectral-method
 - [x] paraphrase sentences from chen
 - [ ] add brief description in front of chapters and sections
     - [x] intro
