@@ -5,5 +5,9 @@
     - [ ] spectral-method
     - [ ] singular-perturbation
     - [ ] discussion
-- [ ] paraphrase sentences from chen
+- [x] paraphrase sentences from chen
 - [ ] add brief description in front of chapters and sections
+    - [x] intro
+    - [ ] polynomial-eigenvalue-problem
+    - [ ] spectral-method
+    - [ ] singular-perturbation
