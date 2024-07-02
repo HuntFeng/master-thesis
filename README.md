@@ -4,9 +4,9 @@
     - [x] polynomial-eigenvalue-problem
     - [x] spectral-method
 - [x] paraphrase sentences from chen
-- [ ] add brief description in front of chapters and sections
+- [x] add brief description in front of chapters and sections
     - [x] intro
-    - [ ] polynomial-eigenvalue-problem
-    - [ ] spectral-method
-    - [ ] singular-perturbation
+    - [x] polynomial-eigenvalue-problem
+    - [x] spectral-method
+    - [x] singular-perturbation
 - [ ] introduce spectral instability
