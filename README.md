@@ -1,13 +1,13 @@
 - [ ] fix discontinuous page number (maybe using school template will do)
 - [ ] correct inline citation format
-- [ ] improve image quality
-    - [x] intro 
-    - [x] poly-eig-problem
-    - [x] spectral method
+    - [x] introduction
+    - [ ] polynomial-eigenvalue-problem
+    - [ ] spectral-method
     - [ ] singular-perturbation
-- [ ] paraphrase sentences from chen
-- [x] split chapter 5
-    - [x] constant velocity cases move to spectral pollution
-    - [x] subsonic / supersonic cases move to spectral method
-    - [x] accelerating case to move singular perturbation
-- [x] say something in the spectral methods, are spurious modes occur as expected
+    - [ ] discussion
+- [x] paraphrase sentences from chen
+- [ ] add brief description in front of chapters and sections
+    - [x] intro
+    - [ ] polynomial-eigenvalue-problem
+    - [ ] spectral-method
+    - [ ] singular-perturbation
