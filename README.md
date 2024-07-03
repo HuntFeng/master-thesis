@@ -9,4 +9,9 @@
     - [x] polynomial-eigenvalue-problem
     - [x] spectral-method
     - [x] singular-perturbation
-- [ ] introduce spectral instability
+- [x] instability
+    - [x] introduce plasma instability
+    - [x] introduce spectral instability
+    - [x] introduce linear instability
+    - [x] relationship among spectral/linear/plasma instability
+- [ ] talk about magnetized plasma in chapter 2?
