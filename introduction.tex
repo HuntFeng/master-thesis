@@ -38,7 +38,7 @@ For simplicity, we assume massless electron, $m/M \to 0$. This means that the el
 \end{equation}
 where $n_0$ is a constant.
 
-Meanwhile, it can be proven using Fluid description of plasma that the electron density follows the Boltzmann distribution,
+Meanwhile, it can be proven using Fluid description of plasma that the electron density follows the Boltzmann distribution \cite{chen_introduction_2016},
 \begin{equation}
 	n_e = n_0\exp(e\phi/KT_e)
 \end{equation}
@@ -146,13 +146,12 @@ Following this we find the equilibrium state (stationary solution) to the above 
 
 Now we are in a stage ready to investigate the dynamic instability of the problem. The system will be given small spatial perturbations, they serve as small fluctuations on number density and velocity, $\tilde{n}(z)$ and $\tilde{v}(z)$. All variables $n$ and $v$ in the governing equations will be substituted by perturbed quantities, $n_0+\tilde{n}$ and $v_0+\tilde{v}$. The PDE system Eq.~(\ref{eq:pde-system}) now becomes,
 \begin{equation}
-	\underbrace{\pdv{t}\mqty[\tilde{n}\\ \tilde{v}] + d\mathbf{F}(n_0,v_0)\mqty[\tilde{n}\\ \tilde{v}] }_{linear terms}
-	+ \underbrace{\mathbf{F}(n_0+\tilde{n}, v_0+\tilde{v}) - d\mathbf{F}(n_0,v_0)\mqty[\tilde{n}\\ \tilde{v}]}_{non-linear terms}
+	\underbrace{\pdv{t}\mqty[\tilde{n}\\ \tilde{v}] + d\mathbf{F}(n_0,v_0)\mqty[\tilde{n}\\ \tilde{v}] }_{\text{linear terms}}
+	+ \underbrace{\mathbf{F}(n_0+\tilde{n}, v_0+\tilde{v}) - d\mathbf{F}(n_0,v_0)\mqty[\tilde{n}\\ \tilde{v}]}_{\text{non-linear terms}}
 	= \mathbf{0}
 	\label{eq:perturbed-pde-system}
 \end{equation}
-
-Since $\tilde{n}$ and $\tilde{v}$ are small, we expect the higher order mixed terms such as $\tilde{n}\tilde{v}$, $\tilde{n}\partial_z\tilde{v}$, $\tilde{v}\partial_z\tilde{n}$ are negligible comparing to the linear terms. So we drop the non-linear terms. Now we obtain the so-called linearized governing equations, they are the linearized conservation of density, Eq.~(\ref{eq:linearized-conservation-of-density}) and the linearized conservation of momentum, Eq.~(\ref{eq:linearized-conservation-of-momentum}), respectively.
+Where $d\mathbf{F}$ is a Jacobian matrix. Since $\tilde{n}$ and $\tilde{v}$ are small, we expect the higher order mixed terms such as $\tilde{n}\tilde{v}$, $\tilde{n}\partial_z\tilde{v}$, $\tilde{v}\partial_z\tilde{n}$ are negligible comparing to the linear terms. So we drop the non-linear terms. Now we obtain the so-called linearized governing equations, they are the linearized conservation of density, Eq.~(\ref{eq:linearized-conservation-of-density}) and the linearized conservation of momentum, Eq.~(\ref{eq:linearized-conservation-of-momentum}), respectively.
 
 Since we are dealing with linear operators, let the perturbations take the form of exponential $\exp(-i\omega t)$. This indicates that physically the perturbations are oscillating with frequency $\omega$ in time. Any time derivative on the perturbations in the linearized governing equations simply becomes $\partial_t \to -i\omega$. Now we obtain equations involving perturbations, $\tilde{n}$ and $\tilde{v}$, and their spatial derivatives, and $\omega$. Reducing the number of equations by eliminating the density $\tilde{n}$, we obtain Eq.~(\ref{eq:polynomial-eigenvalue-problem}).
 

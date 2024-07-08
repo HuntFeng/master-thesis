@@ -198,21 +198,9 @@ For convenience, we nondimensionalize the governing equations by normalizing the
 In the later thesis, we will refer the governing equations to Eq.~(\ref{eq:conservation-of-density}), (\ref{eq:conservation-of-momentum}) without mentioning the nondimensionalization.
 
 \section{Velocity Profiles at Equilibrium} \label{sec:velocity-profiles}
-\subsection{Lambert $W$ Function}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{figures/lambert-w.png}
-	\caption{The graph of $y=W(x)$ for real $x<5$ and $y>-4$. The upper branch (blue) with $y\geq-1$ is the graph of the function $W_0(x)$ (principal branch), the lower branch (orange) with $y\leq -1$ is the graph of the function $W_{-1}(x)$. The left most point of the curve is at $(-1/e,-1)$.}
-	\label{fig:lambert-w}
-\end{figure}
-Lambert $W$ function is necessary for the following discussion.
-\begin{definition}
-	The Lambert $W$ function is a function, $y(x)$, such that $ye^y = x$ holds, where $x,y\in\mathbb{R}$.
-\end{definition}
-It is denoted as $W_k(x)$, where $k = 0,-1$ are its two real branches. See Fig.~\ref{fig:lambert-w}.
-
+In this research, we are interested in the stability of such plasma flow in the nozzle at equilibrium. Hence, in this section we will derive the velocity profile of plasma flow in steady state.
 \subsection{Velocity Profiles}
-In this research, we are interested in the stability of such plasma flow in the nozzle at equilibrium. Let's denote $n_0$ and $v_0$ as equilibrium density and equilibrium velocity, respectively. Since they are stationary (time independent) solutions to the governing equations Eq.~(\ref{eq:conservation-of-density}), (\ref{eq:conservation-of-momentum}), they satisfy the so-called equilibrium condition (nondimensionalized),
+Let's denote $n_0$ and $v_0$ as equilibrium density and equilibrium velocity, respectively. Since they are stationary (time independent) solutions to the governing equations Eq.~(\ref{eq:conservation-of-density}), (\ref{eq:conservation-of-momentum}), they satisfy the so-called equilibrium condition (nondimensionalized),
 \begin{align}
 	 & \pdv{z}(\frac{n_0v_0}{B}) = 0 \label{eq:equilibrium-conservation-of-density}                 \\
 	 & v_0\pdv{v_0}{z} = -\frac{1}{n_0}\pdv{n_0}{z} \label{eq:equilibrium-conservation-of-momentum}
@@ -230,6 +218,21 @@ We can solve the equation by separating the variables, i.e. $v_0$ on one side an
 \begin{equation}
 	v_0^2e^{-v_0^2} = \frac{B^2}{B_m^2}v_m^2e^{-v_m^2}
 \end{equation}
+
+In order to express $v_0$ as a function spatial coordinate $z$, we introduce a special function called Lambert W function.
+
+\begin{definition}
+	The Lambert W function is a function, $W(x)$, such that $ye^y = x$ holds, where $x,y\in\mathbb{R}$.
+\end{definition}
+Lambert W function has two real branches, $W_0(x)$ the principal branch and the branch $W_{-1}(x)$. They are drawn on Fig.~\ref{fig:lambert-w}. The principal branch is the upper part of relation (blue curve) in the figure, it is defined on $[-1/e, \infty)$ and has range $[-1, \infty)$. The other real branch is the bottom part of the relation (orange curve), and its domain is $[-1/e, 0)$ and range is $(-\infty, -1]$. The point $(-1/e,-1)$ satisfies the equation $ye^y=x$ therefore this point is on the graph of $W(x)$, yet the derivative of $W(x)$ at $-1/e$ is undefined.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/lambert-w.png}
+	\caption{The graph of $y=W(x)$ for real $x<5$ and $y>-4$. The upper branch (blue) with $y\geq-1$ is the graph of the function $W_0(x)$ (principal branch), the lower branch (orange) with $y\leq -1$ is the graph of the function $W_{-1}(x)$. The left most point of the curve is at $(-1/e,-1)$.}
+	\label{fig:lambert-w}
+\end{figure}
+
 We can now express $v_0$ using the Lambert W function,
 \begin{equation}
 	v_0(z) = \left[ -W_k\left(-\frac{B(z)^2}{B_m^2}v_m^2e^{-v_m^2}\right) \right]^{1/2}
