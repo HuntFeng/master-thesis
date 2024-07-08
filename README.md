@@ -1,13 +1,1 @@
-- [ ] fix discontinuous page number (maybe using school template will do)
-- [ ] correct inline citation format
-    - [x] introduction
-    - [ ] polynomial-eigenvalue-problem
-    - [ ] spectral-method
-    - [ ] singular-perturbation
-    - [ ] discussion
-- [x] paraphrase sentences from chen
-- [ ] add brief description in front of chapters and sections
-    - [x] intro
-    - [ ] polynomial-eigenvalue-problem
-    - [ ] spectral-method
-    - [ ] singular-perturbation
+# Thesis - Spectral Instability of Plasma Flow in Magnetic Nozzle

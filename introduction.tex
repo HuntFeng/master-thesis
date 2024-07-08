@@ -99,8 +99,12 @@ We are now able to give more detail definition for plasma. According to \cite{ch
 	\item The ionized gas behaves like plasma rather than a neutral gas, $\omega_p\tau > 1$ where $\omega_p$ typical plasma oscillation frequency and $\tau$ is the mean free time of collisions between neutral atoms.
 \end{enumerate}
 
-\section{Instability of Plasma} \label{sec:instability-of-plasma-flow}
-The instability of plasma refers to the tendency of a plasma system to deviate from a stable, equilibrium state and exhibit perturbations or fluctuations in its behavior. It can be understood as the simple mechanical analogy with a ball on crest / in valley. On the left of Fig.~\ref{fig:stability-visualization} shows us a stable equilibrium, small perturbations given to the system will not push the ball far away from the equilibrium position, the valley. Hence, the equilibrium is stable. On the right, any small perturbations will cause the ball to fall downhill, hence the equilibrium is unstable. The instabilities in plasma can arise from various factors, such as the interaction of particles with electromagnetic fields, collective effects, or the presence of gradients in plasma parameters. A famous example of instability is the two stream instability. The configuration starts with two oppositely traveling beams of ions and electrons. As time evolves, chaotic behavior develops as shown in Fig.~\ref{fig:two-stream-instability}.
+
+\section{Instability} \label{sec:instability-of-plasma-flow}
+Magnetic nozzle is one of the most actively researched configurations in plasma propulsion systems, which is being developed for space missions due to their potential for high efficiency and thrust. Understanding and controlling instabilities in the plasma flow within these nozzles is essential for optimizing their performance and achieving efficient propulsion. Investigating instabilities in plasma flow within magnetic nozzles also contributes to our broader understanding of fundamental plasma physics phenomena. For instance, in astrophysics, the solar wind is accelerated by a magnetic mirror configuration similar to that of a magnetic nozzle, suggesting that our methodologies can also be applied to such problems.
+
+\subsection{Plasma Instability}
+The instability of plasma refers to the tendency of a plasma system to deviate from an equilibrium state under perturbations or fluctuations. It can be understood as the simple mechanical analogy with a ball on crest / in valley. On the left of Fig.~\ref{fig:stability-visualization} shows us a ball in its equilibrium and it is a stable equilibrium. Small perturbations given to the system will not push the ball far away from the equilibrium position, the valley. If friction exists, the ball oscillates with decreasing amplitude and will eventually reached the equilibrium state as time goes to infinity. Hence, the equilibrium is stable. On the right, any small perturbations will cause the ball to fall downhill and will never come back to the initial equilibrium position. Hence this equilibrium is unstable.
 
 \begin{figure}[htbp]
 	\centering
@@ -118,6 +122,9 @@ The instability of plasma refers to the tendency of a plasma system to deviate f
 	\label{fig:stability-visualization}
 \end{figure}
 
+
+The instabilities in plasma can arise from various factors, such as the interaction of particles with electromagnetic fields, collective effects, or the presence of gradients in plasma parameters. A famous example of instability is the two stream instability. The configuration starts with two oppositely traveling beams of ions and electrons. As time evolves, the two beams can no longer stay in its equilibrium state due to the electromagnetic interactions, and chaotic behavior develops as shown in Fig.~\ref{fig:two-stream-instability}.
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/two-stream-instability}
@@ -125,21 +132,35 @@ The instability of plasma refers to the tendency of a plasma system to deviate f
 	\label{fig:two-stream-instability}
 \end{figure}
 
-Magnetic nozzle is one of the most actively researched configurations in plasma propulsion systems, which is being developed for space missions due to their potential for high efficiency and thrust. Understanding and controlling instabilities in the plasma flow within these nozzles is essential for optimizing their performance and achieving efficient propulsion. Investigating instabilities in plasma flow within magnetic nozzles also contributes to our broader understanding of fundamental plasma physics phenomena.
+\subsection{Spectral Instability of Partial Differential Equations}
+In the study of partial differential equations (PDEs), there are two types of instability: structural instability and dynamic instability. The structural instability refers to the tendency of the solution to diverge under perturbations in the PDE parameters, while the dynamic instability refers to the tendency of solution to deviate from a stationary solution given perturbations in the stationary solution \cite{beck_spectral_2020}. We are interested in the dynamic instability. In this subsection, we will describe the process for investigating plasma instability, and explain why we can investigate the dynamic instability by analyzing the spectrum of the linear operator of the corresponding linearized PDE. Hence the name spectral instability. We will discuss the connection between spectral instability and the plasma instability later in this subsection.
 
+In order to investigate the plasma instability, the first step is to state the governing equations for the plasma flow in the magnetic nozzle. The governing equations are time-dependent fluid equations involving the number density $n$ and fluid velocity $v$ of the plasma flow along the central axis of the nozzle,
+\begin{equation}
+	\pdv{t}\mqty[n\\ v] + \mathbf{F}(n,v) = \mathbf{0}
+	\label{eq:pde-system}
+\end{equation}
+This PDE system has two first-order PDEs, Eq.~(\ref{eq:conservation-of-density}) and Eq.~(\ref{eq:conservation-of-momentum}). Detail derivation will be given in Sec.~\ref{sec:equation-of-motion-of-the-plasma-flow-in-nozzle}.
 
-\subsection{Analysis of Spectral Instability}
-In this thesis, we will focus on the so-called linear instability. Meaning that the perturbation grows / decays only in exponential form. The following is a brief description of the process for analyzing linear instability. The detail treatment will be given in Chap.~\ref{chap:polynomial-eigenvalue-problem}.
+Following this we find the equilibrium state (stationary solution) to the above PDE system, Eq.~(\ref{eq:pde-system}). In other words, we find $n_0$ and $v_0$ such that $\mathbf{F}(n_0,v_0)=\mathbf{0}$. The expression of equilibrium velocity $v_0$ is given by Eq.~(\ref{eq:velocity-profile}) and it can be found in Sec.~\ref{sec:velocity-profiles}. The details of derivation and Lambert-W will be explained in Sec.~\ref{sec:velocity-profiles}. As for $n_0$, it is not required to obtain its expression because we are able to reduce the linearized first-order PDE system Eq.~(\ref{eq:pde-system}) into a second-order PDE by eliminating the density $n$.
 
-\begin{enumerate}
-	\item State equations of motion: The linear instability analysis starts from the equations of motion which describes the plasma system. In this thesis, the equations of motion are time-dependent fluid equations involving the number density $n$ and velocity $v$ of the plasma flow along the central axis of the nozzle.
-	\item Give perturbations to the system: Suppose the system has an equilibrium state $n_0$ and $v_0$. The system will be given small perturbations, they serve as small deviations on number density and velocity, $\tilde{n}$ and $\tilde{v}$. All variables $n$ and $v$ in the equations of motion will be substituted by perturbed quantities, $n_0+\tilde{n}$ and $v_0+\tilde{v}$.
-	\item Linearize equations of motion: Expand the equations of motion, and discard the second and higher order terms, often called nonlinear terms, such as $\tilde{n}\tilde{v}$, $\tilde{n}\partial_z\tilde{v}$, $\tilde{v}\partial_z\tilde{n}$ etc. We obtain the so-called linearized equations of motion. These equations contain only the linear terms.
-	\item Assume perturbation takes exponential form: Let perturbations take the form $\exp(-i\omega t)$. This indicates that the perturbations are oscillating with frequency $\omega$ in time. Any time derivative in the linearized equations of motion simply becomes $\partial_t = -i\omega$. Now we obtain equations involving perturbations, $\tilde{n}$ and $\tilde{v}$, and their spatial derivatives, and $\omega$.
-	\item Analyze the possible values of $\omega$: The oscillation frequency $\omega$ could be a complex number. If the imaginary part of the temporal frequency is greater than zero, i.e. $\Im(\omega) > 0$, then the system is unstable. This is because the perturbation grows exponentially $\exp(\Im(\omega)t)$ in time. On the other hand, if the imaginary part of the temporal frequency is less than or equal to zero, $\Im(\omega) \leq 0$, then the system is said to be stable. Since the perturbations will not be growing, $\Im(\omega)=0$, or even damped, $\Im(\omega) < 0$.
-\end{enumerate}
+Now we are in a stage ready to investigate the dynamic instability of the problem. The system will be given small spatial perturbations, they serve as small fluctuations on number density and velocity, $\tilde{n}(z)$ and $\tilde{v}(z)$. All variables $n$ and $v$ in the governing equations will be substituted by perturbed quantities, $n_0+\tilde{n}$ and $v_0+\tilde{v}$. The PDE system Eq.~(\ref{eq:pde-system}) now becomes,
+\begin{equation}
+	\underbrace{\pdv{t}\mqty[\tilde{n}\\ \tilde{v}] + d\mathbf{F}(n_0,v_0)\mqty[\tilde{n}\\ \tilde{v}] }_{linear terms}
+	+ \underbrace{\mathbf{F}(n_0+\tilde{n}, v_0+\tilde{v}) - d\mathbf{F}(n_0,v_0)\mqty[\tilde{n}\\ \tilde{v}]}_{non-linear terms}
+	= \mathbf{0}
+	\label{eq:perturbed-pde-system}
+\end{equation}
 
-In the later chapters, we devoted much effort to analyze the temporal frequency $\omega$. We will employ spectral method to analyze the temporal frequency for subsonic and supersonic velocity profiles, and shooting method will be employed to obtain temporal frequency.
+Since $\tilde{n}$ and $\tilde{v}$ are small, we expect the higher order mixed terms such as $\tilde{n}\tilde{v}$, $\tilde{n}\partial_z\tilde{v}$, $\tilde{v}\partial_z\tilde{n}$ are negligible comparing to the linear terms. So we drop the non-linear terms. Now we obtain the so-called linearized governing equations, they are the linearized conservation of density, Eq.~(\ref{eq:linearized-conservation-of-density}) and the linearized conservation of momentum, Eq.~(\ref{eq:linearized-conservation-of-momentum}), respectively.
+
+Since we are dealing with linear operators, let the perturbations take the form of exponential $\exp(-i\omega t)$. This indicates that physically the perturbations are oscillating with frequency $\omega$ in time. Any time derivative on the perturbations in the linearized governing equations simply becomes $\partial_t \to -i\omega$. Now we obtain equations involving perturbations, $\tilde{n}$ and $\tilde{v}$, and their spatial derivatives, and $\omega$. Reducing the number of equations by eliminating the density $\tilde{n}$, we obtain Eq.~(\ref{eq:polynomial-eigenvalue-problem}).
+
+The problem of investigating the plasma instability becomes the problem of finding the eigenvalues, $\omega$, of Eq.~(\ref{eq:polynomial-eigenvalue-problem}) under different boundary conditions. The connection between the eigenvalue $\omega$ and the plasma instability is clear: The oscillation frequency $\omega$ is a complex number. If the imaginary part of the temporal frequency is greater than zero, i.e. $\Im(\omega) > 0$, then the system is unstable. This is because the perturbation grows exponentially $\exp(\Im(\omega)t)$ in time. On the other hand, if the imaginary part of the temporal frequency is less than or equal to zero, $\Im(\omega) \leq 0$, then the system is said to be stable. Since the perturbations will not be growing, $\Im(\omega)=0$, or even damped, $\Im(\omega) < 0$.
+
+Since the PDE we analyze is linear, its spectral instability is also called linear instability. In this following thesis, the terms plasma instability, spectral instability, linear instability will be used interchangeably, sometimes an even shorter term instability will be used.
+
+We will devote the rest of the chapters to develop methods for solving the eigenvalue problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). We will employ spectral methods to obtain eigenvalues for subsonic and supersonic velocity profiles, and shooting method will be used to get eigenvalues when velocity profile $v_0$ is accelerating.
 
 \section{Magnetic Nozzle}
 In this thesis, we are going to deal with plasma flow in magnetic nozzle.

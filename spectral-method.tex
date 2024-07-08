@@ -1,11 +1,11 @@
 \chapter{Spectral Method} \label{chap:spectral-method}
-Spectral method is an important tool for solving problems related to partial differential equations. It can provide superior accuracy compare to other local methods such as finite difference. \cite{shen_tang_etal_spectral_2011} In this thesis, we are going to solve a polynomial eigenvalue problem, i.e. Eq.~(\ref{eq:polynomial-eigenvalue-problem}) together with specific boundary conditions.
+Spectral method is an important tool for solving problems related to partial differential equations. It can provide superior accuracy compare to other local methods such as finite difference \cite{shen_tang_etal_spectral_2011}. In this thesis, we are going to solve a polynomial eigenvalue problem, i.e. Eq.~(\ref{eq:polynomial-eigenvalue-problem}) together with specific boundary conditions.
 
 Suppose the velocity perturbation $\tilde{v}$ can be approximated by some orthogonal basis functions $\{u_k(z)\}_{k=1}^{\infty}$ on $-1\leq z\leq 1$,
 \begin{equation}
 	\tilde{v} = \sum_{k=0}^{N} c_ku_k(z)
 \end{equation}
-where $c_k$ are coefficients to be determined. There are different choices for $u_k(z)$ including but not limited to, \cite{shen_tang_etal_spectral_2011}
+where $c_k$ are coefficients to be determined. There are different choices for $u_k(z)$ including but not limited to \cite{shen_tang_etal_spectral_2011},
 \begin{itemize}
 	\item $u_k(z)=T_k(z)$ (Chebyshev spectral method)
 	\item $u_k(z)=L_k(z)$ (Legendre spectral method)
@@ -29,7 +29,7 @@ where $\mathbf{c} = [c_0, \cdots, c_N]^T$ is a vector of coefficients, and
 	\label{eq:operator-matrix-N}
 \end{align}
 
-Depending on the choice of the test function, spectral method can be further classified, \cite{shen_tang_etal_spectral_2011}
+Depending on the choice of the test function, spectral method can be further classified \cite{shen_tang_etal_spectral_2011},
 \begin{itemize}
 	\item Galerkin: The test functions are the same as the trial ones, i.e. $\psi_k=u_k$.
 	\item Collocation:  The test functions $\{\psi_k\}$ are Lagrange basis polynomials such that $\psi_k(z_j)=\delta_{jk}$, where ${z_j}$ are preassigned collocation points.
@@ -159,7 +159,7 @@ for j in range(V.shape[1]):
 
 
 \section{Spectral Galerkin Method}
-Another spectral method we used in the numerical experiments is the Legendre-Galerkin method. Meaning that the basis functions are chosen to be the compact combinations of Legendre polynomials, \cite{shen_tang_etal_spectral_2011}
+Another spectral method we used in the numerical experiments is the Legendre-Galerkin method. Meaning that the basis functions are chosen to be the compact combinations of Legendre polynomials \cite{shen_tang_etal_spectral_2011},
 \begin{equation}
 	u_k(z) = L_k(z) + a_kL_{k+1}(z) + b_kL_{k+2}(z)
 \end{equation}
@@ -263,7 +263,7 @@ for i in range(C.shape[1]):
 \section{Spectral Theory in Finite-Dimensional Normed Spaces}
 Spectral method transforms the polynomial eigenvalue problem to an algebraic eigenvalue problem. For completion, some important linear algebra results are included in this section.
 
-Let $X$ be a finite dimensional normed space and $\hat{T}: X \to X$ a linear operator. Since any linear operator can be represented by a matrix, the spectral theory of $\hat{T}$ is essentially matrix eigenvalue theory. \cite{kreyszig_introductory_1978} Let $A$ be a matrix representation of $\hat{T}$, then we have the definition.
+Let $X$ be a finite dimensional normed space and $\hat{T}: X \to X$ a linear operator. Since any linear operator can be represented by a matrix, the spectral theory of $\hat{T}$ is essentially matrix eigenvalue theory \cite{kreyszig_introductory_1978}. Let $A$ be a matrix representation of $\hat{T}$, then we have the definition.
 
 \begin{definition} [Kryszig \cite{kreyszig_introductory_1978}]
 	An eigenvalue of a square matrix $A$ is a complex number $\lambda$ such that
@@ -286,7 +286,7 @@ Moreover, we don't need to worry about the existence of eigenvalues of a linear 
 \section{Spectral Pollution and Spurious Modes}
 In this section, we will discuss an important phenomenon we observe throughout the numerical experiments using spectral method. It is the phenomenon of spectral pollution. Then we will provide a method to filter these spurious modes.
 
-Spectral pollution refers to the phenomenon which some eigenvalues are not converging to the correct value when the mesh density is increased. The wrong eigenvalues are referred as spurious modes. When solving eigenvalue problems using spectral methods with finite difference or finite element approximations, spectral pollution might occur. \cite{llobet_spectral_1990} The cause of the spectral pollution is originated from the improper discretization of the differential operators. In the following sections, we are going to take a closer look at the differential operators in finite difference method, and reveal the occurrence of spurious modes when solving Eq.~(\ref{eq:constant-v-problem-dirichlet}).
+Spectral pollution refers to the phenomenon which some eigenvalues are not converging to the correct value when the mesh density is increased. The wrong eigenvalues are referred as spurious modes. When solving eigenvalue problems using spectral methods with finite difference or finite element approximations, spectral pollution might occur \cite{llobet_spectral_1990}. The cause of the spectral pollution is originated from the improper discretization of the differential operators. In the following sections, we are going to take a closer look at the differential operators in finite difference method, and reveal the occurrence of spurious modes when solving Eq.~(\ref{eq:constant-v-problem-dirichlet}).
 
 \subsection{Analysis of Numerical Spectrum} \label{sec:analysis-of-numerical-spectrum}
 In this section, we will analyze the analytical and numerical dispersion relation of the following problem,
