@@ -177,30 +177,30 @@ Then the parameters $\{a_k,b_k\}$ can be worked out by simple linear algebra,
 where $\text{DET}_k = 2a_{+}a_{-} + a_{-}b_{+}(k+2)^2 - a_{+}b_{-}(k+2)^2 - b_{-}b_{+}(k+1)(k+2)^2(k+3)/2$.
 
 \subsubsection*{Dirichlet Boundary}
-The necessary parameters to make $u_k(\pm 1) = 0$ are $a_k=0, b_k=-1$. The basis functions are therefore,
-\begin{equation}
-	u_k(z) = L_k(z) - L_{k+2}(z)
-\end{equation}
-The first 5 basis functions are shown in Fig.~\ref{fig:legendre-dirichlet}.
 \begin{figure} [htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{figures/legendre-dirichlet.png}
 	\caption{Compact Legendre combinations satisfying Dirichlet boundary condition.}
 	\label{fig:legendre-dirichlet}
 \end{figure}
+The necessary parameters to make $u_k(\pm 1) = 0$ are $a_k=0, b_k=-1$. The basis functions are therefore,
+\begin{equation}
+	u_k(z) = L_k(z) - L_{k+2}(z)
+\end{equation}
+The first 5 basis functions are shown in Fig.~\ref{fig:legendre-dirichlet}.
 
 \subsubsection*{Fixed-Open Boundary}
-The necessary parameters to make $u_k(-1)=u_k'(1)=0$ are $a_k=(2k+3)/(k+2)^2, b_k=-(k+1)^2/(k+2)^2$. The basis functions are therefore,
-\begin{equation}
-	u_k(z) = L_k(z) + \frac{2k+3}{(k+2)^2}L_{k+1}(z) - \frac{(k+1)^2}{(k+2)^2}L_{k+2}(z)
-\end{equation}
-The first 5 basis functions are shown in Fig.~\ref{fig:legendre-fixed-open}.
 \begin{figure} [htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{figures/legendre-fixed-open.png}
 	\caption{Compact Legendre combinations satisfying fixed-open boundary condition.}
 	\label{fig:legendre-fixed-open}
 \end{figure}
+The necessary parameters to make $u_k(-1)=u_k'(1)=0$ are $a_k=(2k+3)/(k+2)^2, b_k=-(k+1)^2/(k+2)^2$. The basis functions are therefore,
+\begin{equation}
+	u_k(z) = L_k(z) + \frac{2k+3}{(k+2)^2}L_{k+1}(z) - \frac{(k+1)^2}{(k+2)^2}L_{k+2}(z)
+\end{equation}
+The first 5 basis functions are shown in Fig.~\ref{fig:legendre-fixed-open}.
 
 By setting $\tilde{v}(z) = \sum_{j=0}^{N} c_ku_k(z)$, $\tilde{v}$ satisfies the boundary conditions automatically. There is no need to modify the matrices in Eq.~(\ref{eq:pep-matrix-equation}).
 
