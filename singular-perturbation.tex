@@ -8,7 +8,7 @@ In order to see the existence of the singularity, we rearrange the terms the pol
 		  & (1-v_0^2)\pdv[2]{\tilde{v}}{z}                                                                                                                                        \\
 		+ & \left[2i\omega v_0 - \left(3v_0 + \frac{1}{v_0}\right)\pdv{v_0}{z}\right]\pdv{\tilde{v}}{z}                                                                           \\
 		+ & \left[\omega^2 + 2i\omega\pdv{v_0}{z} -\left(1 - \frac{1}{v_0^2}\right)\left(\pdv{v_0}{z}\right)^2 - \left(v_0 + \frac{1}{v_0}\right)\pdv[2]{v_0}{z} \right]\tilde{v} \\
-		= & 0
+		= & 0.
 	\end{aligned}
 \end{equation}
 This is a second order ordinary differential equation defined on region $[-1,1]$.
@@ -31,7 +31,7 @@ The first task is to linearize the terms with $v_0$ about the singularity. The l
 		1-v_0^2              & = -2v_0'(0)z    \\
 		3v_0 + \frac{1}{v_0} & = 4 + 2v_0'(0)z \\
 		1-\frac{1}{v_0^2}    & = 2v_0'(0)z     \\
-		v_0 + \frac{1}{v_0}  & = 2
+		v_0 + \frac{1}{v_0}  & = 2.
 	\end{aligned}
 \end{equation}
 
@@ -41,7 +41,7 @@ Then Eq.~(\ref{eq:singular-perturbation-problem}) becomes
 		- & 2v_0'(0)z\pdv[2]{\tilde{v}}{z}                                              \\
 		+ & [2i\omega - 4v_0'(0) + (2i\omega - 2v_0'(0))z]\pdv{\tilde{v}}{z}            \\
 		+ & \left[\omega^2 + 2i\omega v_0'(0) - 2v_0''(0) - 2v_0'(0)^3z\right]\tilde{v}
-		= 0
+		= 0.
 	\end{aligned}
 \end{equation}
 
@@ -50,32 +50,32 @@ In fact, we can further simply the equation by dropping all $z$ terms except the
 	- 2v_0'(0)z\pdv[2]{\tilde{v}}{z}
 	+ (2i\omega - 4v_0'(0))\pdv{\tilde{v}}{z}
 	+ (\omega^2 + 2i\omega v_0'(0) - 2v_0''(0))\tilde{v}
-	= 0
+	= 0.
 \end{equation}
 
 Dividing by the first coefficient, we have
 \begin{equation}
-	z\pdv[2]{\tilde{v}}{z} + a\pdv{\tilde{v}}{z} + b\tilde{v} = 0
+	z\pdv[2]{\tilde{v}}{z} + a\pdv{\tilde{v}}{z} + b\tilde{v} = 0,
 	\label{eq:perturbed-equation}
 \end{equation}
 where
 \begin{equation}
 	a = \frac{2i\omega - 4v_0'(0)}{-2v_0'(0)}; \quad
-	b = \frac{\omega^2 + 2i\omega v_0'(0) - 2v_0''(0)}{-2v_0'(0)}
+	b = \frac{\omega^2 + 2i\omega v_0'(0) - 2v_0''(0)}{-2v_0'(0)}.
 \end{equation}
 
 Use Frobenius method, we assume the velocity perturbation can be written as a power series in $z$,  $\tilde{v} = \sum_{n\geq 0}c_nz^{n+r}$. By substituting the power series into Eq.~(\ref{eq:perturbed-equation}) we have
 \begin{equation}
-	\sum_{n \geq 0} (n+r)(n+r+1) c_n z^{n+r-1} + a(n+r)c_nz^{n+r-1} + bc_nz^{n+r} = 0
+	\sum_{n \geq 0} (n+r)(n+r+1) c_n z^{n+r-1} + a(n+r)c_nz^{n+r-1} + bc_nz^{n+r} = 0.
 \end{equation}
 Shift the power of the last term we get
 \begin{equation}
-	\sum_{n \geq 0} (n+r)(n+r+1) c_n z^{n+r-1} + a(n+r)c_nz^{n+r-1} + \sum_{n \geq 1} bc_{n-1}z^{n+r-1} = 0
+	\sum_{n \geq 0} (n+r)(n+r+1) c_n z^{n+r-1} + a(n+r)c_nz^{n+r-1} + \sum_{n \geq 1} bc_{n-1}z^{n+r-1} = 0.
 \end{equation}
 
 Setting $n=0$, we get the indicial equation
 \begin{equation}
-	c_0 r(r-1) + c_0 ar = 0 \Rightarrow c_0r(r+a-1) = 0
+	c_0 r(r-1) + c_0 ar = 0 \Rightarrow c_0r(r+a-1) = 0.
 \end{equation}
 We get two different roots, $r=0$ and $r=1-a$. They correspond to finite solution and diverging solution near the singularity, respectively.
 
@@ -83,13 +83,13 @@ The coefficients are given by recurrence relation
 \begin{equation}
 	(n+r)(n+r-1)c_n + a(n+r)c_n + bc_{n-1} = 0
 	\Rightarrow
-	c_n = \frac{-bc_{n-1}}{(n+r)(n+r-1+a)}
+	c_n = \frac{-bc_{n-1}}{(n+r)(n+r-1+a)}.
 \end{equation}
 Solving this relation we get explicit expression for $c_n$, $n\in\mathbb{N}$,
 \begin{equation}
 	\begin{aligned}
-		c_n & = \frac{(-1)^n b^n c_0}{\prod_{k=0}^{n-1} (n+r-k)(n+r-1+a-k)}              \\
-		    & = (-1)^n b^n c_0 \frac{\Gamma(r+1)\Gamma(r+a)}{\Gamma(n+r+1)\Gamma(n+r+a)}
+		c_n & = \frac{(-1)^n b^n c_0}{\prod_{k=0}^{n-1} (n+r-k)(n+r-1+a-k)}               \\
+		    & = (-1)^n b^n c_0 \frac{\Gamma(r+1)\Gamma(r+a)}{\Gamma(n+r+1)\Gamma(n+r+a)}.
 	\end{aligned}
 	\label{eq:coefficient}
 \end{equation}
@@ -97,14 +97,14 @@ Solving this relation we get explicit expression for $c_n$, $n\in\mathbb{N}$,
 Therefore, we successfully extracted the regular solution (corresponding to the root $r=0$) in the form of power series,
 \begin{equation} \label{eq:regular-solution}
 	\begin{aligned}
-		\tilde{v} & = c_0 + c_1z + c_2z^2 + \cdots                               \\
-		          & = c_0 - c_0\frac{b}{a}z + c_0\frac{b^2}{2a(1+a)}z^2 + \cdots
+		\tilde{v} & = c_0 + c_1z + c_2z^2 + \cdots                                \\
+		          & = c_0 - c_0\frac{b}{a}z + c_0\frac{b^2}{2a(1+a)}z^2 + \cdots.
 	\end{aligned}
 \end{equation}
 
 It is worth to mention that the diverging solution (corresponding to the root $r=a$) goes like
 \begin{equation}
-	\tilde{v}(z) \sim z^{1-a} = z^{-1-\omega_i/v_0'(0)}z^{i\omega_r/v_0'(0)}
+	\tilde{v}(z) \sim z^{1-a} = z^{-1-\omega_i/v_0'(0)}z^{i\omega_r/v_0'(0)},
 \end{equation}
 where $\omega = \omega_r + i\omega_i$. Meaning that the divergent solution will start to diverge when $\omega_i > -v'(0)$.
 
@@ -117,7 +117,7 @@ Our polynomial eigenvalue problem, Eq.~(\ref{eq:polynomial-eigenvalue-problem}),
 	\quad
 	-1\leq z \leq 0,
 	\quad
-	\tilde{v}(-1) = 0, \tilde{v}(0) = 1
+	\tilde{v}(-1) = 0, \tilde{v}(0) = 1,
 \end{equation}
 where $f$ is the function defined on the left of equal sign of Eq.~(\ref{eq:polynomial-eigenvalue-problem}). The task for shooting method is to find eigenvalues $\omega$ and their corresponding eigenfunctions $\tilde{v}$ such that $f=0$ holds. Meanwhile, the eigenfunctions must satisfy the boundary conditions at the entrance $z=-1$ and at the throat $z=0$. After obtaining the solutions, we can extend the solution to $z=1$. The extension is unique, more details will be explained later.
 
@@ -127,7 +127,7 @@ However, to make the formulation more suitable for numerical computation, we wou
 	\quad
 	-1 \leq z \leq 0,
 	\quad
-	\tilde{v}(-1) = 0, \tilde{v}(0) = 1
+	\tilde{v}(-1) = 0, \tilde{v}(0) = 1.
 	\label{eq:shooting-method-formulation}
 \end{equation}
 Let $\mathbf{\tilde{u}} = [\tilde{v}, \tilde{u}]^T$, the polynomial eigenvalue problem is transformed to
@@ -135,15 +135,15 @@ Let $\mathbf{\tilde{u}} = [\tilde{v}, \tilde{u}]^T$, the polynomial eigenvalue p
 	\tilde{v}' & = \tilde{u}                \\
 	\tilde{u}' & = \frac{-1}{1-v_0^2}\left[
 		\omega^2\tilde{v} + 2i\omega(v_0+v_0'\tilde{v}) - \left(3v_0 - \frac{1}{v_0}\right)v_0'\tilde{u} - \left(1-\frac{1}{v_0}^2\right)(v_0')^2\tilde{v} - \left(v_0+\frac{1}{v_0}v_0''\tilde{v}\right)
-	\right]                                 \\
+		\right].
 \end{align*}
-together with two boundary conditions, $\tilde{v}(-1) = 0$ and $\tilde{v}(0) = 1$. The task of shooting method remains the same: find $\mathbf{\tilde{u}}$ and $\omega$ such that $\dv*{\mathbf{\tilde{u}}}{z} = \mathbf{f}$ and $\tilde{v}$ must satisfy the boundary conditions.
+Together with two boundary conditions, $\tilde{v}(-1) = 0$ and $\tilde{v}(0) = 1$. The task of shooting method remains the same: find $\mathbf{\tilde{u}}$ and $\omega$ such that $\dv*{\mathbf{\tilde{u}}}{z} = \mathbf{f}$ and $\tilde{v}$ must satisfy the boundary conditions.
 
 Suppose $\omega$ is given. We can find $\mathbf{\tilde{u}}(-1)$, and hence $\tilde{v}(-1)$ by applying 4th order Runge-Kutta method (RK4) to the following IVP,
 \begin{equation}
 	\dv{z}\mathbf{\tilde{u}} = \mathbf{f}(\mathbf{\tilde{u}},z;\omega), \quad
 	-1 \leq z \leq 0, \quad
-	\mathbf{\tilde{u}}(0)=\mqty[\tilde{v}(0) \\ \tilde{u}(0)], \dv{z}\mathbf{\tilde{u}}(0) =\mqty[\tilde{v}'(0) \\ \tilde{u}'(0)]
+	\mathbf{\tilde{u}}(0)=\mqty[\tilde{v}(0) \\ \tilde{u}(0)], \dv{z}\mathbf{\tilde{u}}(0) =\mqty[\tilde{v}'(0) \\ \tilde{u}'(0)].
 	\label{eq:shooting-method-ivp}
 \end{equation}
 The information of the regular solution is built into the numerical process by setting the initial conditions,
@@ -154,7 +154,7 @@ The information of the regular solution is built into the numerical process by s
 		= \mqty[1                                        \\ (2i\omega v_0'-2v_0'')/2v_0'] \\
 		\dv{z}\mathbf{\tilde{u}} & = \mqty[\tilde{v}'(0) \\ \tilde{u}'(0)]
 		= \mqty[\tilde{u}(0)                             \\ c_2]
-		= \mqty[(2i\omega v_0'-2v_0'')/2v_0'             \\ -((v_0')^4+(2i\omega v_0' + (v_0')^2 - v_0'')(i\omega v_0' - v_0''))/(v_0'(2i\omega-6v_0'))]
+		= \mqty[(2i\omega v_0'-2v_0'')/2v_0'             \\ -((v_0')^4+(2i\omega v_0' + (v_0')^2 - v_0'')(i\omega v_0' - v_0''))/(v_0'(2i\omega-6v_0'))].
 	\end{aligned}
 \end{equation}
 The coefficients $c_0, c_1$, and $c_2$ are obtained from the power series expansion of $\tilde{v}$ near $z=0$, Eq.~(\ref{eq:regular-solution}).
@@ -165,7 +165,7 @@ After finding $\omega$, we can extend the numerical solution $\tilde{v}$ to the 
 \begin{equation}
 	\dv{z}\mathbf{\tilde{u}} = \mathbf{f}(\mathbf{\tilde{u}},z;\omega), \quad
 	0 \leq z \leq 1, \quad
-	\mathbf{\tilde{u}}(0)=\mqty[\tilde{v}(0) \\ \tilde{u}(0)], \dv{z}\mathbf{\tilde{u}}(0) =\mqty[\tilde{v}'(0) \\ \tilde{u}'(0)]
+	\mathbf{\tilde{u}}(0)=\mqty[\tilde{v}(0) \\ \tilde{u}(0)], \dv{z}\mathbf{\tilde{u}}(0) =\mqty[\tilde{v}'(0) \\ \tilde{u}'(0)].
 \end{equation}
 Since $\omega$ is already found, the initial conditions are given. The function $\mathbf{f}$ is continuous in $z$ on $[0,1]$ and is Lipschitz in $\mathbf{\tilde{u}}$ due to the fact $\mathbf{f}$ is continuous on a compact region $[0,1]$. Hence, the solution to this I.V.P. exists and is unique.
 
