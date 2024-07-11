@@ -10,41 +10,41 @@ We first linearize Eq.~(\ref{eq:conservation-of-density}) by setting $n=n_0+\til
 \[    \pdv{(n_0+\tilde{n})}{t}
 	+ (n_0+\tilde{n})\pdv{(v_0+\tilde{v})}{z}
 	+ (v_0+\tilde{v})\pdv{(n_0+\tilde{n})}{z}
-	- (n_0+\tilde{n})(v_0+\tilde{v})\frac{\partial_z B}{B} = 0
+	- (n_0+\tilde{n})(v_0+\tilde{v})\frac{\partial_z B}{B} = 0.
 \]
 By ignoring the nonlinear terms, we obtain
 \[ \frac{1}{n_0}\pdv{\tilde{n}}{t}
 	+ \pdv{v_0}{z} + \frac{\tilde{n}}{n_0}\pdv{v_0}{z} + \pdv{\tilde{v}}{z}
 	+ \frac{v_0}{n_0}\pdv{n_0}{z} + \frac{\tilde{v}}{n_0}\pdv{n_0}{z} + \frac{v_0}{n_0}\pdv{\tilde{n}}{z}
-	- v_0\frac{\partial_z B}{B} - \tilde{v}\frac{\partial_z B}{B} - \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = 0
+	- v_0\frac{\partial_z B}{B} - \tilde{v}\frac{\partial_z B}{B} - \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = 0.
 \]
 
 Using the equilibrium condition Eq.~(\ref{eq:equilibrium-conservation-of-density}), $\partial_zv_0+v_0\partial_zn_0/n_0$ cancels $-v_0\partial_zB/B$,
 \[ \frac{1}{n_0}\pdv{\tilde{n}}{t}
 	+ \frac{\tilde{n}}{n_0}\pdv{v_0}{z} + \pdv{\tilde{v}}{z}
 	+ \frac{\tilde{v}}{n_0}\pdv{n_0}{z} + \frac{v_0}{n_0}\pdv{\tilde{n}}{z}
-	- \tilde{v}\frac{\partial_z B}{B} - \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = 0
+	- \tilde{v}\frac{\partial_z B}{B} - \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = 0.
 \]
 
 Moreover, the last term can be written as
-\[ \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = \frac{\tilde{n}}{n_0}\left( \frac{\partial_z n_0}{n_0}v_0 + \pdv{v_0}{z} \right) \]
+\[ \tilde{n}\frac{v_0}{n_0}\frac{\partial_z B}{B} = \frac{\tilde{n}}{n_0}\left( \frac{\partial_z n_0}{n_0}v_0 + \pdv{v_0}{z} \right). \]
 Now, we get the linearized conservation of mass,
 \begin{equation} \label{eq:linearized-conservation-of-density}
 	\frac{1}{n_0}\pdv{\tilde{n}}{t}
-	+ \pdv{\tilde{v}}{z} + v_0\tilde{Y} + \tilde{v}\frac{\partial_z n_0}{n_0} - \tilde{v}\frac{\partial_z B}{B} = 0
+	+ \pdv{\tilde{v}}{z} + v_0\tilde{Y} + \tilde{v}\frac{\partial_z n_0}{n_0} - \tilde{v}\frac{\partial_z B}{B} = 0,
 \end{equation}
 where
-\[ \tilde{Y} \equiv \frac{1}{n_0}\pdv{\tilde{n}}{z} - \frac{\partial_z n_0}{n_0^2}\tilde{n} = \pdv{z}(\frac{\tilde{n}}{n_0}) \]
+\[ \tilde{Y} \equiv \frac{1}{n_0}\pdv{\tilde{n}}{z} - \frac{\partial_z n_0}{n_0^2}\tilde{n} = \pdv{z}(\frac{\tilde{n}}{n_0}). \]
 
 To linearize the conservation of momentum, we follow the same logic by substituting $n=n_0+\tilde{n}$, and $v=v_0+\tilde{v}$ in Eq.~(\ref{eq:conservation-of-momentum}),
-\[ (n_0+\tilde{n})\pdv{(v_0+\tilde{v})}{t} + (n_0+\tilde{n})(v_0+\tilde{v})\pdv{(v_0+\tilde{v})}{z} = -\pdv{(n_0+\tilde{n})}{z} \]
+\[ (n_0+\tilde{n})\pdv{(v_0+\tilde{v})}{t} + (n_0+\tilde{n})(v_0+\tilde{v})\pdv{(v_0+\tilde{v})}{z} = -\pdv{(n_0+\tilde{n})}{z}. \]
 
 Again, ignore second order perturbations and rearrange terms, we have
 \[ \pdv{\tilde{v}}{t} + v_0\pdv{\tilde{v}}{z} + \tilde{v}\pdv{v_0}{z}
-	= -\frac{1}{n_0}\pdv{n_0}{z} -\frac{1}{n_0}\pdv{\tilde{n}}{z} -v_0\pdv{v_0}{z} - \frac{\tilde{n}}{n_0}v_0\pdv{v_0}{z} \]
+	= -\frac{1}{n_0}\pdv{n_0}{z} -\frac{1}{n_0}\pdv{\tilde{n}}{z} -v_0\pdv{v_0}{z} - \frac{\tilde{n}}{n_0}v_0\pdv{v_0}{z}. \]
 Using the equilibrium condition Eq.~(\ref{eq:equilibrium-conservation-of-momentum}) on the RHS, we get the linearized conservation of momentum,
 \begin{equation} \label{eq:linearized-conservation-of-momentum}
-	\pdv{\tilde{v}}{t} + \pdv{(v_0\tilde{v})}{z} = -\tilde{Y}
+	\pdv{\tilde{v}}{t} + \pdv{(v_0\tilde{v})}{z} = -\tilde{Y}.
 \end{equation}
 
 \section{Polynomial Eigenvalue Problem}
@@ -56,7 +56,7 @@ We can further simplify the problem by combining Eq.~(\ref{eq:linearized-conserv
 	+ \pdv{(v_0\tilde{v})}{z}\right)
 	+ \tilde{v}\frac{\partial_z n_0}{n_0}
 	- \tilde{v}\frac{\partial_z B}{B}
-	= 0
+	= 0.
 \end{equation}
 
 In order to investigate the linear instability of the flow, we need to formulate it as an eigenvalue problem. To do that, we assume the perturbed density and velocity are oscillatory, i.e. $\tilde{n}, \tilde{v} \sim \exp(-i\omega t)$, where $\omega$ is the oscillation frequency of the perturbed quantities. This frequency can be a complex number.
@@ -70,7 +70,7 @@ By assuming oscillatory perturbed quantities, Eq.~(\ref{eq:single-governing-equa
 	+ \pdv{(v_0\tilde{v})}{z}\right)
 	+ \tilde{v}\frac{\partial_z n_0}{n_0}
 	- \tilde{v}\frac{\partial_z B}{B}
-	= 0
+	= 0.
 \end{equation}
 
 Using the equilibrium condition Eq.~(\ref{eq:equilibrium-conservation-of-density}), we can eliminate the term $\partial_z B/B$,
@@ -79,7 +79,7 @@ Using the equilibrium condition Eq.~(\ref{eq:equilibrium-conservation-of-density
 	+ \pdv{\tilde{v}}{z}
 	+ v_0\left(i\omega \tilde{v} - v_0\pdv{\tilde{v}}{z} - \tilde{v}\pdv{v_0}{z} \right)
 	- \tilde{v}\frac{\partial_z v_0}{v_0}
-	= 0
+	= 0.
 \]
 
 Rearrange terms, we have
@@ -87,21 +87,21 @@ Rearrange terms, we have
 	-i\omega\frac{\tilde{n}}{n_0}
 	+ i\omega v_0\tilde{v}
 	+ (1-v_0^2)\pdv{\tilde{v}}{z}
-	- \left(v_0+\frac{1}{v_0}\right)\pdv{v_0}{z}\tilde{v} = 0
+	- \left(v_0+\frac{1}{v_0}\right)\pdv{v_0}{z}\tilde{v} = 0.
 	\label{eq:intermediate-step-time-derivative-of-Y}
 \end{equation}
 
 Now we take $\pdv*{t}$ on Eq.~(\ref{eq:linearized-conservation-of-momentum}). Recall the fact that $\tilde{Y} = \partial_z(\tilde{n}/n_0)$, we have
 \[
 	\omega^2\tilde{v} + i\omega\left(v_0\pdv{\tilde{v}}{z} + \tilde{v}\pdv{v_0}{z}\right)
-	= \pdv{t}\pdv{z}(\frac{\tilde{n}}{n_0})
+	= \pdv{t}\pdv{z}(\frac{\tilde{n}}{n_0}).
 \]
 Switch the order of $\partial_t$ and $\partial_z$, and recall $-i\omega \tilde{n}/n_0$ can be obtained from Eq.~(\ref{eq:intermediate-step-time-derivative-of-Y}), we get
 \[
 	\omega^2\tilde{v} + i\omega\left(v_0\pdv{\tilde{v}}{z} + \tilde{v}\pdv{v_0}{z}\right)
 	= \pdv{z}(-i\omega v_0\tilde{v}
 	- (1-v_0^2)\pdv{\tilde{v}}{z}
-	+ \left(v_0+\frac{1}{v_0}\right)\pdv{v_0}{z}\tilde{v})
+	+ \left(v_0+\frac{1}{v_0}\right)\pdv{v_0}{z}\tilde{v}).
 \]
 Expand the RHS and collect terms, we get
 \begin{equation} \label{eq:polynomial-eigenvalue-problem}
@@ -112,7 +112,7 @@ Expand the RHS and collect terms, we get
 			-\left(3v_0 + \frac{1}{v_0}\right)\pdv{v_0}{z}\pdv{}{z}
 			- \left(1-\frac{1}{v_0^2}\right)\left(\pdv{v_0}{z}\right)^2
 			- \left(v_0+\frac{1}{v_0}\right)\pdv[2]{v_0}{z} \right]\tilde{v}
-		= 0
+		= 0.
 	\end{aligned}
 \end{equation}
 
@@ -123,10 +123,9 @@ In this section we are going to tackle the simplest case of the polynomial eigen
 
 The constant velocity profile can be viewed as the limit of $v_0(z)$ as the spread of magnetic field goes to infinity, $\delta\to\infty$. As the parameter $\delta$ approaches infinity, the width of the magnetic field enlarges and eventually becomes flat. In other words, a constant magnetic field. We can easily see that the velocity profile $v_0(z)$ becomes a constant as well.
 
-If we set the velocity profile of the equilibrium flow to constant $v_0=\text{const}$, then Eq.~(\ref{eq:polynomial-eigenvalue-problem}) becomes a simple boundary value problem with second order constant coefficients differential equation.
-
+If we set the velocity profile of the equilibrium flow to constant $v_0=\text{const}$, then Eq.~(\ref{eq:polynomial-eigenvalue-problem}) becomes a simple boundary value problem with second order constant coefficients differential equation
 \begin{equation} \label{eq:constant-v-problem-dirichlet}
-	\omega^2\tilde{v} + 2i\omega v_0\pdv{\tilde{v}}{z} + (1-v_0^2)\pdv[2]{\tilde{v}}{z} = 0
+	\omega^2\tilde{v} + 2i\omega v_0\pdv{\tilde{v}}{z} + (1-v_0^2)\pdv[2]{\tilde{v}}{z} = 0.
 \end{equation}
 
 We need two boundary values in order to uniquely determine the solution (up to a constant). In the following subsections, we will solve Eq.~(\ref{eq:polynomial-eigenvalue-problem}) with constant velocity under two sets of boundary conditions, Dirichlet and fixed-open boundary condition.
@@ -134,17 +133,17 @@ We need two boundary values in order to uniquely determine the solution (up to a
 \subsection{Dirichlet Boundary}
 In this subsection, the so-called Dirichlet boundary condition will be used. It has the name because the function values are fixed at the two ends of the nozzle,
 \begin{equation}
-	\tilde{v}(-1) = \tilde{v}(1) = 0
+	\tilde{v}(-1) = \tilde{v}(1) = 0.
 \end{equation}
 At the left end (entrance of the nozzle), $z=-1$, we assume there are no perturbations. As for the right end (exit of the nozzle), $z=1$, setting the velocity perturbation to 0 might not be the best boundary condition to describe the physical process of the plasma flow in the nozzle, it nevertheless serves as a starting point to the problem and is also useful to test numerical solutions.
 
 With the two boundary conditions, the solution to the second order constant coefficients differential equation Eq.~(\ref{eq:constant-v-problem-dirichlet}) will be a linear combination of terms of the form $e^{ik(z+1)}$,
 \begin{equation} \label{eq:constant-v-solution-dirichlet}
-	\tilde{v}(z) = C\left[ \exp\left(i\omega\frac{z+1}{v_0+1}\right) - \exp\left(i\omega\frac{z+1}{v_0-1}\right) \right]
+	\tilde{v}(z) = C\left[ \exp\left(i\omega\frac{z+1}{v_0+1}\right) - \exp\left(i\omega\frac{z+1}{v_0-1}\right) \right],
 \end{equation}
 where $C\in\mathbb{C}$ is a complex constant, and the frequencies (eigenvalues) are
 \begin{equation}
-	\omega_n = n\pi(1-v_0^2)/2,\quad n\in\mathbb{Z}
+	\omega_n = n\pi(1-v_0^2)/2,\quad n\in\mathbb{Z}.
 	\label{eq:eigvals-constant-v-dirichlet}
 \end{equation}
 The derivation is shown in Appendix.~\ref{chap:analytical-solutions}. The results are plotted in Fig.~\ref{fig:exact-v-dirichlet} This result tells us that the flow in a magnetic nozzle with uniform magnetic field is stable regardless the velocity $v_0$ for constant velocity case.
@@ -171,12 +170,12 @@ Fixed-Open boundary condition assumes that there are no perturbations at the ent
 \begin{equation} \label{eq:constant-v-problem-fixed-open}
 	\omega^2\tilde{v} + 2i\omega v_0\pdv{\tilde{v}}{z} + (1-v_0^2)\pdv[2]{\tilde{v}}{z} = 0
 	\quad
-	\tilde{v}(-1) = \pdv{\tilde{v}}{z}\,(1) = 0
+	\tilde{v}(-1) = \pdv{\tilde{v}}{z}\,(1) = 0.
 \end{equation}
 
 The solution to this problem is similar to Eq.~(\ref{eq:constant-v-solution-dirichlet}), the only difference is the eigenvalues. In this case, the eigenvalues are
 \begin{equation}
-	\omega_n = (v_0^2 - 1) \left[\frac{n\pi}{2} - \frac{1}{4}i\ln\abs{\frac{v_0-1}{v_0+1}}\right], \quad n\in\mathbb{Z}
+	\omega_n = (v_0^2 - 1) \left[\frac{n\pi}{2} - \frac{1}{4}i\ln\abs{\frac{v_0-1}{v_0+1}}\right], \quad n\in\mathbb{Z}.
 	\label{eq:eigvals-constant-v-fixed-open}
 \end{equation}
 Again, the derivation can be found in Appendix.~\ref{chap:analytical-solutions}. The growth rate is independent of the mode number $n$, and it is always $\ln\abs{(v_0-1)/(v_0+1)}$. It is is positive for any $v_0\neq 1$. Therefore,

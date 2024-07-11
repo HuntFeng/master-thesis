@@ -5,8 +5,8 @@ TODO
 - [x] reference analytical solution to appendix
 - [ ] add punctuation in formulas
     - [x] introduction
-    - [ ] fluid equations
-    - [ ] eigenvalue problem
+    - [x] fluid equations
+    - [x] eigenvalue problem
     - [ ] spectral method
     - [ ] singular perturbation
     - [ ] conclusion
