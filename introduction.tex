@@ -20,66 +20,62 @@ A key characteristic of plasma is its capability to shield external electric fie
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/debye-shielding.png}
-	\caption{Debye shielding. Adapted from \cite{chen_introduction_2016}. A positive test charge is put into a plasma. Electrons will surround the ball. Ions are neglected from the picture since they are repelled away from the charge.}
+	\caption{Debye shielding. Adapted from \cite{chen_introduction_2016}. A positive test charge is put into a plasma. Electrons will surround the charge. Ions are neglected from the picture since they are repelled away from the charge.}
 	\label{fig:debye-shielding}
 \end{figure}
 
-The Debye length is the thickness of the electron cloud. To find out Debye length, we need to compute the potential near the positively charged ball. Due to the symmetry of the problem, we can reduce the it to 1D, along the radial direction. Suppose the coordinate's origin is at the ball's center and $\phi(0)=0$. The potential can be solved from the following 1-dimensional Poisson's equation,
-\begin{equation}
-	\epsilon_0\dv[2]{\phi}{x} = -e(n_i - n_e), \quad \phi(0) = \phi_0,
-	\label{eq:poisson-equation-1d}
-\end{equation}
-where $n$ is the number density of the particles, and the subscripts $i$ and $e$ stand for ion and electron.
-
-For simplicity, we assume massless electron, $m/M \to 0$. This means that the electrons move so fast that the ions can be treated as a static background. That is,
+The Debye length is the thickness of the electron layer around the charge. To find out Debye length, we need to compute the potential near the positive test charge. For simplicity, we assume massless electron, $m/M \to 0$. This means that the electrons move so fast that the ions can be treated as a static background. That is,
 \begin{equation}
 	n_i = n_0,
 	\label{eq:ion-density-static-background}
 \end{equation}
-where $n_0$ is a constant.
-
-Meanwhile, it can be proven using Fluid description of plasma that the electron density follows the Boltzmann distribution \cite{chen_introduction_2016},
+where $n_0$ is a constant. Meanwhile, it can be proven using Fluid description of plasma that the electron density follows the Boltzmann distribution \cite{chen_introduction_2016},
 \begin{equation}
 	n_e = n_0\exp(e\phi/KT_e).
+	\label{eq:electron-density-boltzmann}
 \end{equation}
 
-Taylor expand $n_e$ in the region where $\abs{e\phi/KT_e} \ll 1$ we have,
+Now we introduce an external test charge with charge $q$ into the plasma. As a result, the electric potential $\phi$ is perturbed by an amount of $\delta\phi$. The perturbed charge density of the plasma can be written as,
 \begin{equation}
-	n_e = n_0\left[ 1 + \frac{e\phi}{KT_e} + \frac{1}{2}\left(\frac{e\phi}{KT_e}\right)^2 + \cdots \right].
-	\label{eq:electron-density-taylor-expansion}
+	\begin{aligned}
+		\delta\rho & = \delta\rho_{\text{ext}} + e(\delta n_i - \delta n_e)   \\
+		           & = q\delta^3(\mathbf{r}) - \frac{e^2n_0}{KT_e}\delta\phi.
+	\end{aligned}
 \end{equation}
+There are two parts in the perturbed charge density. The external perturbed charge density $\delta\rho_{\text{ext}}$ and the perturbed charge density in the plasma $e(\delta n_i - \delta n_e)$. The external perturbed charge density is given by a localized point charge $q$, hence Dirac delta function $\delta^3(\mathbf{r})$ is used. As for the expression for the perturbed charge density in the plasma, we can derive it by Taylor expanding Eq.~(\ref{eq:ion-density-static-background}) and Eq.~(\ref{eq:electron-density-boltzmann}).
 
-Substituting Eq.~(\ref{eq:ion-density-static-background}) and Eq.~(\ref{eq:electron-density-taylor-expansion}) for $n_i$ and $n_e$ in the 1D Poisson's equation, Eq.~(\ref{eq:poisson-equation-1d}), and only keep the linear terms in Eq.~(\ref{eq:electron-density-taylor-expansion}), we get
+The perturbed Poisson's equation now reads,
 \begin{equation}
-	\epsilon_0\dv[2]{\phi}{x} = \frac{n_0e^2}{KT_e}\phi.
+	\laplacian \delta\phi = - \frac{\delta \rho}{\epsilon_0} = - \frac{q\delta^3{\mathbf{r}} - e^2n_0\delta\phi/KT_e}{\epsilon_0}.
 \end{equation}
+Rearrange the terms, we obtain
+\begin{equation}
+	\left(\laplacian - \frac{e^2n_0}{\epsilon_0KT_e} \right)\delta\phi = -\frac{q\delta^3{\mathbf{r}}}{\epsilon_0}.
+\end{equation}
+Therefore, the perturbed potential can be written as
+\begin{equation}
+	\delta\phi = \frac{q}{4\pi\epsilon_0r}\exp(-\frac{r}{\lambda_D}),
+\end{equation}
+where $\lambda_D$ is the symbol for Debye length. It characterizes the thickness of the electron layer near the test charge, and it is defined as
+\begin{equation}
+	\lambda_D = \left(\frac{\epsilon_0KT_e}{n_0e^2}\right).
+\end{equation}
+The potential is shown in Fig.~\ref{fig:debye-potential}.
 
-The solution to the Poisson's equation is therefore
-\begin{equation}
-	\phi = \phi_0\exp(-\abs{x}/\lambda_D),
-\end{equation}
-where the quantity $\lambda_D$ is called Debye length, and is defined as
-\begin{equation}
-	\lambda_D \equiv \left(\frac{\epsilon_0 KT}{ne^2}\right)^{1/2},
-	\label{eq:debye-length}
-\end{equation}
-where $n$ stands for the number density far away from the charged ball. The potential is shown in Fig.~\ref{fig:debye-potential}. The  Debye length characterizes the thickness the of the cloud.
+Assuming the system size $L$ is much larger than the Debye length $\lambda_D$, this suggests that the electric potential from the test charge $q/4\pi\epsilon_0r$ is shielded by the electrons and decays exponentially $\exp(-r/\lambda_D)$. Therefore, the plasma stays neutral if it is initially electrically neutral.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.7\textwidth]{figures/debye-potential.tikz}
-	\caption{Potential distribution near a positively charged ball in a plasma. Adapted from \cite{chen_introduction_2016}. The charged ball is centered at the origin, the potential generated by this ball decreases exponentially.}
+	\includegraphics[width=0.7\textwidth]{figures/debye-potential.png}
+	\caption{Potential distribution near a positive charge in a plasma. The charge is centered at the origin, the potential generated by this positive charge decreases exponentially.}
 	\label{fig:debye-potential}
 \end{figure}
-
-The above discussion indicates that any external electric field present in a plasma will be shielded out within a distance $\lambda_D$ (assuming the system size $L$ is much larger than $\lambda_D$). Therefore, the plasma stays neutral if it is initially electrically neutral.
 
 A plasma is said to be quasineutral, if a plasma is neutral enough so that we can take $n_i \simeq n_e$ but a small charge imbalance can give rise to potentials of the order of $KT/e$. In this case, we use the symbol $n$ to denote the common density and call it the plasma density \cite{chen_introduction_2016}.
 
 \subsubsection*{Plasma Oscillation}
 Simply speak, the collective behavior of a plasma is mostly governed by the electromagnetic forces rather than the gas dynamics. To quantify this statement, we introduce the concept of plasma oscillation.
-
-There are many kinds of oscillations in plasma, one of the most fundamental oscillations is the electron plasma oscillation. Imagine the ions are too heavy to move, and they form a uniform background. The electrons are then released from a distance away from the ions (Fig.~\ref{fig:plasma-oscillation}). The electric field will pull the electrons toward the ions, after the electrons pass the ions, the electric field will decelerate them and started to pull them on the other side. The frequency of this oscillation is called plasma frequency,
+The plasma oscillation frequency characterizes the response time of a plasma to an applied electric field. Imagine the ions are too heavy to move, and they form a uniform background. The electrons are pulled (using an applied electric field) to some distance away from the ions (Fig.~\ref{fig:plasma-oscillation}) and then release. The electric field will pull the electrons toward the ions, after the electrons pass the ions, the electric field will decelerate them and started to pull them on the other side. The frequency of this oscillation is called plasma frequency,
 \begin{equation}
 	\omega_p = \left(\frac{n_0e^2}{\epsilon_0m}\right)^{1/2}.
 \end{equation}
