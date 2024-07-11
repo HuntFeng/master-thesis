@@ -1,5 +1,9 @@
 # Thesis - Spectral Instability of Plasma Flow in Magnetic Nozzle
 
+Known issue of usask latex template:
+- floating environments with [htpb!] like positioning cannot placed at the end of a chapter/section/subsection
+    - to fix this, either use [H] or placed the floating environments somewhere else
+
 TODO
 - [x] derive the exact solution instead of verify it
 - [x] reference analytical solution to appendix
@@ -10,5 +14,5 @@ TODO
     - [x] spectral method
     - [x] singular perturbation
     - [x] conclusion
-- [ ] more description for results
+- [x] more description for results
 - [ ] revise introduction
