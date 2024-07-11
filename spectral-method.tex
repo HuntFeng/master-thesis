@@ -1,4 +1,6 @@
 \chapter{Spectral Method} \label{chap:spectral-method}
+In Chap.~\ref{chap:polynomial-eigenvalue-problem}, we explored the analytical solutions, including eigenvalues and eigenfunctions, to Eq.~(\ref{eq:constant-v-problem}), a special case of a more general polynomial eigenvalue problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). As we can see, it is nearly impossible to solve Eq.~(\ref{eq:polynomial-eigenvalue-problem}) analytically. Hence, we need numerical methods to investigate the instability of plasma flow with spatial varying velocity profile. Spectral methods is a suitable tool for our problem.
+
 Spectral method is an important tool for solving problems related to partial differential equations. It can provide superior accuracy compare to other local methods such as finite difference \cite{shen_tang_etal_spectral_2011}. In this thesis, we are going to solve a polynomial eigenvalue problem, i.e. Eq.~(\ref{eq:polynomial-eigenvalue-problem}) together with specific boundary conditions.
 
 Suppose the velocity perturbation $\tilde{v}$ can be approximated by some orthogonal basis functions $\{u_k(z)\}_{k=1}^{\infty}$ on $-1\leq z\leq 1$,
@@ -286,7 +288,7 @@ Moreover, we don't need to worry about the existence of eigenvalues of a linear 
 \section{Spectral Pollution and Spurious Modes}
 In this section, we will discuss an important phenomenon we observe throughout the numerical experiments using spectral method. It is the phenomenon of spectral pollution. Then we will provide a method to filter these spurious modes.
 
-Spectral pollution refers to the phenomenon which some eigenvalues are not converging to the correct value when the mesh density is increased. The wrong eigenvalues are referred as spurious modes. When solving eigenvalue problems using spectral methods with finite difference or finite element approximations, spectral pollution might occur \cite{llobet_spectral_1990}. The cause of the spectral pollution is originated from the improper discretization of the differential operators. In the following sections, we are going to take a closer look at the differential operators in finite difference method, and reveal the occurrence of spurious modes when solving Eq.~(\ref{eq:constant-v-problem-dirichlet}).
+Spectral pollution refers to the phenomenon which some eigenvalues are not converging to the correct value when the mesh density is increased. The wrong eigenvalues are referred as spurious modes. When solving eigenvalue problems using spectral methods with finite difference or finite element approximations, spectral pollution might occur \cite{llobet_spectral_1990}. The cause of the spectral pollution is originated from the improper discretization of the differential operators. In the following sections, we are going to take a closer look at the differential operators in finite difference method, and reveal the occurrence of spurious modes when solving Eq.~(\ref{eq:constant-v-problem}) with supersonic velocity profile.
 
 \subsection{Analysis of Numerical Spectrum} \label{sec:analysis-of-numerical-spectrum}
 In this section, we will analyze the analytical and numerical dispersion relation of the following problem,
@@ -310,7 +312,7 @@ Now let's analyze the dispersion relation produced by finite difference. To do t
 	\label{eq:G-operator}
 \end{equation}
 
-Using the G-operators, Eq.~(\ref{eq:G-operator}), the discretized equation of Eq.~(\ref{eq:constant-v-problem-dirichlet}) becomes
+Using the G-operators, Eq.~(\ref{eq:G-operator}), the discretized equation of Eq.~(\ref{eq:constant-v-problem}) becomes
 \begin{equation} \label{eq:discretized-eq-G}
 	(\omega^2G_0 + \omega G_1 + G_2)\tilde{v} = 0.
 \end{equation}
@@ -348,7 +350,7 @@ To filter the spurious modes is by doing a "convergence test". Since the frequen
 \end{figure}
 
 \section{Plasma Flow with Constant Velocity Profile}
-In this section, we will compute the eigenmodes of the constant velocity problem with Dirichlet boundaries, Eq.~(\ref{eq:constant-v-problem-dirichlet}), and the same problem with fixed-open boundaries, Eq.~(\ref{eq:constant-v-problem-fixed-open}), using spectral methods. More specifically, spectral-collocation and spectral-Galerkin methods will be employed. Then spurious modes will be filtered using the convergence test prescribed in previous section. Since we have already derived the exact solutions for the constant velocity cases in Sec.~\ref{sec:analytical-solutions}, we can ensure the accuracy and reliability of the numerical methods by comparing the numerical results to the analytical ones. The parameters of spectral methods are summarized in Table.~(\ref{table:parameters}). For spectral-collocation method, we use 101 points, and for spectral-Galerkin method we use 101 points and 30 basis functions.
+In this section, we will compute the eigenmodes of the constant velocity problem, Eq.~(\ref{eq:constant-v-problem}), with Dirichlet boundaries and the same problem with fixed-open boundaries, using spectral methods. More specifically, spectral-collocation and spectral-Galerkin methods will be employed. Then spurious modes will be filtered using the convergence test prescribed in previous section. Since we have already derived the exact solutions for the constant velocity cases in Sec.~\ref{sec:analytical-solutions}, we can ensure the accuracy and reliability of the numerical methods by comparing the numerical results to the analytical ones. The parameters of spectral methods are summarized in Table.~(\ref{table:parameters}). For spectral-collocation method, we use 101 points, and for spectral-Galerkin method we use 101 points and 30 basis functions.
 
 \begin{table} [htbp]
 	\centering
@@ -366,7 +368,7 @@ In this section, we will compute the eigenmodes of the constant velocity problem
 \end{table}
 
 \subsection{Constant Subsonic Velocity Case}
-Eq.~(\ref{eq:constant-v-problem-dirichlet}) is a special case of a more general polynomial problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). The existence of the exact solution allows us to verify the correctness of each method's implementation. This also serves as a reference to the accuracy spectral methods can achieve.
+Eq.~(\ref{eq:constant-v-problem}) is a special case of a more general polynomial problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). The existence of the exact solution allows us to verify the correctness of each method's implementation. This also serves as a reference to the accuracy spectral methods can achieve.
 
 \subsubsection*{Dirichlet Boundary}
 Fig.~\ref{fig:constant-subsonic-dirichlet} shows that the eigenvalues obtained by spectral methods agree with the theoretical eigenvalues. Table.~\ref{table:eigenvalue-error-constant-subsonic-dirichlet} shows us the relative error $\abs{\omega_{numeric} - \omega_{analytic}}/\abs{\omega_{analytic}}$ is about $~10^{-14}$. Spectral methods indeed have high accuracy.

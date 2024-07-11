@@ -124,7 +124,7 @@ In this section we are going to tackle the simplest case of the polynomial eigen
 The constant velocity profile can be viewed as the limit of $v_0(z)$ as the spread of magnetic field goes to infinity, $\delta\to\infty$. As the parameter $\delta$ approaches infinity, the width of the magnetic field enlarges and eventually becomes flat. In other words, a constant magnetic field. We can easily see that the velocity profile $v_0(z)$ becomes a constant as well.
 
 If we set the velocity profile of the equilibrium flow to constant $v_0=\text{const}$, then Eq.~(\ref{eq:polynomial-eigenvalue-problem}) becomes a simple boundary value problem with second order constant coefficients differential equation
-\begin{equation} \label{eq:constant-v-problem-dirichlet}
+\begin{equation} \label{eq:constant-v-problem}
 	\omega^2\tilde{v} + 2i\omega v_0\pdv{\tilde{v}}{z} + (1-v_0^2)\pdv[2]{\tilde{v}}{z} = 0.
 \end{equation}
 
@@ -137,7 +137,7 @@ In this subsection, the so-called Dirichlet boundary condition will be used. It 
 \end{equation}
 At the left end (entrance of the nozzle), $z=-1$, we assume there are no perturbations. As for the right end (exit of the nozzle), $z=1$, setting the velocity perturbation to 0 might not be the best boundary condition to describe the physical process of the plasma flow in the nozzle, it nevertheless serves as a starting point to the problem and is also useful to test numerical solutions.
 
-With the two boundary conditions, the solution to the second order constant coefficients differential equation Eq.~(\ref{eq:constant-v-problem-dirichlet}) will be a linear combination of terms of the form $e^{ik(z+1)}$,
+With the two boundary conditions, the solution to the second order constant coefficients differential equation Eq.~(\ref{eq:constant-v-problem}) will be a linear combination of terms of the form $e^{ik(z+1)}$,
 \begin{equation} \label{eq:constant-v-solution-dirichlet}
 	\tilde{v}(z) = C\left[ \exp\left(i\omega\frac{z+1}{v_0+1}\right) - \exp\left(i\omega\frac{z+1}{v_0-1}\right) \right],
 \end{equation}
@@ -160,14 +160,14 @@ This solution is exact, we will use this to benchmark the simulation results in 
 		\includegraphics[width=\linewidth]{figures/exact-fixed-fixed-v0=1.5}
 		\caption{Supersonic}
 	\end{subfigure}
-	\caption{The plots show the first three non-zero exact solutions to Eq.~(\ref{eq:constant-v-problem-dirichlet}) for both subsonic and supersonic case. These solutions are stable.}
+	\caption{The plots show the first three non-zero exact solutions to Eq.~(\ref{eq:constant-v-problem}) with Dirichlet boundary for both subsonic and supersonic plasma flow. The subsonic and supersonic plasma flows are stable.}
 	\label{fig:exact-v-dirichlet}
 \end{figure}
 
 \subsection{Fixed-Open Boundary}
 Fixed-Open boundary condition assumes that there are no perturbations at the entrance of the nozzle, and it is free on the exit of the nozzle.
 
-\begin{equation} \label{eq:constant-v-problem-fixed-open}
+\begin{equation}
 	\omega^2\tilde{v} + 2i\omega v_0\pdv{\tilde{v}}{z} + (1-v_0^2)\pdv[2]{\tilde{v}}{z} = 0
 	\quad
 	\tilde{v}(-1) = \pdv{\tilde{v}}{z}\,(1) = 0.
@@ -194,6 +194,6 @@ Again, the derivation can be found in Appendix.~\ref{chap:analytical-solutions}.
 		\includegraphics[width=\linewidth]{figures/exact-fixed-open-v0=1.5}
 		\caption{Supersonic, unstable flow.}
 	\end{subfigure}
-	\caption{The plots show the first three exact solutions to Eq.~(\ref{eq:constant-v-problem-fixed-open}) for both subsonic and supersonic case. The flow is stable for subsonic case and unstable for supersonic case.}
+	\caption{The plots show the first three exact solutions to Eq.~(\ref{eq:constant-v-problem}) with fixed-open boundary for both subsonic and supersonic plasma flows. The flow is stable for subsonic case and unstable for supersonic case.}
 	\label{fig:exact-v-fixed-open}
 \end{figure}
