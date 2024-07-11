@@ -14,12 +14,12 @@ For the subsonic flow, it is stable under Dirichlet boundary condition. It is al
 \subsection{Spectral Method}
 The spectral method suffers the spectral pollution. For now there is no automatic ways to filter spurious modes other than doing convergence test and pick up the convergent eigenvalues manually by ourselves. We believe there is a discretization scheme that is spectral pollution free. We made such optimistic guess based on the following example. Let's transform Eq.~\ref{eq:constant-v-problem-dirichlet} with Dirichlet boundary condition $\tilde{v}(\pm 1) = 0$ to its normal form, that is
 \begin{equation}
-	u''(z) + r(z)u(z) = 0, \quad u(\pm 1) = 0
+	u''(z) + r(z)u(z) = 0, \quad u(\pm 1) = 0.
 \end{equation}
-by doing the change of variables
+By doing the change of variables
 \begin{equation}
 	u(z) = \exp\left(\frac{iv_0\omega}{1-v_0^2}\right)\tilde{v}(z); \quad
-	r(z) = \frac{\omega^2}{(1-v_0^2)^2}
+	r(z) = \frac{\omega^2}{(1-v_0^2)^2}.
 \end{equation}
 If we apply spectral methods to this problem, we observed no spurious modes in the spectrum. Meaning that this transformed problem is spectral pollution free. We might be able to transform the polynomial eigenvalue problem, with non-uniform velocity profile, to a certain form such that it is spectral pollution free when we apply spectral methods.
 
