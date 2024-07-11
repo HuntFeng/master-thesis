@@ -5,7 +5,7 @@ In this chapter, we are going to state the governing equations for the plasma fl
 \subsection{Single Particle Motion in Uniform Magnetic and Electric Fields} \label{sec:single-particle-motion}
 Plasma consists of charged particles, and is governed by electromagnetic force. This subsection gives a description of single particle motion with the presence of uniform magnetic and electric fields. This gives us intuition of how the particles move in a magnetic nozzle. Since the particle motion is governed by Lorentz force, the equation of motion of a charged particle is given by
 \begin{equation}
-	m\dv{\mathbf{v}_p}{t} = q(\mathbf{E} + \mathbf{v}_p\times \mathbf{B})
+	m\dv{\mathbf{v}_p}{t} = q(\mathbf{E} + \mathbf{v}_p\times \mathbf{B}),
 	\label{eq:equation-of-motion-single-particle}
 \end{equation}
 where $m$ is the mass of charged particle, $q$ is its electric charge, and $\mathbf{v}_p$ is the particle's velocity.
@@ -14,16 +14,16 @@ where $m$ is the mass of charged particle, $q$ is its electric charge, and $\mat
 Consider a uniform magnetic field pointing in z-direction, $\mathbf{B}=B\mathbf{\hat{z}}$, and no electric field for now. Since the magnetic force is perpendicular to both $\mathbf{v}_p$ and $\mathbf{B}$, we can separate the equation of motion into two directions,
 \begin{equation}
 	\begin{aligned}
-		m\dv{\mathbf{v_\parallel}}{t} & = \mathbf{0}                 \\
-		m\dv{\mathbf{v_\perp}}{t}     & = q\mathbf{v_\perp \times B}
+		m\dv{\mathbf{v_\parallel}}{t} & = \mathbf{0}                  \\
+		m\dv{\mathbf{v_\perp}}{t}     & = q\mathbf{v_\perp \times B},
 	\end{aligned}
 \end{equation}
-where $\mathbf{v_\parallel}$ denotes the velocity along the magnetic field line, in this case $v_\parallel = v_z$, and $\mathbf{v_\perp}$ is the velocity perpendicular to the magnetic field, in this case $\mathbf{v_\perp} = v_x\hat{x} + v_y\hat{y}$. Solving these equations with initial condition $\mathbf{v_p}|_{t=0} = v_{0x}\hat{x} + v_{0y}\hat{y} + v_{0z}\hat{z}$  we get
+where $\mathbf{v_\parallel}$ denotes the velocity along the magnetic field line, in this case $v_\parallel = v_z$, and $\mathbf{v_\perp}$ is the velocity perpendicular to the magnetic field, in this case $\mathbf{v_\perp} = v_x\hat{x} + v_y\hat{y}$. Solving these equations with initial condition $\mathbf{v_p}|_{t=0} = v_{0x}\hat{x} + v_{0y}\hat{y} + v_{0z}\hat{z}$ we get
 \begin{equation}
 	\begin{aligned}
 		v_x & = v_{0\perp} e^{i\omega_c t}      \\
 		v_y & = \pm iv_{0\perp} e^{i\omega_c t} \\
-		v_z & = v_{0z}
+		v_z & = v_{0z},
 	\end{aligned}
 \end{equation}
 where $v_{0\perp} = \sqrt{v_{0x}^2+v_{0y}^2}$ is the initial speed in the plane perpendicular to the magnetic field, and $\omega_c \equiv \abs{q}B/m$ is called the Larmor frequency. In this way, we see that the charged particle is doing circular motion in the $x-y$ plane with Larmor frequency $\omega_c$. On the other hand, the particle is flowing freely in $\hat{z}$ direction since there is no force acting on the charged particle along the magnetic field line. The charged particle is doing helical motion along the magnetic field line. See Fig.~\ref{fig:gyrate-along-b-field}. If we integrate the velocities with respect to time we will see the radius of the gyration is a constant, $r_L \equiv m_v\perp/\abs{q}B$, it is called Larmor radius.
@@ -35,12 +35,12 @@ With the presence of uniform electric field $\mathbf{E} = E_x\hat{x} + E_y\hat{y
 	\begin{aligned}
 		v_x & = v_{0\perp} e^{i\omega_c t} + \frac{E_y}{B}      \\
 		v_y & = \pm iv_{0\perp} e^{i\omega_c t} - \frac{E_x}{B} \\
-		v_z & = v_{0z} + \frac{qE_z}{m}t
+		v_z & = v_{0z} + \frac{qE_z}{m}t.
 	\end{aligned}
 \end{equation}
 In the direction along the magnetic field, electrostatic force is acting on the particle causing it to accelerate / decelerate with constant acceleration $qE_z/m$. In the direction perpendicular to magnetic field, the Larmor radius is still $r_L = m_v\perp/\abs{q}B$ but the particle's guiding center drifts with velocity
 \begin{equation}
-	\mathbf{v_{E\times B}} = \frac{\mathbf{E\times B}}{B^2} = \frac{E_y}{B}\hat{x} - \frac{E_x}{B}\hat{y}
+	\mathbf{v_{E\times B}} = \frac{\mathbf{E\times B}}{B^2} = \frac{E_y}{B}\hat{x} - \frac{E_x}{B}\hat{y}.
 \end{equation}
 This is so-called the $\mathbf{E\times B}$ drift.
 
@@ -53,13 +53,12 @@ The charged particles always travel on the same magnetic field line in the magne
 In classical mechanics, the action integral $\oint pdq$ taken over a period of a periodic motion is a constant. Here $p$ and $q$ are generalized momentum and coordinate. In single particle motion along magnetic field line, one obvious periodic motion is the Larmor gyration. Take $p$ to be the angular momentum $mv_\perp r$ and $q$ to be the angular coordinate $\theta$, the action integral becomes
 
 \begin{equation}
-	\oint pdq = \oint mv_\perp r_L d\theta = 2\pi r_L mv_\perp = 2\pi \frac{mv_\perp^2}{\omega_c} = 4\pi\frac{m}{\abs{q}}\left(\frac{mv_\perp^2}{2B}\right)
+	\oint pdq = \oint mv_\perp r_L d\theta = 2\pi r_L mv_\perp = 2\pi \frac{mv_\perp^2}{\omega_c} = 4\pi\frac{m}{\abs{q}}\left(\frac{mv_\perp^2}{2B}\right).
 \end{equation}
 
 Define the quantity magnetic moment as
-
 \begin{equation}
-	\mu = \frac{mv_\perp^2}{2B}
+	\mu = \frac{mv_\perp^2}{2B}.
 \end{equation}
 
 We see that the magnetic moment $\mu$ is constant as long as $q/m$ is constant.
@@ -67,7 +66,7 @@ We see that the magnetic moment $\mu$ is constant as long as $q/m$ is constant.
 \subsubsection*{Longitudinal Invariant}
 The next adiabatic invariant is the quantity defined as \cite{chen_introduction_2016},
 \begin{equation}
-	J=\int_a^b v_\parallel ds
+	J=\int_a^b v_\parallel ds,
 \end{equation}
 where $a$ and $b$ are the two turning points in magnetic mirror, see Fig.~\ref{fig:particle-in-mirror}.
 
@@ -91,41 +90,41 @@ Since the particle's energy is conserved and is equal to $mv_\perp^2/2$ at the t
 \subsection{From Kinetic Theory to Fluid Description}
 Although the previous treatment is useful for single particle, to describe the collective behavior of a large amount of particles, we need to do that in the framework of kinetic theory. In kinetic theory, the charged particles in plasma obey a certain velocity distribution function,
 \begin{equation}
-	f(\mathbf{x}, \mathbf{v}_p, t)
+	f(\mathbf{x}, \mathbf{v}_p, t).
 \end{equation}
 The number of particles per m$^3$ at position $\mathbf{x}$ and time $t$ with velocity components in the cell bounded by $\mathbf{v}$ and $\mathbf{v}+d\mathbf{v}$ is
 \begin{equation}
-	f(\mathbf{x}, \mathbf{v}_p, t)d^3\mathbf{v}_p
+	f(\mathbf{x}, \mathbf{v}_p, t)d^3\mathbf{v}_p.
 \end{equation}
 
-Suppose a collisionless plasma in 3-dimensional space is at thermal equilibrium, then the particles can be characterized by Maxwell-Boltzmann distribution
-\[ f_M(\mathbf{x}, \mathbf{v}_p, t) = \frac{n(\mathbf{x}, t)}{(\pi v_{th}^2)^{3/2}} \exp(-\left(\frac{v}{v_{th}}\right)^2) \]
+Suppose a collisionless plasma in 3-dimensional space is at thermal equilibrium, then the particles can be characterized by Maxwell-Boltzmann distribution,
+\[ f_M(\mathbf{x}, \mathbf{v}_p, t) = \frac{n(\mathbf{x}, t)}{(\pi v_{th}^2)^{3/2}} \exp(-\left(\frac{v}{v_{th}}\right)^2), \]
 where $n(\mathbf{x},t)$ is number density of the particles, $v_{th} = \sqrt{2k_BT/m}$ is the thermal velocity, and $v=\sqrt{v_x^2+v_y^2+v_z^2}$.
 
 The moments of the distribution function are suitable macroscopic properties of the plasma. For example, the plasma number density and momentum can be viewed as
-
 \begin{equation}
 	\begin{aligned}
-		n(\mathbf{x}, t)           & = \int_{\mathbb{R}^3} f(\mathbf{x}, \mathbf{v}_p, t) d^3\mathbf{v}_p              \\
-		n\mathbf{v}(\mathbf{x}, t) & = \int_{\mathbb{R}^3} \mathbf{v}_p f(\mathbf{x}, \mathbf{v}_p, t) d^3\mathbf{v}_p
+		n(\mathbf{x}, t)           & = \int_{\mathbb{R}^3} f(\mathbf{x}, \mathbf{v}_p, t) d^3\mathbf{v}_p               \\
+		n\mathbf{v}(\mathbf{x}, t) & = \int_{\mathbb{R}^3} \mathbf{v}_p f(\mathbf{x}, \mathbf{v}_p, t) d^3\mathbf{v}_p,
 	\end{aligned}
 \end{equation}
 where $\mathbf{v}$ without the subscript $p$ is the fluid velocity of the plasma flow. It is the bulk velocity of the plasma. The charged particles flow along the magnetic field line, it is intuitive to think of $\mathbf{v}$ as the plasma flow velocity along the magnetic field line.
 
 In this thesis we assume collisionless plasma. The distribution function $f$ in a collisionless plasma satisfies the so-called collisionless Vlasov equation, $\dv*{t} f(\mathbf{x}, \mathbf{v}, t) = 0$. Expand it explicitly, it is
-\begin{equation} \label{eq:vlasov}
-	\pdv{f}{t} + \mathbf{v}\pdv{f}{\mathbf{x}} + \frac{q}{m}(\mathbf{E} + \mathbf{v}\times\mathbf{B})\pdv{f}{\mathbf{v}} = 0
+\begin{equation}
+	\pdv{f}{t} + \mathbf{v}\pdv{f}{\mathbf{x}} + \frac{q}{m}(\mathbf{E} + \mathbf{v}\times\mathbf{B})\pdv{f}{\mathbf{v}} = 0,
+	\label{eq:vlasov}
 \end{equation}
 where $q(\mathbf{E} + \mathbf{v}\times\mathbf{B})$ is the Lorentz force experience by the species, the collision term $C(f)$ is dropped.
 
 Integrate both sides with respect to volume element in velocity space, $d^3\mathbf{v}$, we get the conservation of density.
 \begin{equation}
-	\pdv{n}{t} + \div(n\mathbf{v}) = 0
+	\pdv{n}{t} + \div(n\mathbf{v}) = 0.
 \end{equation}
 
-If we multiply $\mathbf{v}$ on both sides and integrate with respect to $d^3\mathbf{v}$, we get the conservation of momentum.
+If we multiply $\mathbf{v}$ on both sides and integrate with respect to $d^3\mathbf{v}$, we get the conservation of momentum,
 \begin{equation}
-	mn\left[\pdv{\mathbf{v}}{t} + (\mathbf{v}\cdot\grad){\mathbf{v}} \right] = qn(\mathbf{E+v\times B}) - \div\mathbf{P} + \mathbf{P}_{ij}
+	mn\left[\pdv{\mathbf{v}}{t} + (\mathbf{v}\cdot\grad){\mathbf{v}} \right] = qn(\mathbf{E+v\times B}) - \div\mathbf{P} + \mathbf{P}_{ij},
 \end{equation}
 where $\mathbf{P}\equiv mn\overline{\mathbf{v}}_{thermal}\overline{\mathbf{v}}_{thermal}$, the bar represents average over velocity space with distribution function $f(\mathbf{x}, \mathbf{v}_p, t)$, is the stress tensor. If we assume isothermal plasma with isotropic pressure, $p=nKT$ where $T$ is constant, then the last two terms can be simplified to $\grad p = KT\grad n$.
 
@@ -136,52 +135,53 @@ In this section, we will derive the governing equations of the quasineutral plas
 
 Starting from the conservation of number density,
 \begin{equation}
-	\pdv{n}{t} + \div(n\mathbf{v}) = 0
+	\pdv{n}{t} + \div(n\mathbf{v}) = 0.
 \end{equation}
 Since ions carry most of the mass and momentum in the plasma, their velocity is more representative of the bulk flow of the plasma. Electrons, on the other hand, have much smaller mass and are highly mobile due to their low inertia, but they contribute less to the overall momentum of the flow. As we discussed in the Sec.~\ref{sec:single-particle-motion}, the charged particles are doing helical motions along the magnetic field lines. Hence, we take the fluid velocity as the ion velocity along the magnetic field lines
 \begin{equation}
-	\mathbf{v} = v\mathbf{B}/B
+	\mathbf{v} = v\mathbf{B}/B.
 \end{equation}
 By expanding the divergence term $\div(n\mathbf{v})$, and using the divergence free condition $\div B=0$, we have
 \begin{equation}
-	\pdv{n}{t} + \mathbf{B}\cdot \grad(\frac{nv}{B}) = 0
+	\pdv{n}{t} + \mathbf{B}\cdot \grad(\frac{nv}{B}) = 0.
 \end{equation}
 Using the paraxial approximation, $\grad_\parallel = \partial_z\hat{z}$. We obtain the conservation of density for the magnetic nozzle,
 \begin{equation}
-	\pdv{n}{t} + B\pdv{z}(\frac{nv}{B}) = 0
+	\pdv{n}{t} + B\pdv{z}(\frac{nv}{B}) = 0.
 \end{equation}
 
 The conservation of momentum for ions and electrons are
 \begin{align}
-	 & m_in\left[\pdv{\mathbf{v}}{t} + (\mathbf{v}\cdot\grad)\mathbf{v}\right] = en(\mathbf{E}+\mathbf{v}\times\mathbf{B})                \\
-	 & m_en\left[\pdv{\mathbf{v}}{t} + (\mathbf{v}\cdot\grad)\mathbf{v}\right]  = -en(\mathbf{E}+\mathbf{v}\times\mathbf{B}) - \grad{p_e}
+	 & m_in\left[\pdv{\mathbf{v}}{t} + (\mathbf{v}\cdot\grad)\mathbf{v}\right] = en(\mathbf{E}+\mathbf{v}\times\mathbf{B})                 \\
+	 & m_en\left[\pdv{\mathbf{v}}{t} + (\mathbf{v}\cdot\grad)\mathbf{v}\right]  = -en(\mathbf{E}+\mathbf{v}\times\mathbf{B}) - \grad{p_e},
 \end{align}
 where $p_e$ is the electron pressure. There are some simplifications, first is that the term $\mathbf{v\times B} = 0$ due to the fact that fluid velocity is along $\mathbf{B}$. Secondly, $m_en\dv{\mathbf{v}}{t} \simeq 0$ due to small electron mass. Hence, the above two equations becomes,
 \begin{align}
 	 & m_in\left[\pdv{v}{t} + v\pdv{v}{z}\right] = enE_\parallel \\
-	 & 0 = -enE_\parallel - \pdv{p_e}{z}
+	 & 0 = -enE_\parallel - \pdv{p_e}{z}.
 \end{align}
 Adding these two equations we obtain
 \begin{equation}
-	\pdv{v}{t} + v\pdv{v}{z} = -\frac{1}{m_in}\pdv{p_e}{z}
+	\pdv{v}{t} + v\pdv{v}{z} = -\frac{1}{m_in}\pdv{p_e}{z}.
 \end{equation}
 
 Assume isothermal, then the electron pressure, also called the equation of state, is
-\begin{equation} \label{eq:eos}
-	p_e = nKT_e
+\begin{equation}
+	p_e = nKT_e.
+	\label{eq:eos}
 \end{equation}
 We can make this assumption due to the fact the electrons are so mobile that their heat conductivity is almost infinite \cite{chen_introduction_2016}.
 
 Therefore, we have
 \begin{equation}
-	\pdv{v}{t} + v\pdv{v}{z} = -c_s^2\frac{1}{n}\pdv{n}{z}
+	\pdv{v}{t} + v\pdv{v}{z} = -c_s^2\frac{1}{n}\pdv{n}{z},
 \end{equation}
 where $c_s^2 = KT_e/m_i$ is the square of ion sound speed.
 
 Therefore, the dynamics of the plasma flow in magnetic nozzle can be characterized by the conservation of density and momentum,
 \begin{align*}
-	 & \pdv{n}{t} + B\pdv{z}(\frac{nv}{B}) = 0                \\
-	 & \pdv{v}{t} + v\pdv{v}{z} = -c_s^2\frac{1}{n}\pdv{n}{z}
+	 & \pdv{n}{t} + B\pdv{z}(\frac{nv}{B}) = 0                 \\
+	 & \pdv{v}{t} + v\pdv{v}{z} = -c_s^2\frac{1}{n}\pdv{n}{z}.
 \end{align*}
 The magnetic field profile was discussed in Sec.\ref{sec:magnetic-field-in-nozzle}.
 
@@ -192,7 +192,7 @@ For convenience, we nondimensionalize the governing equations by normalizing the
 	 & \pdv{n}{t} + n\pdv{v}{z} + v\pdv{n}{z} - nv\frac{\partial_z B}{B} = 0
 	\label{eq:conservation-of-density}
 	\\
-	 & n\pdv{v}{t} + nv\pdv{v}{z} = -\pdv{n}{z}
+	 & n\pdv{v}{t} + nv\pdv{v}{z} = -\pdv{n}{z}.
 	\label{eq:conservation-of-momentum}
 \end{align}
 In the later thesis, we will refer the governing equations to Eq.~(\ref{eq:conservation-of-density}), (\ref{eq:conservation-of-momentum}) without mentioning the nondimensionalization.
@@ -202,21 +202,21 @@ In this research, we are interested in the stability of such plasma flow in the 
 \subsection{Velocity Profiles}
 Let's denote $n_0$ and $v_0$ as equilibrium density and equilibrium velocity, respectively. Since they are stationary (time independent) solutions to the governing equations Eq.~(\ref{eq:conservation-of-density}), (\ref{eq:conservation-of-momentum}), they satisfy the so-called equilibrium condition (nondimensionalized),
 \begin{align}
-	 & \pdv{z}(\frac{n_0v_0}{B}) = 0 \label{eq:equilibrium-conservation-of-density}                 \\
-	 & v_0\pdv{v_0}{z} = -\frac{1}{n_0}\pdv{n_0}{z} \label{eq:equilibrium-conservation-of-momentum}
+	 & \pdv{z}(\frac{n_0v_0}{B}) = 0 \label{eq:equilibrium-conservation-of-density}                  \\
+	 & v_0\pdv{v_0}{z} = -\frac{1}{n_0}\pdv{n_0}{z} \label{eq:equilibrium-conservation-of-momentum}.
 \end{align}
 
 In this section we will solve the equilibrium velocity profile, $v_0$, from the nondimensionalized equilibrium condition, Eq.~(\ref{eq:equilibrium-conservation-of-density}) and Eq.~(\ref{eq:equilibrium-conservation-of-momentum}).
 We start by substituting $\frac{1}{n_0}\pdv*{n_0}{z}$ into Eq.~(\ref{eq:equilibrium-conservation-of-density}), then it becomes
 \begin{equation}
-	(v_0^2-1)\pdv{v_0}{z} = -\frac{v_0}{B}\pdv{B}{z}
+	(v_0^2-1)\pdv{v_0}{z} = -\frac{v_0}{B}\pdv{B}{z}.
 \end{equation}
 
 Notice that there is a singularity at $v_0=1$, the sonic speed. Later we will devote an entire Chap.~\ref{chap:singular-perturbation} to discuss the treatment for solving eigenvalues involving this singularity.
 
 We can solve the equation by separating the variables, i.e. $v_0$ on one side and $B$ on the other side of the equal sign. Then integrate equation with respect to $z$ and use the conditions at midpoint $B(0)=B_m, v_0(0)=v_m$ we get
 \begin{equation}
-	v_0^2e^{-v_0^2} = \frac{B^2}{B_m^2}v_m^2e^{-v_m^2}
+	v_0^2e^{-v_0^2} = \frac{B^2}{B_m^2}v_m^2e^{-v_m^2}.
 \end{equation}
 
 In order to express $v_0$ as a function spatial coordinate $z$, we introduce a special function called Lambert W function.
@@ -235,7 +235,7 @@ Lambert W function has two real branches, $W_0(x)$ the principal branch and the 
 
 We can now express $v_0$ using the Lambert W function,
 \begin{equation}
-	v_0(z) = \left[ -W_k\left(-\frac{B(z)^2}{B_m^2}v_m^2e^{-v_m^2}\right) \right]^{1/2}
+	v_0(z) = \left[ -W_k\left(-\frac{B(z)^2}{B_m^2}v_m^2e^{-v_m^2}\right) \right]^{1/2},
 	\label{eq:velocity-profile}
 \end{equation}
 where the subscript $k$ of $W$ stands for branch of Lambert W function.

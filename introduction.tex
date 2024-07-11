@@ -26,17 +26,17 @@ A key characteristic of plasma is its capability to shield external electric fie
 
 The Debye length is the thickness of the electron cloud. To find out Debye length, we need to compute the potential near the positively charged ball. Due to the symmetry of the problem, we can reduce the it to 1D, along the radial direction. Suppose the coordinate's origin is at the ball's center and $\phi(0)=0$. The potential can be solved from the following 1-dimensional Poisson's equation,
 \begin{equation}
-	\epsilon_0\dv[2]{\phi}{x} = -e(n_i - n_e), \quad \phi(0) = \phi_0.
+	\epsilon_0\dv[2]{\phi}{x} = -e(n_i - n_e), \quad \phi(0) = \phi_0,
 	\label{eq:poisson-equation-1d}
 \end{equation}
-Where $n$ is the number density of the particles, and the subscripts $i$ and $e$ stand for ion and electron.
+where $n$ is the number density of the particles, and the subscripts $i$ and $e$ stand for ion and electron.
 
 For simplicity, we assume massless electron, $m/M \to 0$. This means that the electrons move so fast that the ions can be treated as a static background. That is,
 \begin{equation}
-	n_i = n_0.
+	n_i = n_0,
 	\label{eq:ion-density-static-background}
 \end{equation}
-Where $n_0$ is a constant.
+where $n_0$ is a constant.
 
 Meanwhile, it can be proven using Fluid description of plasma that the electron density follows the Boltzmann distribution \cite{chen_introduction_2016},
 \begin{equation}
@@ -56,14 +56,14 @@ Substituting Eq.~(\ref{eq:ion-density-static-background}) and Eq.~(\ref{eq:elect
 
 The solution to the Poisson's equation is therefore
 \begin{equation}
-	\phi = \phi_0\exp(-\abs{x}/\lambda_D).
+	\phi = \phi_0\exp(-\abs{x}/\lambda_D),
 \end{equation}
-Where the quantity $\lambda_D$ is called Debye length, and is defined as
+where the quantity $\lambda_D$ is called Debye length, and is defined as
 \begin{equation}
-	\lambda_D \equiv \left(\frac{\epsilon_0 KT}{ne^2}\right)^{1/2}.
+	\lambda_D \equiv \left(\frac{\epsilon_0 KT}{ne^2}\right)^{1/2},
 	\label{eq:debye-length}
 \end{equation}
-Where $n$ stands for the number density far away from the charged ball. The potential is shown in Fig.~\ref{fig:debye-potential}. The  Debye length characterizes the thickness the of the cloud.
+where $n$ stands for the number density far away from the charged ball. The potential is shown in Fig.~\ref{fig:debye-potential}. The  Debye length characterizes the thickness the of the cloud.
 
 \begin{figure}[htbp]
 	\centering
@@ -148,10 +148,10 @@ Now we are in a stage ready to investigate the dynamic instability of the proble
 \begin{equation}
 	\underbrace{\pdv{t}\mqty[\tilde{n}\\ \tilde{v}] + d\mathbf{F}(n_0,v_0)\mqty[\tilde{n}\\ \tilde{v}] }_{\text{linear terms}}
 	+ \underbrace{\mathbf{F}(n_0+\tilde{n}, v_0+\tilde{v}) - d\mathbf{F}(n_0,v_0)\mqty[\tilde{n}\\ \tilde{v}]}_{\text{non-linear terms}}
-	= \mathbf{0}.
+	= \mathbf{0},
 	\label{eq:perturbed-pde-system}
 \end{equation}
-Where $d\mathbf{F}$ is a Jacobian matrix. Since $\tilde{n}$ and $\tilde{v}$ are small, we expect the higher order mixed terms such as $\tilde{n}\tilde{v}$, $\tilde{n}\partial_z\tilde{v}$, $\tilde{v}\partial_z\tilde{n}$ are negligible comparing to the linear terms. So we drop the non-linear terms. Now we obtain the so-called linearized governing equations, they are the linearized conservation of density, Eq.~(\ref{eq:linearized-conservation-of-density}) and the linearized conservation of momentum, Eq.~(\ref{eq:linearized-conservation-of-momentum}), respectively.
+where $d\mathbf{F}$ is a Jacobian matrix. Since $\tilde{n}$ and $\tilde{v}$ are small, we expect the higher order mixed terms such as $\tilde{n}\tilde{v}$, $\tilde{n}\partial_z\tilde{v}$, $\tilde{v}\partial_z\tilde{n}$ are negligible comparing to the linear terms. So we drop the non-linear terms. Now we obtain the so-called linearized governing equations, they are the linearized conservation of density, Eq.~(\ref{eq:linearized-conservation-of-density}) and the linearized conservation of momentum, Eq.~(\ref{eq:linearized-conservation-of-momentum}), respectively.
 
 Since we are dealing with linear operators, let the perturbations take the form of exponential $\exp(-i\omega t)$. This indicates that physically the perturbations are oscillating with frequency $\omega$ in time. Any time derivative on the perturbations in the linearized governing equations simply becomes $\partial_t \to -i\omega$. Now we obtain equations involving perturbations, $\tilde{n}$ and $\tilde{v}$, and their spatial derivatives, and $\omega$. Reducing the number of equations by eliminating the density $\tilde{n}$, we obtain Eq.~(\ref{eq:polynomial-eigenvalue-problem}).
 
@@ -181,9 +181,9 @@ The magnetic nozzle by its nature is 3-dimensional. We assume the magnetic field
 
 Since we are interested in the plasma flow near the central axis of the nozzle, with paraxial approximation taken, the derivative along the magnetic field line $\nabla_\parallel = \pdv*{z}$ when near the central axis \cite{smolyakov_quasineutral_2021}. Hence, in this thesis we will treat the flow in magnetic nozzle as a 1-dimensional problem. The axial magnetic field along the central axis is modeled as
 \begin{equation}
-	B_z(z) = B_0 \left[1 + R\exp(-\left(\frac{z}{\delta}\right)^2)\right], \quad -1\leq z \leq 1.
+	B_z(z) = B_0 \left[1 + R\exp(-\left(\frac{z}{\delta}\right)^2)\right], \quad -1\leq z \leq 1,
 \end{equation}
-Where $1+R$ is the magnetic mirror ratio, it is the ratio of the magnitude of magnetic field at the center of the nozzle to that at the end of the nozzle, $1+R = B(0)/B(1)$. The mirror ratio $R$ controls the spread of the plasma flow at the exit. On the other hand, $\delta$ determines the spread of the magnetic field. Larger the $\delta$, flatter the magnetic field. An example of magnetic field is shown in Fig.~(\ref{fig:magnetic-field}).
+where $1+R$ is the magnetic mirror ratio, it is the ratio of the magnitude of magnetic field at the center of the nozzle to that at the end of the nozzle, $1+R = B(0)/B(1)$. The mirror ratio $R$ controls the spread of the plasma flow at the exit. On the other hand, $\delta$ determines the spread of the magnetic field. Larger the $\delta$, flatter the magnetic field. An example of magnetic field is shown in Fig.~(\ref{fig:magnetic-field}).
 
 The radial profile of magnetic field, $B_r$, is given by the divergence-free condition, Eq.~(\ref{eq:divergence-free-condition}). In this thesis will focus on the axial magnetic field only.
 
@@ -214,9 +214,9 @@ If we compare the velocity profiles for Bondi-Parker flow and the flow in magnet
 The velocity profiles of one-dimensional, spherically symmetric, stationary isothermal Parker flow neglecting self-gravity can be expressed using Lambert W function,
 \begin{equation}
 	v(r) = \sqrt{-\frac{KT}{m}W_k\left[ -\left(\frac{r}{r_c}\right)^2 \exp\left[4\left(1-\frac{r_c}{r}\right)-1\right] \right]}, \quad
-	k = 0,-1.
+	k = 0,-1,
 \end{equation}
-Where $r$ stands for the distance measured from the center of the mass point, e.g. star. The position $r_c=GMm/2KT$ is the critical position and the velocity at this point is exactly the sonic speed $v(r_c)=\sqrt{KT/m}$, where $M$ is the mass of the mass point, $m$ is the mass of a single particle in the flow, and $T$ is the temperature of the flow. The Bondi flow is simply $-v(r)$ since it is accretion flow, the particles are flowing inwardly towards the mass point.
+where $r$ stands for the distance measured from the center of the mass point, e.g. star. The position $r_c=GMm/2KT$ is the critical position and the velocity at this point is exactly the sonic speed $v(r_c)=\sqrt{KT/m}$, where $M$ is the mass of the mass point, $m$ is the mass of a single particle in the flow, and $T$ is the temperature of the flow. The Bondi flow is simply $-v(r)$ since it is accretion flow, the particles are flowing inwardly towards the mass point.
 
 As we can see the expression of velocity profile for Bondi-Parker flow is similar to that of the magnetic nozzle, Eq.~(\ref{eq:velocity-profile}). The expression is governed by the Lambert W function. Similarly, the $k=0$ branch corresponds to the subsonic part in the velocity profile, and the $k=-1$ branch corresponds to the supersonic part of the profile.
 
