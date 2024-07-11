@@ -3,7 +3,7 @@ Spectral method is an important tool for solving problems related to partial dif
 
 Suppose the velocity perturbation $\tilde{v}$ can be approximated by some orthogonal basis functions $\{u_k(z)\}_{k=1}^{\infty}$ on $-1\leq z\leq 1$,
 \begin{equation}
-	\tilde{v} = \sum_{k=0}^{N} c_ku_k(z)
+	\tilde{v} = \sum_{k=0}^{N} c_ku_k(z),
 \end{equation}
 where $c_k$ are coefficients to be determined. There are different choices for $u_k(z)$ including but not limited to \cite{shen_tang_etal_spectral_2011},
 \begin{itemize}
@@ -15,7 +15,7 @@ where $T_k$, $L_k$ and $H_k$ are Chebyshev, Legendre, and Hermite polynomials of
 
 Using the above approximation in Eq.~(\ref{eq:polynomial-eigenvalue-problem}), and take the inner product with some other test functions $\{\psi_k(z)\}$ on $[-1,1]$, the left-hand side of Eq.~(\ref{eq:polynomial-eigenvalue-problem}) becomes a matrix equation,
 \begin{equation}
-	(\omega^2\mathbf{1} + \omega\mathbf{M} + \mathbf{N})\mathbf{c} = \mathbf{0}
+	(\omega^2\mathbf{1} + \omega\mathbf{M} + \mathbf{N})\mathbf{c} = \mathbf{0},
 	\label{eq:pep-matrix-equation}
 \end{equation}
 where $\mathbf{c} = [c_0, \cdots, c_N]^T$ is a vector of coefficients, and
@@ -37,7 +37,7 @@ Depending on the choice of the test function, spectral method can be further cla
 
 To solve Eq.~(\ref{eq:pep-matrix-equation}), we simply augment the coefficient vector to $[\mathbf{c}, \omega\mathbf{c}]^T$. Then the matrix equation can be written as an algebraic eigenvalue problem,
 \begin{equation} \label{eq:eigenvalue-problem}
-	\mqty[ \mathbf{0} & \mathbf{1}\\ -\mathbf{N} & -\mathbf{M} ]\mqty[ \mathbf{c}\\ \omega\mathbf{c}] = \omega\mqty[ \mathbf{c}\\ \omega\mathbf{c}]
+	\mqty[ \mathbf{0} & \mathbf{1}\\ -\mathbf{N} & -\mathbf{M} ]\mqty[ \mathbf{c}\\ \omega\mathbf{c}] = \omega\mqty[ \mathbf{c}\\ \omega\mathbf{c}].
 \end{equation}
 We can apply standard eigenvalue problem solver to this question to obtain the eigenvalues $\omega$ and their corresponding eigenvectors $[\mathbf{c}, \omega\mathbf{c}]^T$. Therefore, the eigenfunctions $\tilde{v} = \sum_k c_ku_k(z)$ to the original problem can be recovered by extracting coefficients $\mathbf{c}$ from the eigenvectors.
 
@@ -104,17 +104,17 @@ V = np.pad(V,((1,1),(0,0)))
 \subsubsection*{Fixed-Open Boundary}
 To implement fixed-open boundary condition, i.e. $\tilde{v}(-1)=\tilde{v}'(1)=0$. Notice that $\tilde{v}'(-1)$ can be expressed as,
 \begin{equation}
-	0 = \tilde{v}'(1) = \sum_{j=0}^{N}D_{ij}\tilde{v}_j
+	0 = \tilde{v}'(1) = \sum_{j=0}^{N}D_{ij}\tilde{v}_j,
 \end{equation}
 where $\tilde{v}_j=\tilde{v}(z_j)$ is the evaluation of $\tilde{v}$ at Chebyshev points $z_j=\cos(j\pi/N)$. By rearranging the terms, we get the expression of $\tilde{v}_0$ in terms of $\tilde{v}$ at other collocation points.
 \begin{equation}
-	\tilde{v}_0 = -\frac{1}{D_{00}}\sum_{j=1}^{N} D_{0j}\tilde{v}_j
+	\tilde{v}_0 = -\frac{1}{D_{00}}\sum_{j=1}^{N} D_{0j}\tilde{v}_j.
 	\label{eq:expression-for-first-value}
 \end{equation}
 To incorporate this information into the differentiation matrix, we modify the expressions for evaluating the derivatives at point $x_1$,
 \begin{align}
-	\tilde{v}'_{1}  & = \sum_{j=0}^{N}D_{1j}\tilde{v}_j = \sum_{j=1}^{N}\left(D_{1j} - \frac{D_{10}}{D_{00}}D_{0j}\right)\tilde{v}_j       \\
-	\tilde{v}''_{1} & = \sum_{j=0}^{N}D^2_{1j}\tilde{v}_j = \sum_{j=1}^{N}\left(D^2_{1j} - \frac{D^2_{10}}{D_{00}}D_{0j}\right)\tilde{v}_j
+	\tilde{v}'_{1}  & = \sum_{j=0}^{N}D_{1j}\tilde{v}_j = \sum_{j=1}^{N}\left(D_{1j} - \frac{D_{10}}{D_{00}}D_{0j}\right)\tilde{v}_j        \\
+	\tilde{v}''_{1} & = \sum_{j=0}^{N}D^2_{1j}\tilde{v}_j = \sum_{j=1}^{N}\left(D^2_{1j} - \frac{D^2_{10}}{D_{00}}D_{0j}\right)\tilde{v}_j.
 \end{align}
 This indicates the new differentiation matrices should be
 \begin{align}
@@ -161,17 +161,17 @@ for j in range(V.shape[1]):
 \section{Spectral Galerkin Method}
 Another spectral method we used in the numerical experiments is the Legendre-Galerkin method. Meaning that the basis functions are chosen to be the compact combinations of Legendre polynomials \cite{shen_tang_etal_spectral_2011},
 \begin{equation}
-	u_k(z) = L_k(z) + a_kL_{k+1}(z) + b_kL_{k+2}(z)
+	u_k(z) = L_k(z) + a_kL_{k+1}(z) + b_kL_{k+2}(z),
 \end{equation}
 where the parameters $\{a_k,b_k\}$ are chosen to satisfy the boundary conditions. The test functions are the same as the basis functions.
 
 Suppose the boundary conditions are
-\[ a_{-}\tilde{v}(-1) + b_{-}\tilde{v}'(-1) = 0, a_{+}\tilde{v}(1) + b_{+}\tilde{v}'(1) = 0  \]
+\[ a_{-}\tilde{v}(-1) + b_{-}\tilde{v}'(-1) = 0, a_{+}\tilde{v}(1) + b_{+}\tilde{v}'(1) = 0.  \]
 Then the parameters $\{a_k,b_k\}$ can be worked out by simple linear algebra,
 \begin{equation}
 	\begin{aligned}
-		a_k & = \frac{(2k+3)(a_{+}b_{-} + a_{-}b_{+})}{\text{DET}_k}                                             \\
-		b_k & = \frac{-2a_{-}a_{+} + (k+1)^2(a_{+}b_{-} - a_{-}b_{+}) + b_{-}b_{+}k(k+1)^2(k+2)/2}{\text{DET}_k}
+		a_k & = \frac{(2k+3)(a_{+}b_{-} + a_{-}b_{+})}{\text{DET}_k}                                              \\
+		b_k & = \frac{-2a_{-}a_{+} + (k+1)^2(a_{+}b_{-} - a_{-}b_{+}) + b_{-}b_{+}k(k+1)^2(k+2)/2}{\text{DET}_k},
 	\end{aligned}
 \end{equation}
 where $\text{DET}_k = 2a_{+}a_{-} + a_{-}b_{+}(k+2)^2 - a_{+}b_{-}(k+2)^2 - b_{-}b_{+}(k+1)(k+2)^2(k+3)/2$.
@@ -185,7 +185,7 @@ where $\text{DET}_k = 2a_{+}a_{-} + a_{-}b_{+}(k+2)^2 - a_{+}b_{-}(k+2)^2 - b_{-
 \end{figure}
 The necessary parameters to make $u_k(\pm 1) = 0$ are $a_k=0, b_k=-1$. The basis functions are therefore,
 \begin{equation}
-	u_k(z) = L_k(z) - L_{k+2}(z)
+	u_k(z) = L_k(z) - L_{k+2}(z).
 \end{equation}
 The first 5 basis functions are shown in Fig.~\ref{fig:legendre-dirichlet}.
 
@@ -210,14 +210,14 @@ To evaluate the matrix elements, inner products are calculated by numerical inte
 	M_{jk} & = 2i \sum_{m}^{M} w_m \Delta z_m \left[\psi_{j}\left(v_0\pdv{}{z} +\pdv{v_0}{z} \right)u_{k}\right]_{z_m} \\
 	N_{jk} & = \sum_{m}^{M} w_m \Delta z_m \left\{
 	\psi_{j} \left[(1-v_0^2)\pdv[2]{}{z} -\left(3v_0 + \frac{1}{v_0}\right)\pdv{v_0}{z}\pdv{}{z}
-		- \left(1-\frac{1}{v_0^2}\right)\left(\pdv{v_0}{z}\right)^2 - \left(v_0+\frac{1}{v_0}\right)\pdv[2]{v_0}{z}\right] u_{k} \right\}_{z_m}
+		- \left(1-\frac{1}{v_0^2}\right)\left(\pdv{v_0}{z}\right)^2 - \left(v_0+\frac{1}{v_0}\right)\pdv[2]{v_0}{z}\right] u_{k} \right\}_{z_m},
 \end{align}
 where $M$ is the number of points, $\Delta z_m = 2/M$, and $w_m$ are coefficients corresponding to the quadrature rule employed. In this case,
 \begin{equation}
 	w_n = \begin{cases}
-		1/3, \text{if $m=0,M$}                     \\
-		4/3, \text{if $m$ is odd}                  \\
-		2/3, \text{if $m\neq 0,M$ and $m$ is even} \\
+		1/3, \text{if $m=0,M$}    \\
+		4/3, \text{if $m$ is odd} \\
+		2/3, \text{if $m\neq 0,M$ and $m$ is even}.
 	\end{cases}
 \end{equation}
 
@@ -296,28 +296,28 @@ In this section, we will analyze the analytical and numerical dispersion relatio
 
 It is a special case, i.e. $v_0=$constant, of a more general problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). The analytical dispersion relation can be obtained by substituting $\tilde{v} = \exp(-i\omega t + kx)$ into the above equation,
 \begin{equation} \label{dispersion-relation}
-	\omega = k(v_0 \pm 1)
+	\omega = k(v_0 \pm 1).
 \end{equation}
 The dispersion relation suggests that the eigenvalue $\omega$ should be real.
 
 Now let's analyze the dispersion relation produced by finite difference. To do this we need to first understand the effect of the differential operators on function $\tilde{v}$ in finite difference. If we assume $\tilde{v}\sim \exp(ikx)$, and let $\beta\equiv kh/2$. Then in finite difference discretization scheme, the differential operators $\dv*[n]{z}$ are equivalent to the following factors \cite{llobet_spectral_1990},
 \begin{equation}
 	\begin{aligned}
-		\dv[0]{z} \quad \to \quad & G_0 = 1                                                              \\
-		\dv[1]{z} \quad \to \quad & G_1 = [\exp(2i\beta)-\exp(-2i\beta)]/2h = (i/h)\sin(2\beta)          \\
-		\dv[2]{z} \quad \to \quad & G_2 = [\exp(2i\beta)-2-\exp(-2i\beta)]/h^2 = (2/h^2)(\cos(2\beta)-1)
+		\dv[0]{z} \quad \to \quad & G_0 = 1                                                               \\
+		\dv[1]{z} \quad \to \quad & G_1 = [\exp(2i\beta)-\exp(-2i\beta)]/2h = (i/h)\sin(2\beta)           \\
+		\dv[2]{z} \quad \to \quad & G_2 = [\exp(2i\beta)-2-\exp(-2i\beta)]/h^2 = (2/h^2)(\cos(2\beta)-1).
 	\end{aligned}
 	\label{eq:G-operator}
 \end{equation}
 
 Using the G-operators, Eq.~(\ref{eq:G-operator}), the discretized equation of Eq.~(\ref{eq:constant-v-problem-dirichlet}) becomes
 \begin{equation} \label{eq:discretized-eq-G}
-	(\omega^2G_0 + \omega G_1 + G_2)\tilde{v} = 0
+	(\omega^2G_0 + \omega G_1 + G_2)\tilde{v} = 0.
 \end{equation}
 
 Solving Eq.~(\ref{eq:discretized-eq-G}), we obtain the numerical dispersion relation,
 \begin{equation}
-	\omega = \frac{2\sin(\beta)}{h}\left(v_0 \pm \sqrt{1 - v_0^2\sin[2](\beta)}\right)
+	\omega = \frac{2\sin(\beta)}{h}\left(v_0 \pm \sqrt{1 - v_0^2\sin[2](\beta)}\right).
 	\label{eq:dispersion-relation-G}
 \end{equation}
 

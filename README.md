@@ -7,7 +7,7 @@ TODO
     - [x] introduction
     - [x] fluid equations
     - [x] eigenvalue problem
-    - [ ] spectral method
+    - [x] spectral method
     - [ ] singular perturbation
     - [ ] conclusion
 - [ ] more description for results
