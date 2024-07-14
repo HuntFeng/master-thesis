@@ -175,18 +175,26 @@ The magnetic nozzle by its nature is 3-dimensional. We assume the magnetic field
 	\label{eq:divergence-free-condition}
 \end{equation}
 
-Since we are interested in the plasma flow near the central axis of the nozzle, with paraxial approximation taken, the derivative along the magnetic field line $\nabla_\parallel = \pdv*{z}$ when near the central axis \cite{smolyakov_quasineutral_2021}. Hence, in this thesis we will treat the flow in magnetic nozzle as a 1-dimensional problem. The axial magnetic field along the central axis is modeled as
+Since we are interested in the plasma flow near the central axis of the nozzle, with paraxial approximation taken, the derivative along the magnetic field line $\nabla_\parallel = \pdv*{z}$ when near the central axis \cite{smolyakov_quasineutral_2021}. Hence, in this thesis we will treat the flow in magnetic nozzle as a 1-dimensional problem. In this subsection we will define the axial magnetic field, $B_z$. Then the radial magnetic field, $B_r$, is given by the divergence-free condition, Eq.~(\ref{eq:divergence-free-condition}). The axial magnetic field along the central axis is modeled as
 \begin{equation}
 	B_z(z) = B_0 \left[1 + R\exp(-\left(\frac{z}{\delta}\right)^2)\right], \quad -1\leq z \leq 1,
 \end{equation}
-where $1+R$ is the magnetic mirror ratio, it is the ratio of the magnitude of magnetic field at the center of the nozzle to that at the end of the nozzle, $1+R = B(0)/B(1)$. The mirror ratio $R$ controls the spread of the plasma flow at the exit. On the other hand, $\delta$ determines the spread of the magnetic field. Larger the $\delta$, flatter the magnetic field. An example of magnetic field is shown in Fig.~(\ref{fig:magnetic-field}).
+where $R$ is a parameter that controls the spread of the plasma flow at the exit. On the other hand, $\delta$ determines the spread of the magnetic field. Larger the $\delta$, flatter the magnetic field. An example of magnetic field is shown in Fig.~(\ref{fig:magnetic-field}).
 
-The radial profile of magnetic field, $B_r$, is given by the divergence-free condition, Eq.~(\ref{eq:divergence-free-condition}).
+The magnetic field has its maximum at the center and minimum at the edge, this is a magnetic mirror configuration. This magnetic mirror configuration traps the charged particles and only particles with certain velocity can penetrates the nozzle throat, in other words escapes the mirror. We use mirror ratio to characterize the confinement strength of a magnetic mirror configuration. It is defined as
+\begin{equation}
+	r_{\text{mirror}} = \frac{B_{\text{max}}}{B_{\text{min}}} = \frac{1+R}{1+R\exp(-1/\delta^2)}.
+\end{equation}
+Only particles traveling with pitch angle $\theta$ (angle between velocity and $z$-axis) less $\theta_m$ can pass through the mirror. The angle $\theta_m$ is defined by \cite{chen_introduction_2016}
+\begin{equation}
+	\sin^2\theta_m = \frac{1}{r_{\text{mirror}}}.
+\end{equation}
+This defines a cone-shaped region, called loss cone, in velocity space. Larger the mirror ratio, smaller the loss cone and hence better plasma confinement within the mirror. Smaller the mirror ratio, worse the confinement. Therefore, only a portion of plasma flow, i.e. particles within this loss cone, can go through the magnetic nozzle and other particles will be reflected the mirror configuration.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/magnetic-field}
-	\caption{This is the magnetic field in nozzle with mirror ratio $1+R=B_{max}/B_{min}=2.5$, and the spread of magnetic field, $\delta=0.1/0.3=0.\bar{3}$. }
+	\caption{This is the magnetic field in nozzle with $R=1.5$, and the spread of magnetic field, $\delta=0.1/0.3=0.\bar{3}$. }
 	\label{fig:magnetic-field}
 \end{figure}
 
