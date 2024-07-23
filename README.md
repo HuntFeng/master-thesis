@@ -5,14 +5,6 @@ Known issue of usask latex template:
     - to fix this, either use [H] or placed the floating environments somewhere else
 
 TODO
-- [x] derive the exact solution instead of verify it
-- [x] reference analytical solution to appendix
-- [x] add punctuation in formulas
-    - [x] introduction
-    - [x] fluid equations
-    - [x] eigenvalue problem
-    - [x] spectral method
-    - [x] singular perturbation
-    - [x] conclusion
-- [x] more description for results
-- [ ] revise introduction
+- [x] sort references by appearance
+- [x] compress [1,2,3,4] to [1-4]
+- [ ] unify the citation format
