@@ -15,7 +15,7 @@ where $c_k$ are coefficients to be determined. There are different choices for $
 \end{itemize}
 where $T_k$, $L_k$ and $H_k$ are Chebyshev, Legendre, and Hermite polynomials of degree $k$.
 
-Using the above approximation in Eq.~(\ref{eq:polynomial-eigenvalue-problem}), and take the inner product with some other test functions $\{\psi_k(z)\}$ on $[-1,1]$, the left-hand side of Eq.~(\ref{eq:polynomial-eigenvalue-problem}) becomes a matrix equation,
+Using the above approximation in Eq.~(\ref{eq:polynomial-eigenvalue-problem}), and take the inner product with some other test functions $\{\psi_k(z)\}$ on $[-1,1]$. That is, integrate the product of $\psi_k(z)$ and Eq.~(\ref{eq:polynomial-eigenvalue-problem}) from -1 to 1. The left-hand side of Eq.~(\ref{eq:polynomial-eigenvalue-problem}) becomes a matrix equation,
 \begin{equation}
 	(\omega^2\mathbf{1} + \omega\mathbf{M} + \mathbf{N})\mathbf{c} = \mathbf{0},
 	\label{eq:pep-matrix-equation}
@@ -296,13 +296,13 @@ In this section, we will analyze the analytical and numerical dispersion relatio
 	\omega^2\tilde{v} + 2i\omega v_0\pdv{\tilde{v}}{z} + (1-v_0^2)\pdv[2]{\tilde{v}}{z} = 0, \quad v(\pm 1) = 0
 \]
 
-It is a special case, i.e. $v_0=$constant, of a more general problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). The analytical dispersion relation can be obtained by substituting $\tilde{v} = \exp(-i\omega t + kx)$ into the above equation,
+It is a special case (i.e., $v_0=$constant) of a more general problem Eq.~(\ref{eq:polynomial-eigenvalue-problem}). The analytical dispersion relation can be obtained by substituting $\tilde{v} = \exp(-i\omega t + kz)$ into the above equation,
 \begin{equation} \label{dispersion-relation}
 	\omega = k(v_0 \pm 1).
 \end{equation}
-The dispersion relation suggests that the eigenvalue $\omega$ should be real.
+Since the wavenumber $k$ is real, the dispersion relation suggests that the eigenvalue $\omega$ should be real.
 
-Now let's analyze the dispersion relation produced by finite difference. To do this we need to first understand the effect of the differential operators on function $\tilde{v}$ in finite difference. If we assume $\tilde{v}\sim \exp(ikx)$, and let $\beta\equiv kh/2$. Then in finite difference discretization scheme, the differential operators $\dv*[n]{z}$ are equivalent to the following factors \cite{llobet_spectral_1990},
+Now let's analyze the dispersion relation produced by central finite difference. To do this we need to first understand the effect of the differential operators on function $\tilde{v}$ in finite difference. If we assume $\tilde{v}\sim \exp(ikz)$, and let $\beta\equiv kh/2$. Then in finite difference discretization scheme, the differential operators $\dv*[n]{z}$ are equivalent to the following factors \cite{llobet_spectral_1990},
 \begin{equation}
 	\begin{aligned}
 		\dv[0]{z} \quad \to \quad & G_0 = 1                                                               \\
@@ -333,7 +333,7 @@ Given $h$ (fixed the mesh resolution), we see that
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=\textwidth]{figures/eigenmodes-FD.png}
-	\caption{(a) Eigenfunction corresponding to a spurious eigenvalue, the eigenfunction has weird shape. (b) Eigenfunction corresponding to a true eigenvalue.}
+	\caption{(a) Eigenfunction corresponding to a spurious eigenvalue, the oscillation frequency is so high that the wave length is about the grid size. (b) Eigenfunction corresponding to a true eigenvalue.}
 	\label{fig:eigenmodes-FD}
 \end{figure}
 
@@ -373,114 +373,81 @@ Eq.~(\ref{eq:constant-v-problem}) is a special case of a more general polynomial
 In summary, the plasma flow constant subsonic velocity profile is stable in the magnetic nozzle under both boundary conditions, Dirichlet boundary and fixed-open boundary. If the velocity is supersonic, then the plasma flow is stable is the boundary is Dirichlet, and is unstable if the boundary is fixed-open.
 
 \subsubsection*{Dirichlet Boundary}
-\begin{table} [htpb!]
-	\centering
-	\caption{Relative errors of first five eigenvalues obtained by spectral methods in constant subsonic velocity case with Dirichlet boundary condition. Numerical results agree with exact solution well.}
-	\begin{tabular}{|c|c|c|c|c|c|}
-		\hline
-		$v_0=0.5$   & $\omega_1$     & $\omega_2$     & $\omega_3$     & $\omega_4$     & $\omega_5$     \\
-		\hline
-		Collocation & 3.48944421e-14 & 6.72512513e-14 & 1.59603736e-14 & 9.81718764e-15 & 4.07098462e-15 \\
-		\hline
-		Galerkin    & 4.09596742e-14 & 1.65697986e-14 & 4.97650778e-14 & 3.27344763e-13 & 4.11444935e-12 \\
-		\hline
-	\end{tabular}
-	\label{table:eigenvalue-error-constant-subsonic-dirichlet}
-\end{table}
+Fig.~\ref{fig:constant-subsonic-dirichlet} shows that the eigenvalues obtained by spectral methods agree with the theoretical eigenvalues. Since the eigenvalues have almost zero imaginary parts, we consider the plasma flow with constant subsonic velocity in the magnetic nozzle with Dirichlet boundary is stable. Fig.~\ref{fig:errors-constant-subsonic-dirichlet} shows the absolute errors obtained by both spectral methods. The accuracy of spectral-Galerkin method drops faster than that of spectral-collocation method. Hence in this thesis, we only focus ourselves on the first 5 eigenmodes. Worth to mention, the eigenvalues are numbered by their real parts in ascending order. We order the eigenmodes by real parts of eigenvalues rather than the amplitudes of the eigenfunctions because the eigenfunctions are solutions to a second-order boundary value problem, their amplitudes can be normalized.
 
-\begin{figure}[htpb!]
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/constant-subsonic-dirichlet.png}
 	\caption{Showing the first five eigenvalues obtained by spectral-collocation and spectral-Galerkin methods. The plasma flow in the magnetic nozzle with constant subsonic velocity and Dirichlet boundary is stable. Spectral methods agree with exact eigenvalues.}
 	\label{fig:constant-subsonic-dirichlet}
 \end{figure}
 
-Fig.~\ref{fig:constant-subsonic-dirichlet} shows that the eigenvalues obtained by spectral methods agree with the theoretical eigenvalues. Table.~\ref{table:eigenvalue-error-constant-subsonic-dirichlet} shows us the relative error $\abs{\omega_{numeric} - \omega_{analytic}}/\abs{\omega_{analytic}}$ is about $10^{-14}$ for each eigenvalue. Spectral methods indeed have high accuracy. Since the eigenvalues have almost zero imaginary parts, we consider the plasma flow with constant subsonic velocity in the magnetic nozzle with Dirichlet boundary is stable.
-
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/errors-constant-subsonic-dirichlet.png}
+	\caption{Showing the absolute errors of spectral-collocation and spectral-Galerkin methods. The accuracy of eigenvalues obtained by spectral-Galerkin method drops faster than that of spectral-collocation method. We only focus on the first eigenmodes.}
+	\label{fig:errors-constant-subsonic-dirichlet}
+\end{figure}
 
 \subsubsection*{Fixed-Open Boundary}
-\begin{table} [htbp!]
-	\centering
-	\caption{Relative error of each eigenvalue. Notice that the mode index starts from 0. These results agree with theory.}
-	\begin{tabular}{|c|c|c|c|c|c|}
-		\hline
-		$v_0=0.5$   & $\omega_0$     & $\omega_1$     & $\omega_2$     & $\omega_3$     & $\omega_4$     \\
-		\hline
-		Collocation & 2.36006260e-12 & 1.95269435e-13 & 6.78183927e-14 & 2.43078107e-14 & 4.17011610e-14 \\
-		\hline
-		Galerkin    & 2.52491323e-12 & 2.19414097e-13 & 1.82417919e-13 & 5.92948284e-13 & 4.41481039e-12 \\
-		\hline
-	\end{tabular}
-	\label{table:eigenvalue-error-fixed-open-subsonic}
-\end{table}
+As shown in Fig.~\ref{fig:constant-subsonic-fixed-open} and Fig.~\ref{fig:errors-constant-subsonic-fixed-open}, the first few numerical eigenvalues obtained by the spectral methods agree with the analytical eigenvalues. Again both spectral methods show good accuracy for the first few eigenmodes. Because the eigenvalues have negative imaginary parts, meaning the perturbations will exponential decay, so the plasma flow with constant subsonic velocity in the magnetic nozzle with fixed-open boundary is stable.
 
-\begin{figure}[htbp!]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/constant-subsonic-fixed-open.png}
 	\caption{Showing the first five eigenvalues obtained by spectral-collocation and spectral-Galerkin methods. The plasma flow in the magnetic nozzle with constant subsonic velocity and fixed-open boundary is stable. Spectral methods agree with exact eigenvalues.}
 	\label{fig:constant-subsonic-fixed-open}
 \end{figure}
 
-As shown in Fig.~\ref{fig:constant-subsonic-fixed-open} and Table.~\ref{table:eigenvalue-error-fixed-open-subsonic}, the numerical eigenvalues obtained by the spectral methods agree with the analytical eigenvalues. The relative errors $\abs{\omega_{numeric} -\omega_{analytic}}/\abs{\omega_{analytic}}$ are about $10^{-13}$. Again both spectral methods show good accuracy. Because the eigenvalues have negative imaginary parts, meaning the perturbations will exponential decay, so the plasma flow with constant subsonic velocity in the magnetic nozzle with fixed-open boundary is stable.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/errors-constant-subsonic-fixed-open.png}
+	\caption{Showing the first five eigenvalues obtained by spectral-collocation and spectral-Galerkin methods. The plasma flow in the magnetic nozzle with constant subsonic velocity and fixed-open boundary is stable. Spectral methods agree with exact eigenvalues.}
+	\label{fig:errors-constant-subsonic-fixed-open}
+\end{figure}
 
 \subsection{Constant Supersonic Velocity Case}
 In supersonic case, as predicted by Sec.~\ref{sec:analysis-of-numerical-spectrum}, spurious modes occur. Convergence test was used to filter the spurious modes.
 
 \subsubsection*{Dirichlet Boundary}
-\begin{table} [htbp!]
-	\centering
-	\caption{Relative error of first five filtered eigenvalues obtained by spectral methods in constant subsonic case under Dirichlet boundary. Numerical results agree with the theory, but we see the accuracy of eigenvalues obtained from spectral-Galerkin method drops after the 3rd one.}
-	\begin{tabular}{|c|c|c|c|c|c|}
-		\hline
-		$v_0=1.5$   & $\omega_1$     & $\omega_2$     & $\omega_3$     & $\omega_4$     & $\omega_5$     \\
-		\hline
-		Collocation & 2.08984845e-13 & 9.29501612e-14 & 4.24537846e-14 & 3.38103217e-14 & 1.74476052e-14 \\
-		\hline
-		Galerkin    & 1.64805562e-13 & 6.09485884e-14 & 6.81795167e-12 & 1.95656738e-09 & 1.54134402e-07 \\
-		\hline
-	\end{tabular}
-	\label{table:eigenvalue-error-dirichlet-supersonic}
-\end{table}
+The first five filtered eigenvalues obtained by the two spectral methods are shown in Fig.~\ref{fig:constant-subsonic-dirichlet} and Fig.~\ref{fig:errors-constant-supersonic-dirichlet} shows us the relative error of each of them compare to the corresponding exact eigenvalues. Good agreement between the first few eigenvalues obtained from spectral methods and the theoretical eigenvalues is shown. However, we see that the accuracy of spectral-Galerkin method drops dramatically for larger eigenvalues. The plasma flow with constant supersonic velocity is stable in the magnetic nozzle with Dirichlet boundary.
 
-\begin{figure}[htbp!]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/constant-supersonic-dirichlet.png}
 	\caption{Showing the first five true eigenvalues obtained by spectral-collocation and spectral-Galerkin methods. The plasma flow in the magnetic nozzle with constant supersonic velocity and Dirichlet boundary is stable. Spectral methods agree with exact eigenvalues.}
 	\label{fig:constant-supersonic-dirichlet}
 \end{figure}
 
-The first five filtered eigenvalues obtained by the two spectral methods are shown in Fig.~\ref{fig:constant-subsonic-dirichlet} and Table.~\ref{table:eigenvalue-error-dirichlet-supersonic} shows us the relative error of each of them compare to the corresponding exact eigenvalues. Good agreement between the spectral methods and the theoretical eigenvalues is shown. However, we see that the accuracy of spectral-Galerkin method drops for larger eigenvalues. The plasma flow with constant supersonic velocity is stable in the magnetic nozzle with Dirichlet boundary.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/errors-constant-supersonic-dirichlet.png}
+	\caption{Showing the first five true eigenvalues obtained by spectral-collocation and spectral-Galerkin methods. The plasma flow in the magnetic nozzle with constant supersonic velocity and Dirichlet boundary is stable. Spectral methods agree with exact eigenvalues.}
+	\label{fig:errors-constant-supersonic-dirichlet}
+\end{figure}
 
 \subsubsection*{Fixed-Open Boundary}
-\begin{table} [htbp!]
-	\centering
-	\caption{Relative error of first five eigenvalues obtained by spectral methods in constant supersonic case under fixed-open boundary. Results agree with theory. The accuracy of spectral-Galerkin method drops after first few eigenvalues.}
-	\begin{tabular}{|c|c|c|c|c|c|}
-		\hline
-		$v_0=1.5$   & $\omega_0$     & $\omega_1$     & $\omega_2$     & $\omega_3$     & $\omega_4$     \\
-		\hline
-		Collocation & 5.10516649e-11 & 3.58709292e-12 & 8.72529437e-13 & 3.24263319e-13 & 1.34297439e-13 \\
-		\hline
-		Galerkin    & 5.38682371e-11 & 4.31902441e-12 & 1.44799870e-12 & 8.02395621e-11 & 2.05280524e-09 \\
-		\hline
-	\end{tabular}
-	\label{table:eigenvalue-error-fixed-open-supersonic}
-\end{table}
+Fig.~\ref{fig:constant-supersonic-fixed-open} shows us that plasma flow with constant supersonic velocity is unstable in the magnetic nozzle with fixed-open boundary. Fig.~\ref{fig:errors-constant-supersonic-fixed-open} shows relative error for the first five filtered eigenvalues obtained by different spectral methods. Again, we see that the accuracy of spectral-Galerkin method drops for larger eigenvalues.
 
-\begin{figure}[htbp!]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/constant-supersonic-fixed-open.png}
 	\caption{Showing the first five true eigenvalues obtained by spectral-collocation and spectral-Galerkin methods. The plasma flow in the magnetic nozzle with constant supersonic velocity and fixed-open boundary is unstable.}
 	\label{fig:constant-supersonic-fixed-open}
 \end{figure}
 
-Table.~\ref{table:eigenvalue-error-fixed-open-supersonic} shows relative error for the first five filtered eigenvalues obtained by different spectral methods. We see that the accuracy of spectral-Galerkin method drops for larger eigenvalues. Fig.~\ref{fig:constant-supersonic-fixed-open} shows us that plasma flow with constant supersonic velocity is unstable in the magnetic nozzle with fixed-open boundary.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/errors-constant-supersonic-fixed-open.png}
+	\caption{Showing the first five true eigenvalues obtained by spectral-collocation and spectral-Galerkin methods. The plasma flow in the magnetic nozzle with constant supersonic velocity and fixed-open boundary is unstable.}
+	\label{fig:errors-constant-supersonic-fixed-open}
+\end{figure}
 
-\section{Plasma Flow with Spatial Varying Velocity Profiles}
-In previous section we have already verify the accuracy of spectral methods by comparing the numerical results to the analytical solutions to the eigenvalue problem with constant velocity plasma flow, Eq.~(\ref{eq:constant-v-problem}). In this section we will apply spectral methods to the eigenvalue problem with spatial varying velocity profiles. That is Eq.~(\ref{eq:polynomial-eigenvalue-problem}) with Dirichlet boundary and fixed-open boundary conditions. The parameters for spectral methods are the same as Table.~\ref{table:parameters}.
+\section{Plasma Flow with Spatially Varying Velocity Profiles}
+In previous section we have already verify the accuracy of spectral methods by comparing the numerical results to the analytical solutions to the eigenvalue problem with constant velocity plasma flow, Eq.~(\ref{eq:constant-v-problem}). In this section we will apply spectral methods to the eigenvalue problem with spatially varying velocity profiles. That is Eq.~(\ref{eq:polynomial-eigenvalue-problem}) with Dirichlet boundary and fixed-open boundary conditions. The parameters for spectral methods are the same as Table.~\ref{table:parameters}.
 
 \subsection{Subsonic Case}
-In this case, the plasma flows with subsonic velocity. The velocity profile is spatial varying and will reach its maximum $0.5$ Mach at the nozzle throat $z=0$. The velocity profile is the orange line shown in Fig.~\ref{fig:velocity-profiles}. When applying spectral methods, no spurious modes were found in subsonic case. Similar to the case with constant velocity profile, we experiment with two boundary conditions: Dirichlet boundary and fixed-open boundary. We found that the plasma flow is stable when the boundary condition is Dirichlet and is stable (except ground mode) when using fixed-open boundary.
+In this case, the plasma flows with subsonic velocity. The velocity profile is spatially varying and will reach its maximum $0.5$ Mach at the nozzle throat $z=0$. The velocity profile is the orange line shown in Fig.~\ref{fig:velocity-profiles}. When applying spectral methods, no spurious modes were found in subsonic case. Similar to the case with constant velocity profile, we experiment with two boundary conditions: Dirichlet boundary and fixed-open boundary. We found that the plasma flow is stable when the boundary condition is Dirichlet and is stable (except ground mode) when using fixed-open boundary.
 
 \subsubsection*{Dirichlet Boundary}
 \begin{figure} [htbp!]

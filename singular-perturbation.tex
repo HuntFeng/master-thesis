@@ -1,7 +1,7 @@
 \chapter{Singular Perturbation} \label{chap:singular-perturbation}
-When dealing with the accelerating velocity profile, spectral methods struggle to yield meaningful results because of the singularity at the nozzle throat ($z=0$). The following of this chapter is then dedicated to analyze the polynomial eigenvalue problem with accelerating velocity profile. We start by showing the existence of the singularity of Eq.~(\ref{eq:polynomial-eigenvalue-problem}), and how spectral methods introduced in previous chapter failed to resolve solutions. Then we will discuss the concept of singular perturbation and will pick up regular solutions to Eq.~(\ref{eq:polynomial-eigenvalue-problem}) near the nozzle throat $z=0$ using Frobenius method. Finally, we will introduce shooting method and use it together with the regular solutions to find eigenmodes.
+When dealing with the accelerating velocity profile, spectral methods struggle to yield meaningful results because of the singularity at the nozzle throat ($z=0$). This chapter is dedicated to analyze the polynomial eigenvalue problem with accelerating velocity profile. We start by showing the existence of the singularity of Eq.~(\ref{eq:polynomial-eigenvalue-problem}), and how spectral methods introduced in previous chapter failed to resolve solutions. Then we will discuss the concept of singular perturbation and will pick up regular solutions to Eq.~(\ref{eq:polynomial-eigenvalue-problem}) near the nozzle throat $z=0$ using Frobenius method. Finally, we will introduce shooting method and use it together with the regular solutions to find eigenmodes.
 
-\section{Presence of Singularity in Transonic cases} \label{sec:presence-of-singularity}
+\section{Presence of Singularity in Transonic Cases} \label{sec:presence-of-singularity}
 In order to see the existence of the singularity, we rearrange the terms the polynomial eigenvalue problem, Eq.~(\ref{eq:polynomial-eigenvalue-problem}),
 \begin{equation} \label{eq:singular-perturbation-problem}
 	\begin{aligned}
@@ -13,7 +13,7 @@ In order to see the existence of the singularity, we rearrange the terms the pol
 \end{equation}
 This is a second order ordinary differential equation defined on region $[-1,1]$.
 
-For transonic (accelerating and decelerating) velocity profiles (Fig.~\ref{fig:velocity-profiles}), the plasma flow is at sonic point at the throat of the nozzle, $v_0(0)=1$. Therefore, the highest order term vanishes at $z=0$. It is a singular point, and it is the  cause of the failure of spectral method, see Fig.~(\ref{fig:failure-of-spectral-method}). Spectral method is unable to resolve meaningful eigenfunctions, the eigenfunctions are squeezed together at $z=0$, hence resulting wrong eigenvalues.
+For transonic (accelerating and decelerating) velocity profiles (Fig.~\ref{fig:velocity-profiles}), the plasma flow is at sonic point at the throat of the nozzle, $v_0(0)=1$. Therefore, the highest order term vanishes at $z=0$. It is a singular point, and it is the  cause of the failure of spectral method, see Fig.~(\ref{fig:failure-of-spectral-method}). Spectral method is unable to resolve meaningful eigenfunctions, the eigenfunctions are squeezed together at $z=0$, hence resulting in wrong eigenvalues.
 
 \begin{figure} [htbp]
 	\centering
@@ -89,12 +89,11 @@ Solving this relation we get explicit expression for $c_n$, $n\in\mathbb{N}$,
 \begin{equation}
 	\begin{aligned}
 		c_n & = \frac{(-1)^n b^n c_0}{\prod_{k=0}^{n-1} (n+r-k)(n+r-1+a-k)}               \\
-		    & = (-1)^n b^n c_0 \frac{\Gamma(r+1)\Gamma(r+a)}{\Gamma(n+r+1)\Gamma(n+r+a)}.
+		    & = (-1)^n b^n c_0 \frac{\Gamma(r+1)\Gamma(r+a)}{\Gamma(n+r+1)\Gamma(n+r+a)},
 	\end{aligned}
 	\label{eq:coefficient}
 \end{equation}
-
-Therefore, we successfully extracted the regular solution (corresponding to the root $r=0$) in the form of power series,
+where $\Gamma$ is the Gamma function. Therefore, we successfully extracted the regular solution (corresponding to the root $r=0$) in the form of power series,
 \begin{equation} \label{eq:regular-solution}
 	\begin{aligned}
 		\tilde{v} & = c_0 + c_1z + c_2z^2 + \cdots                                \\
@@ -139,7 +138,7 @@ Let $\mathbf{\tilde{u}} = [\tilde{v}, \tilde{u}]^T$, the polynomial eigenvalue p
 \end{align*}
 Together with two boundary conditions, $\tilde{v}(-1) = 0$ and $\tilde{v}(0) = 1$. The task of shooting method remains the same: find $\mathbf{\tilde{u}}$ and $\omega$ such that $\dv*{\mathbf{\tilde{u}}}{z} = \mathbf{f}$ and $\tilde{v}$ must satisfy the boundary conditions.
 
-Suppose $\omega$ is given. We can find $\mathbf{\tilde{u}}(-1)$, and hence $\tilde{v}(-1)$ by applying 4th order Runge-Kutta method (RK4) to the following IVP,
+Suppose $\omega$ is given. We can find $\mathbf{\tilde{u}}(-1)$ by solving the following I.V.P. with initial conditions at $z=0$, and hence $\tilde{v}(-1)$ by applying 4th order Runge-Kutta method (RK4) to the following IVP,
 \begin{equation}
 	\dv{z}\mathbf{\tilde{u}} = \mathbf{f}(\mathbf{\tilde{u}},z;\omega), \quad
 	-1 \leq z \leq 0, \quad
@@ -159,7 +158,7 @@ The information of the regular solution is built into the numerical process by s
 \end{equation}
 The coefficients $c_0, c_1$, and $c_2$ are obtained from the power series expansion of $\tilde{v}$ near $z=0$, Eq.~(\ref{eq:regular-solution}).
 
-The above step can be abstracted as a function, $h(\omega) = \tilde{v}(-1)$. This function takes in a variable $\omega$, and it spits out the value $\tilde{v}(-1)$ by applying RK4 to the I.V.P. Eq.~(\ref{eq:shooting-method-ivp}). We then apply root finding algorithm to this function $h$ to find $\omega$ such that $\tilde{v}$ satisfies the boundary condition at the entrance, $h(\omega)=\tilde{v}(-1)=0$. This process can be viewed as trying to land a projectile at certain location, i.e. $\tilde{v}(-1)=0$, by adjusting the shooting angle, i.e. $\omega$, hence the name shooting method.
+The above step can be abstracted as a function, $h(\omega) = \tilde{v}(-1)$. This function takes in a variable $\omega$, and it outputs the value $\tilde{v}(-1)$ by applying RK4 to the I.V.P. Eq.~(\ref{eq:shooting-method-ivp}). We then apply root finding algorithm to this function $h$ to find $\omega$ such that $\tilde{v}$ satisfies the boundary condition at the entrance, $h(\omega)=\tilde{v}(-1)=0$. This process can be viewed as trying to land a projectile at certain location, i.e., $\tilde{v}(-1)=0$, by adjusting the shooting angle, i.e., $\omega$, hence the name shooting method.
 
 After finding $\omega$, we can extend the numerical solution $\tilde{v}$ to the region $[0,1]$. We simply apply RK4 to the following I.V.P.
 \begin{equation}
@@ -167,7 +166,7 @@ After finding $\omega$, we can extend the numerical solution $\tilde{v}$ to the 
 	0 \leq z \leq 1, \quad
 	\mathbf{\tilde{u}}(0)=\mqty[\tilde{v}(0) \\ \tilde{u}(0)], \dv{z}\mathbf{\tilde{u}}(0) =\mqty[\tilde{v}'(0) \\ \tilde{u}'(0)].
 \end{equation}
-Since $\omega$ is already found, the initial conditions are given. The function $\mathbf{f}$ is continuous in $z$ on $[0,1]$ and is Lipschitz in $\mathbf{\tilde{u}}$ due to the fact $\mathbf{f}$ is continuous on a compact region $[0,1]$. Hence, the solution to this I.V.P. exists and is unique.
+Since $\omega$ is already found, the initial conditions are given. The function $\mathbf{f}$ is continuous in $z$ on $[0,1]$ and is Lipschitz in $\mathbf{\tilde{u}}$ due to the fact that $\mathbf{f}$ is continuous on a compact region $[0,1]$. Hence, the solution to this I.V.P. exists and is unique.
 
 
 \section{Plasma Flow with Accelerating Velocity Profile}

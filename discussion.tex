@@ -2,7 +2,7 @@
 \section{Summary of the Results}
 In the first chapter we introduced various concepts including plasma, spectral instability and magnetic nozzle. We also briefly discussed the general procedure for finding the spectral instability of PDEs, and the relationship between spectral instability and plasma instability. In Chap.~\ref{chap:fluid-equations}, we derived the governing fluid equations for plasma flow in a magnetic nozzle and explored the equilibrium plasma flow. Following that, in Chap.~\ref{chap:polynomial-eigenvalue-problem}, by reducing the system of two first-order PDEs into a single second-order PDE, the problem simplifies to a so-called polynomial eigenvalue problem. In Chap.~\ref{chap:spectral-method} we discretized the Eq.~(\ref{eq:polynomial-eigenvalue-problem}) using Chebyshev differentiation matrix and Legendre polynomials, converting the polynomial eigenvalue problem into an algebraic eigenvalue problem. This allows us to apply well-developed numerical methods for obtaining eigenvalues and eigenfunctions. During this process, convergence test was applied to eliminate the spurious modes from spectral pollution. While spectral methods can handle most cases, i.e. subsonic and supersonic plasma flows, they fail to resolve meaningful eigenvalues and eigenfunctions for the accelerating plasma flow due to the existence of singularity at the sonic point in the nozzle throat. In Chap.~\ref{chap:singular-perturbation}, we addressed this issue. Frobenius method was used to pick up regular solutions passing through the nozzle throat and shooting method was applied on the regular solutions to find the eigenvalues and eigenfunctions.
 
-For the subsonic flow, it is stable under Dirichlet boundary condition. It is also stable under fixed-open boundary, except for ground mode when velocity is nonuniform. For the supersonic flow, it is stable when Dirichlet boundary condition is applied, and unstable is the boundary condition is fixed-open. The flow with accelerating velocity profile is stable, assuming there is no velocity perturbation at the entrance of the nozzle. The results are summarized below.
+For the subsonic flow, it is stable under Dirichlet boundary condition. It is also stable under fixed-open boundary, except for ground mode when velocity is nonuniform. For the supersonic flow, it is stable when Dirichlet boundary condition is applied, and unstable when the boundary condition is fixed-open. The flow with accelerating velocity profile is stable, assuming there is no velocity perturbation at the entrance of the nozzle. The results are summarized below.
 
 \begin{itemize}
 	\item Subsonic plasma flow is stable under Dirichlet boundary and is also stable (except ground mode with non-constant velocity profile) under Fixed-Open boundary.
@@ -10,18 +10,18 @@ For the subsonic flow, it is stable under Dirichlet boundary condition. It is al
 	\item Accelerating plasma flow is stable with Dirichlet boundary at the entrance.
 \end{itemize}
 
-\section{Limitations and Future Works}
+\section{Limitations and Future Work}
 \subsection{Spectral Method}
-The spectral method suffers the spectral pollution. For now there is no automatic ways to filter spurious modes other than doing convergence test and pick up the convergent eigenvalues manually by ourselves. We believe there is a discretization scheme that is spectral pollution free. We made such optimistic guess based on the following example. Let's transform Eq.~\ref{eq:constant-v-problem} with Dirichlet boundary condition $\tilde{v}(\pm 1) = 0$ to its normal form, that is
+The spectral method suffers the spectral pollution. For now there is no automatic ways to filter spurious modes other than doing convergence test and pick up the convergent eigenvalues manually. We believe there is a discretization scheme that is spectral pollution free. We made such optimistic guess based on the following example. Let's transform Eq.~\ref{eq:constant-v-problem} with Dirichlet boundary condition $\tilde{v}(\pm 1) = 0$ to its normal form, that is
 \begin{equation}
 	u''(z) + r(z)u(z) = 0, \quad u(\pm 1) = 0.
 \end{equation}
-By doing the change of variables
+By doing the following transformation of variables
 \begin{equation}
 	u(z) = \exp\left(\frac{iv_0\omega}{1-v_0^2}\right)\tilde{v}(z); \quad
 	r(z) = \frac{\omega^2}{(1-v_0^2)^2}.
 \end{equation}
-If we apply spectral methods to this problem, we observed no spurious modes in the spectrum. Meaning that this transformed problem is spectral pollution free. We might be able to transform the polynomial eigenvalue problem, with non-uniform velocity profile, to a certain form such that it is spectral pollution free when we apply spectral methods.
+If we apply spectral methods to this problem, we observed no spurious modes in the spectrum. Meaning that this transformed problem is spectral pollution free. Based on this observation, we believe there exists a transformation of the polynomial eigenvalue problem such that it is spectral pollution free when applying spectral methods.
 
 \subsection{Shooting Method}
 The shooting method is not exhaustive due to the nature of root finding algorithm. A root can only be found if the initial guess of the root is close enough to the actual root. To work around this issue, we have to perform a grid search on the complex plane. This way we can only survey the low frequency region due to finite computing resources. The conclusion for the instability of accelerating plasma flow is true only for low frequency region. We believe there are different discretizations allowing us to overcome the singularity without picking up regular solutions manually using Frobenius method.

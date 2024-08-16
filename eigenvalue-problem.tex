@@ -146,7 +146,7 @@ where $C\in\mathbb{C}$ is a complex constant, and the frequencies (eigenvalues) 
 	\omega_n = n\pi(1-v_0^2)/2,\quad n\in\mathbb{Z}.
 	\label{eq:eigvals-constant-v-dirichlet}
 \end{equation}
-The derivation is shown in Appendix.~\ref{chap:analytical-solutions}. The results are plotted in Fig.~\ref{fig:exact-v-dirichlet} This result tells us that the flow in a magnetic nozzle with uniform magnetic field is stable regardless the velocity $v_0$ for constant velocity case.
+The derivation is shown in Appendix.~\ref{chap:analytical-solutions}. The results are plotted in Fig.~\ref{fig:exact-v-dirichlet} This result tells us that the flow in a magnetic nozzle with uniform magnetic field is stable regardless the velocity $v_0$ for constant velocity case. Worth to mention, perturbations with positive $\Re(\omega)$ produce the oscillation as those with negative $\Re(\omega)$, so we only focus on the eigenvalues with positive real parts.
 
 This solution is exact, we will use this to benchmark the simulation results in later chapter.
 
@@ -173,12 +173,12 @@ Fixed-Open boundary condition assumes that there are no perturbations at the ent
 	\tilde{v}(-1) = \pdv{\tilde{v}}{z}\,(1) = 0.
 \end{equation}
 
-The solution to this problem is similar to Eq.~(\ref{eq:constant-v-solution-dirichlet}), the only difference is the eigenvalues. In this case, the eigenvalues are
+The approach to this problem is similar to Eq.~(\ref{eq:constant-v-solution-dirichlet}), the only difference is the eigenvalues. In this case, the eigenvalues are
 \begin{equation}
 	\omega_n = (v_0^2 - 1) \left[\frac{n\pi}{2} - \frac{1}{4}i\ln\abs{\frac{v_0-1}{v_0+1}}\right], \quad n\in\mathbb{Z}.
 	\label{eq:eigvals-constant-v-fixed-open}
 \end{equation}
-Again, the derivation can be found in Appendix.~\ref{chap:analytical-solutions}. The growth rate is independent of the mode number $n$, and it is always $\ln\abs{(v_0-1)/(v_0+1)}$. It is is positive for any $v_0\neq 1$. Therefore,
+Again, the derivation can be found in Appendix.~\ref{chap:analytical-solutions}. The growth rate is independent of the mode number $n$, and it is always $\ln\abs{(v_0-1)/(v_0+1)}$. It is positive for any $v_0\neq 1$. Therefore,
 \begin{itemize}
 	\item If $v_0<1$, then $\Im(\omega)<0$, it's damped oscillation, hence stable.
 	\item If $v_0>1$, then $\Im(\omega)>0$, it's unstable.
