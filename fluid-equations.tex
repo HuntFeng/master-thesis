@@ -26,7 +26,15 @@ where $\mathbf{v_\parallel}$ denotes the velocity along the magnetic field line,
 		v_z & = v_{0z},
 	\end{aligned}
 \end{equation}
-where $v_{0\perp} = \sqrt{v_{0x}^2+v_{0y}^2}$ is the initial speed in the plane perpendicular to the magnetic field, and $\omega_c \equiv \abs{q}B/m$ is called the Larmor frequency. In this way, we see that the charged particle is doing circular motion in the $x-y$ plane with Larmor frequency $\omega_c$. On the other hand, the particle is flowing freely in $\hat{z}$ direction since there is no force acting on the charged particle along the magnetic field line. The charged particle is doing helical motion along the magnetic field line as shown in Fig.~\ref{fig:gyrate-along-b-field}. If we integrate the velocities with respect to time we will see the radius of the gyration is a constant, $r_L \equiv m_v\perp/\abs{q}B$, it is called Larmor radius.
+where $v_{0\perp} = \sqrt{v_{0x}^2+v_{0y}^2}$ is the initial speed in the plane perpendicular to the magnetic field, and $\omega_c \equiv \abs{q}B/m$ is called the Larmor frequency. In this way, we see that the charged particle is doing circular motion in the $x-y$ plane with Larmor frequency $\omega_c$. On the other hand, the particle is flowing freely in $\hat{z}$ direction since there is no force acting on the charged particle along the magnetic field line. The charged particle is doing helical motion along the magnetic field line as shown in Fig.~\ref{fig:gyrate-along-b-field}. If we integrate the velocities with respect to time we will see the radius of the gyration is a constant, $r_L \equiv mv_\perp/\abs{q}B$, it is called Larmor radius.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/gyrate-along-b-field}
+	\caption{A charged particle gyrates about the magnetic field line. The velocity along the field line is $\mathbf{v}_{\parallel}$ and the Larmor frequency is $\omega_c = \abs{q}B/m$, and the Larmor radius is $r_L = mv_\perp/\abs{q}B$. Moreover, for static, nonuniform magnetic field, the charged particle will stay on the same magnetic field line as it gyrates.}
+	\label{fig:gyrate-along-b-field}
+\end{figure}
+
 
 \subsubsection*{Finite Electric Field}
 With the presence of uniform electric field $\mathbf{E} = E_x\hat{x} + E_y\hat{y} + E_z\hat{z}$, the solution to Eq.~(\ref{eq:equation-of-motion-single-particle}) becomes
@@ -46,44 +54,27 @@ This is so-called the $\mathbf{E\times B}$ drift.
 
 Imagine a cylinder shape magnetic nozzle with externally applied magnetic field, the magnetic field is as described in Sec.~\ref{sec:magnetic-field-in-nozzle}. The particles will move along the magnetic field lines. Due to high mobility of electrons, they move faster than ions, this creates electric field and will accelerate ions in the nozzle (more details will be discussed in Sec.~\ref{sec:equation-of-motion-of-the-plasma-flow-in-nozzle}). By symmetry, if there is electric field in the plane perpendicular to $\mathbf{B}$ field, it will be pointing radially, $\mathbf{E_\perp} = E_\perp\cos\theta\hat{x} + E_\perp\sin\theta\hat{y}$. According to the above discussion, the $\mathbf{E\times B}$ drift, $\mathbf{v_{E\times B}} = E_\perp/B (\sin\theta\hat{x} - \cos\theta\hat{y})$, will be in $\hat{\theta}$ direction. Meaning that in magnetic nozzle, the particles have two gyrating motions: one is the small scale Larmor gyration, and the other one is the larger scale $\mathbf{E\times B}$ drift in $\hat{\theta}$ direction. In this thesis, we are interested in the flow near the central axis, therefore the larger scale drift will be ignored.
 
-\subsection{Adiabatic Invariants}
-The charged particles always travel on the same magnetic field line in the magnetic nozzle. To show this we will introduce two adiabatic invariants.
+\subsection{Adiabatic Invariant - Magnetic Moment}
+For completeness, we introduce the so-called magnetic moment, an adiabatic invariants. We will show that most particles will be trapped in magnetic mirror.
 
-\subsubsection*{Magnetic Moment}
 In classical mechanics, the action integral $\oint pdq$ taken over a period of a periodic motion is a constant. Here $p$ and $q$ are generalized momentum and coordinate. In single particle motion along magnetic field line, one obvious periodic motion is the Larmor gyration. Take $p$ to be the angular momentum $mv_\perp r$ and $q$ to be the angular coordinate $\theta$, the action integral becomes
 
 \begin{equation}
 	\oint pdq = \oint mv_\perp r_L d\theta = 2\pi r_L mv_\perp = 2\pi \frac{mv_\perp^2}{\omega_c} = 4\pi\frac{m}{\abs{q}}\left(\frac{mv_\perp^2}{2B}\right).
 \end{equation}
 
-Define the quantity magnetic moment as
+The magnetic moment is defined as \cite{chen_introduction_2016},
 \begin{equation}
 	\mu = \frac{mv_\perp^2}{2B}.
 \end{equation}
 
-We see that the magnetic moment $\mu$ is constant. If a particle is moving in a magnetic mirror, then due to conservation of magnetic moment (and energy), particles will be reflected at points where magnetic field strength is large. These locations are called turning points.
-
-\subsubsection*{Longitudinal Invariant}
-The next adiabatic invariant is the quantity defined as \cite{chen_introduction_2016},
-\begin{equation}
-	J=\int_a^b v_\parallel ds,
-\end{equation}
-where $a$ and $b$ are the two turning points in magnetic mirror, see Fig.~\ref{fig:particle-in-mirror}.
+We see that the magnetic moment $\mu$ is constant. If a particle is moving in a magnetic mirror, then due to conservation of magnetic moment (and energy), particles will be reflected at points where magnetic field strength is large. These locations are called turning points and is shown in Fig.~\ref{fig:magnetic-mirror}. Thus only a portion of particles can escape from the magnetic mirror. To be more specific, only particles traveling in the loss cone of the magnetic mirror can pass through, the pitch angle of the loss cone was defined by Eq.~(\ref{eq:loss-cone}).
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{figures/particle-in-mirror.png}
-	\caption{A particle bouncing between turning points $a$ and $b$ in a magnetic field. Adapted from \cite{chen_introduction_2016}.}
-	\label{fig:particle-in-mirror}
-\end{figure}
-When a particle is drifting back from the turning point, it will always stay on the same magnetic field line. This is because $J$ is conserved. The particles at the turning point has kinetic energy $mv_\perp/2$, so the magnetic field strength will be $\abs{B}$ when particle turns. Furthermore, $J$ determines the length of the magnetic field line between turning points, and no two lines have the same length between points with the same $\abs{B}$. Hence, the particle returns to the same magnetic field line.
-
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/gyrate-along-b-field}
-	\caption{A charged particle gyrates about the magnetic field line. The velocity along the field line is $\mathbf{v}_{\parallel}$ and the gyrate frequency, radius is given by the radial equation, $q\mathbf{v_{\perp}\times B} = \mathbf{\hat{r}} mv_\perp^2/r$. Moreover, for static, nonuniform magnetic field, the charged particle will stay on the same magnetic field line as it gyrates.}
-	\label{fig:gyrate-along-b-field}
+	\caption{A particle bouncing between turning points $a$ and $b$ in a magnetic mirror. Adapted from \cite{chen_introduction_2016}.}
+	\label{fig:magnetic-mirror}
 \end{figure}
 
 \subsection{From Kinetic Theory to Fluid Description}
@@ -111,10 +102,10 @@ where $\mathbf{v}$ without the subscript $p$ is the fluid velocity of the plasma
 
 In this thesis we assume collisionless plasma. The distribution function $f$ in a collisionless plasma satisfies the so-called collisionless Vlasov equation, $\dv*{t} f(\mathbf{x}, \mathbf{v}, t) = 0$. Expand it explicitly, it is
 \begin{equation}
-	\pdv{f}{t} + \mathbf{v}\pdv{f}{\mathbf{x}} + \frac{q}{m}(\mathbf{E} + \mathbf{v}\times\mathbf{B})\pdv{f}{\mathbf{v}} = C(f),
+	\pdv{f}{t} + \mathbf{v}\pdv{f}{\mathbf{x}} + \frac{q}{m}(\mathbf{E} + \mathbf{v}\times\mathbf{B})\pdv{f}{\mathbf{v}} = 0,
 	\label{eq:vlasov}
 \end{equation}
-where $q(\mathbf{E} + \mathbf{v}\times\mathbf{B})$ is the Lorentz force experience by the species. Since we are interested in collisionless plasma, the collision term $C(f)$ is always zero.
+where $q(\mathbf{E} + \mathbf{v}\times\mathbf{B})$ is the Lorentz force experience by the species.
 
 Integrate both sides with respect to volume element in velocity space, $d^3\mathbf{v}$, we get the conservation of density.
 \begin{equation}
@@ -123,7 +114,7 @@ Integrate both sides with respect to volume element in velocity space, $d^3\math
 
 If we multiply $\mathbf{v}$ on both sides and integrate with respect to $d^3\mathbf{v}$, we get the conservation of momentum,
 \begin{equation}
-	mn\left[\pdv{\mathbf{v}}{t} + (\mathbf{v}\cdot\grad){\mathbf{v}} \right] = qn(\mathbf{E+v\times B}) - \div\mathbf{P} + \mathbf{P}_{ij},
+	mn\left[\pdv{\mathbf{v}}{t} + (\mathbf{v}\cdot\grad){\mathbf{v}} \right] = qn(\mathbf{E+v\times B}) - \div\mathbf{P},
 \end{equation}
 where $\mathbf{P}\equiv mn\overline{\mathbf{v}_{th}\mathbf{v}_{th}}$ is the stress tensor, the bar represents average over velocity space with distribution function $f(\mathbf{x}, \mathbf{v}_p, t)$, is the stress tensor. Here we assume the distribution function is isotropic Maxwellian, then it is easy to see that
 \begin{equation}
