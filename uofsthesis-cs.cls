@@ -347,30 +347,30 @@
 
 
 \DeclareOption{doublespace}{
-\let\doublespace=y
+	\let\doublespace=y
 }
 
 \DeclareOption{singlespace}{
-\let\singlespace=Y
+	\let\singlespace=Y
 }
 
 \DeclareOption{proposal}{
-\let\proposal=Y
+	\let\proposal=Y
 }
 
 \DeclareOption{notablelist}{
-\let\notablelist=Y
+	\let\notablelist=Y
 }
 \DeclareOption{nofigurelist}{
-\let\nofigurelist=Y
+	\let\nofigurelist=Y
 }
 
 \DeclareOption{bound}{
-\let\bound=Y
+	\let\bound=Y
 }
 
 \DeclareOption{nohyperref}{
-\let\nohyperref=Y
+	\let\nohyperref=Y
 }
 
 \ProcessOptions
@@ -419,31 +419,31 @@
 
 % Make sure only one spacing option is selected.
 \ifx\singlespace\undefined
-    \relax
+	\relax
 \else
-    \ifx\doublespace\undefined
-        \relax
-    \else
-        \ClassError{uofsthesis-cs}{Cannot use 'doublespace' and 'singlespace' options together.}
-    \fi
+	\ifx\doublespace\undefined
+		\relax
+	\else
+		\ClassError{uofsthesis-cs}{Cannot use 'doublespace' and 'singlespace' options together.}
+	\fi
 \fi
 
 
 % If the proposal option is selected, we allow the singlespace option.
 % The purpose of this is to reduce printed pages for reviewing drafts.
 \ifx\singlespace\undefined
-    \relax
+	\relax
 \else
-    \ifx\proposal\undefined
-        \ClassWarning{uofsthesis-cs}{The 'singlespace' option can only be used in conjunction with the 'proposal' option.}
-    \fi
-    \renewcommand{\spacemultiplier}{1}
+	\ifx\proposal\undefined
+		\ClassWarning{uofsthesis-cs}{The 'singlespace' option can only be used in conjunction with the 'proposal' option.}
+	\fi
+	\renewcommand{\spacemultiplier}{1}
 \fi
 
 \ifx\doublespace\undefined
-    \relax
+	\relax
 \else
-    \renewcommand{\spacemultiplier}{2}
+	\renewcommand{\spacemultiplier}{2}
 \fi
 
 % Set the spacing to the selected multiplier.
@@ -488,16 +488,16 @@
 % Redefine quote and quotation environments so that they are single spaced
 % according to CGSR regulations.
 \renewenvironment{quotation}
-               {\list{}{\listparindent 1.5em%
-                        \itemindent    \listparindent
-                        \rightmargin   \leftmargin
-                        \parsep        \z@ \@plus\p@}%
-                \item\renewcommand{\baselinestretch}{1}\normalsize\relax}
-               {\endlist}
+{\list{}{\listparindent 1.5em%
+		\itemindent    \listparindent
+		\rightmargin   \leftmargin
+		\parsep        \z@ \@plus\p@}%
+	\item\renewcommand{\baselinestretch}{1}\normalsize\relax}
+{\endlist}
 \renewenvironment{quote}
-               {\list{}{\rightmargin\leftmargin}%
-                \item\renewcommand{\baselinestretch}{1}\normalsize\relax}
-               {\endlist}
+{\list{}{\rightmargin\leftmargin}%
+	\item\renewcommand{\baselinestretch}{1}\normalsize\relax}
+{\endlist}
 % Increase the space between last line of text and footnote rule.
 % This is a very untidy way to do it!
 
@@ -507,36 +507,36 @@
 % from Stanford thesis style.
 
 \def\@xfloat#1[#2]{\ifhmode \@bsphack\@floatpenalty -\@Mii\else
-   \@floatpenalty-\@Miii\fi\def\@captype{#1}\ifinner
-      \@parmoderr\@floatpenalty\z@
-    \else\@next\@currbox\@freelist{\@tempcnta\csname ftype@#1\endcsname
-       \multiply\@tempcnta\@xxxii\advance\@tempcnta\sixt@@n
-       \@tfor \@tempa :=#2\do
-                        {\if\@tempa h\advance\@tempcnta \@ne\fi
-                         \if\@tempa t\advance\@tempcnta \tw@\fi
-                         \if\@tempa b\advance\@tempcnta 4\relax\fi
-                         \if\@tempa p\advance\@tempcnta 8\relax\fi
-         }\global\count\@currbox\@tempcnta}\@fltovf\fi
+		\@floatpenalty-\@Miii\fi\def\@captype{#1}\ifinner
+		\@parmoderr\@floatpenalty\z@
+	\else\@next\@currbox\@freelist{\@tempcnta\csname ftype@#1\endcsname
+			\multiply\@tempcnta\@xxxii\advance\@tempcnta\sixt@@n
+			\@tfor \@tempa :=#2\do
+			{\if\@tempa h\advance\@tempcnta \@ne\fi
+				\if\@tempa t\advance\@tempcnta \tw@\fi
+				\if\@tempa b\advance\@tempcnta 4\relax\fi
+				\if\@tempa p\advance\@tempcnta 8\relax\fi
+			}\global\count\@currbox\@tempcnta}\@fltovf\fi
 
-%    Replaced this line with the following line to fix
-%    compatiblity with the color package.
-%
-%    \global\setbox\@currbox\vbox\bgroup 
+	%    Replaced this line with the following line to fix
+	%    compatiblity with the color package.
+	%
+	%    \global\setbox\@currbox\vbox\bgroup 
 
-    \global\setbox\@currbox\color@vbox\normalcolor\vbox\bgroup
+	\global\setbox\@currbox\color@vbox\normalcolor\vbox\bgroup
 
-    \def\baselinestretch{1}
-    \boxmaxdepth\z@
-    \hsize\columnwidth \@parboxrestore}
+	\def\baselinestretch{1}
+	\boxmaxdepth\z@
+	\hsize\columnwidth \@parboxrestore}
 
 \long\def\@footnotetext#1{\insert\footins{\def\baselinestretch{1}\footnotesize
-    \interlinepenalty\interfootnotelinepenalty 
-    \splittopskip\footnotesep
-    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
-    \hsize\columnwidth \@parboxrestore
-   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
-    {\rule{\z@}{\footnotesep}\ignorespaces
-      #1\strut}}}
+		\interlinepenalty\interfootnotelinepenalty
+		\splittopskip\footnotesep
+		\splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+		\hsize\columnwidth \@parboxrestore
+		\edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+		{\rule{\z@}{\footnotesep}\ignorespaces
+			#1\strut}}}
 
 
 %Make fancier table and figure captions -- from 'caption' package
@@ -555,18 +555,18 @@
 \newcommand{\doctype}{unknown}
 
 \newcommand{\degree}[1]{
-\gdef\@degree{#1}
-\ifx#1\PhD
-\renewcommand{\doctype}{dissertation}
-\else
-\renewcommand{\doctype}{thesis}
-\fi
+	\gdef\@degree{#1}
+	\ifx#1\PhD
+		\renewcommand{\doctype}{dissertation}
+	\else
+		\renewcommand{\doctype}{thesis}
+	\fi
 }
 \newcommand{\defencedate}[1]{\gdef\@defencedate{#1}}
 \newcommand{\department}[1]{\gdef\@department{#1}}
 \newcommand{\academicunit}[1]{\gdef\@academicunit{#1}}
 
-\academicunit{} 
+\academicunit{}
 \department{}
 \author{}
 \title{}
@@ -580,60 +580,60 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\maketitle}{
-%Check for needed definitions
-\ifx \@author \@empty
-\ClassError{uofsthesis-cs}{\protect\author{} is undefined}
-\fi
-\ifx \@title \@empty
-\ClassError{uofsthesis-cs}{\protect\title{} is undefined}
-\fi
-\ifx \@degree \@empty
-\ClassError{uofsthesis-cs}{\protect\degree{} is undefined.  Use \protect\degree{\protect\PhD}
-or \protect\degree{\protect\MSc}}
-\fi
-\ifx \@defencedate \@empty
-\ClassError{uofsthesis-cs}{\protect\defencedate{} is undefined.}
-\fi
-\ifx \@department \@empty
-\department{Computer Science}
-\fi
-\ifx \@academicunit \@empty
-\academicunit{Department}
-\fi
-\thispagestyle{empty}
-{\renewcommand{\baselinestretch}{\spacemultiplier}
-\LARGE
-\vbox{}\vfil
-\begin{center}
-\ifx\proposal\undefined
-        \relax
-\else
-        Thesis Proposal:\\
-\fi
-\textsc{\@title}\\
-\strut\\
-\Large
-\ifx\proposal\undefined
-A \doctype\ submitted to the\\
-College of Graduate and Postdoctoral Studies\\
-in partial fulfillment of the requirements\\
-for the degree of \@degree\\
-in the \@academicunit\ of \@department\\
-University of Saskatchewan\\
-Saskatoon\\
-\strut\\
-\fi
-By\\
-\@author\\
-\ifx\proposal\undefined
-\strut\\
-\copyright \@author, \@defencedate.  All rights reserved.\\
-Unless otherwise noted, copyright of the material in this thesis belongs to the author.
-\fi
-\end{center}
-\vfil
-}
-\newpage
+	%Check for needed definitions
+	\ifx \@author \@empty
+		\ClassError{uofsthesis-cs}{\protect\author{} is undefined}
+	\fi
+	\ifx \@title \@empty
+		\ClassError{uofsthesis-cs}{\protect\title{} is undefined}
+	\fi
+	\ifx \@degree \@empty
+		\ClassError{uofsthesis-cs}{\protect\degree{} is undefined.  Use \protect\degree{\protect\PhD}
+			or \protect\degree{\protect\MSc}}
+	\fi
+	\ifx \@defencedate \@empty
+		\ClassError{uofsthesis-cs}{\protect\defencedate{} is undefined.}
+	\fi
+	\ifx \@department \@empty
+		\department{Computer Science}
+	\fi
+	\ifx \@academicunit \@empty
+		\academicunit{Department}
+	\fi
+	\thispagestyle{empty}
+	{\renewcommand{\baselinestretch}{\spacemultiplier}
+		\LARGE
+		\vbox{}\vfil
+		\begin{center}
+			\ifx\proposal\undefined
+				\relax
+			\else
+				Thesis Proposal:\\
+			\fi
+			\textsc{\@title}\\
+			\strut\\
+			\Large
+			\ifx\proposal\undefined
+				A \doctype\ submitted to the\\
+				College of Graduate and Postdoctoral Studies\\
+				in partial fulfillment of the requirements\\
+				for the degree of \@degree\\
+				in the \@academicunit\ of \@department\\
+				University of Saskatchewan\\
+				Saskatoon\\
+				\strut\\
+			\fi
+			By\\
+			\@author\\
+			\ifx\proposal\undefined
+				\strut\\
+				\copyright \@author, \@defencedate.  All rights reserved.\\
+				Unless otherwise noted, copyright of the material in this thesis belongs to the author.
+			\fi
+		\end{center}
+		\vfil
+	}
+	\newpage
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -672,145 +672,145 @@ Unless otherwise noted, copyright of the material in this thesis belongs to the 
 
 
 \newcommand{\frontmatter}{
-%CHeck for required definitons
-\ifx \@abstract \@empty
-\ClassError{uofsthesis-cs}{\protect\abstract{} is undefined}
-\fi
+	%CHeck for required definitons
+	\ifx \@abstract \@empty
+		\ClassError{uofsthesis-cs}{\protect\abstract{} is undefined}
+	\fi
 
-%Each item in the frontmatter is to be on a separate page.
-\pagenumbering{roman}
+	%Each item in the frontmatter is to be on a separate page.
+	\pagenumbering{roman}
 
-% PERMISSION TO USE
-\ifx\undefined\proposal
-%\vbox{}\vspace{1.1cm}
-%\addcontentsline{toc}{chapter}{Permission to Use}
-\ifx \@ptuaddress \@empty
-\ptuaddress{Head of the Department of Computer Science\\
-176 Thorvaldson Building, 110 Science Place\\
-University of Saskatchewan\\
-Saskatoon, Saskatchewan S7N 5C9 Canada
-}
-\fi
-
-
-\phantomsection
-\addcontentsline{toc}{chapter}{Permission to Use}
-\chapter*{Permission to Use} 
-\noindent In presenting this \doctype\ in partial fulfillment of the requirements for a Postgraduate degree from the University of Saskatchewan, I agree that the Libraries of this University may make it freely available for inspection. I further agree that permission for copying of this \doctype\ in any manner, in whole or in part, for scholarly purposes may be granted by the professor or professors who supervised my \doctype\ work or, in their absence, by the Head of the Department or the Dean of the College in which my \doctype\ work was done. It is understood that any copying or publication or use of this \doctype\ or parts thereof for financial gain shall not be allowed without my written permission. It is also understood that due recognition shall be given to me and to the University of Saskatchewan in any scholarly use which may be made of any material in my \doctype.
-
-{\let\clearpage\relax\vspace*{1.5cm} \chapter*{Disclaimer}}
+	% PERMISSION TO USE
+	\ifx\undefined\proposal
+		%\vbox{}\vspace{1.1cm}
+		%\addcontentsline{toc}{chapter}{Permission to Use}
+		\ifx \@ptuaddress \@empty
+			\ptuaddress{Head of the Department of Computer Science\\
+				176 Thorvaldson Building, 110 Science Place\\
+				University of Saskatchewan\\
+				Saskatoon, Saskatchewan S7N 5C9 Canada
+			}
+		\fi
 
 
-%\noindent The [name of company/corporation/brand name and website] were exclusively created to meet the thesis and/or exhibition requirements for the degree of [title of degree] at the University of Saskatchewan.  
-\noindent Reference  in this \doctype\ to any specific commercial products, process, or service by trade name, trademark, manufacturer, or otherwise, does not constitute or imply its endorsement, recommendation, or favoring by the University of Saskatchewan. The views and opinions of the author expressed herein do not state or reflect those of the University of Saskatchewan, and shall not be used for advertising or product endorsement purposes.
+		\phantomsection
+		\addcontentsline{toc}{chapter}{Permission to Use}
+		\chapter*{Permission to Use}
+		\noindent In presenting this \doctype\ in partial fulfillment of the requirements for a Postgraduate degree from the University of Saskatchewan, I agree that the Libraries of this University may make it freely available for inspection. I further agree that permission for copying of this \doctype\ in any manner, in whole or in part, for scholarly purposes may be granted by the professor or professors who supervised my \doctype\ work or, in their absence, by the Head of the Department or the Dean of the College in which my \doctype\ work was done. It is understood that any copying or publication or use of this \doctype\ or parts thereof for financial gain shall not be allowed without my written permission. It is also understood that due recognition shall be given to me and to the University of Saskatchewan in any scholarly use which may be made of any material in my \doctype.
 
-\bigskip
+		{\let\clearpage\relax\vspace*{1.5cm} \chapter*{Disclaimer}}
 
-\noindent Requests for permission to copy or to make other uses of materials in this \doctype\ in whole or part should be addressed to:
 
-\begin{itemize}
-\item[] \@ptuaddress
-\item[] OR
-\item[] {Dean \\
-	College of Graduate and Postdoctoral Studies\\
-	University of Saskatchewan\\
-	116 Thorvaldson Building, 110 Science Place\\
-	Saskatoon, Saskatchewan  S7N 5C9 Canada}
-\end{itemize}
-\newpage
-\fi
-% ABSTRACT
-\phantomsection
-\addcontentsline{toc}{chapter}{Abstract}
-\chapter*{Abstract}
-%\strut\\
-\@abstract
-\newpage
+		%\noindent The [name of company/corporation/brand name and website] were exclusively created to meet the thesis and/or exhibition requirements for the degree of [title of degree] at the University of Saskatchewan.  
+		\noindent Reference  in this \doctype\ to any specific commercial products, process, or service by trade name, trademark, manufacturer, or otherwise, does not constitute or imply its endorsement, recommendation, or favoring by the University of Saskatchewan. The views and opinions of the author expressed herein do not state or reflect those of the University of Saskatchewan, and shall not be used for advertising or product endorsement purposes.
 
-%ACKNOWLEDGEMENTS (if any)
-\ifx \@acknowledgements \@empty
-\relax
-\else
-        \ifx\proposal\undefined
-        \phantomsection
-        \addcontentsline{toc}{chapter}{Acknowledgements}
-        \chapter*{Acknowledgements}
-        \@acknowledgements
-        \newpage
-        \fi
-\fi
+		\bigskip
 
-%DEDICATION (If any)
-\ifx \@dedication \@empty
-\relax
-\else
-        \ifx\proposal\undefined
-        \vbox{}\vfil
-        \@dedication
-        \vfil
-        \newpage
-        \fi
-\fi
+		\noindent Requests for permission to copy or to make other uses of materials in this \doctype\ in whole or part should be addressed to:
 
-%TABLE OF CONTENTS
-\phantomsection
-\addcontentsline{toc}{chapter}{Contents}
-{\renewcommand{\baselinestretch}{1}\normalsize
-\tableofcontents
-}
-\newpage
+		\begin{itemize}
+			\item[] \@ptuaddress
+			\item[] OR
+			\item[] {Dean \\
+			      College of Graduate and Postdoctoral Studies\\
+			      University of Saskatchewan\\
+			      116 Thorvaldson Building, 110 Science Place\\
+			      Saskatoon, Saskatchewan  S7N 5C9 Canada}
+		\end{itemize}
+		\newpage
+	\fi
+	% ABSTRACT
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Abstract}
+	\chapter*{Abstract}
+	%\strut\\
+	\@abstract
+	\newpage
 
-%LIST OF TABLES
-\ifx\notablelist\undefined
-\phantomsection
-\addcontentsline{toc}{chapter}{List of Tables}
-{\renewcommand{\baselinestretch}{1}\normalsize
-\listoftables
-}
-\newpage
-\fi
+	%ACKNOWLEDGEMENTS (if any)
+	\ifx \@acknowledgements \@empty
+		\relax
+	\else
+		\ifx\proposal\undefined
+			\phantomsection
+			\addcontentsline{toc}{chapter}{Acknowledgements}
+			\chapter*{Acknowledgements}
+			\@acknowledgements
+			\newpage
+		\fi
+	\fi
 
-%LIST OF FIGURES
-\ifx\nofigurelist\undefined
-\phantomsection
-\addcontentsline{toc}{chapter}{List of Figures}
-{\renewcommand{\baselinestretch}{1}\normalsize
-\listoffigures
-}
-\newpage
-\fi
+	%DEDICATION (If any)
+	\ifx \@dedication \@empty
+		\relax
+	\else
+		\ifx\proposal\undefined
+			\vbox{}\vfil
+			\@dedication
+			\vfil
+			\newpage
+		\fi
+	\fi
 
-%LIST OF ABBREVIATIONS
-\ifx \@loa \@empty
-\relax
-\else
-%        \addcontentsline{toc}{chapter}{List of Abbreviations}
-        {
-          \phantomsection
-          \addcontentsline{toc}{chapter}{List of Abbreviations}
-          \chapter*{List of Abbreviations}
+	%TABLE OF CONTENTS
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Contents}
+	{\renewcommand{\baselinestretch}{1}\normalsize
+		\tableofcontents
+	}
+	\newpage
 
-%          \renewcommand{\baselinestretch}{1}\normalsize
-          \begin{center}
-		  \begin{tabularx}{\textwidth}{lX}
-              \@loa   
-            \end{tabularx}
-          \end{center}        
-        }
-        \newpage
-\fi
+	%LIST OF TABLES
+	\ifx\notablelist\undefined
+		\phantomsection
+		\addcontentsline{toc}{chapter}{List of Tables}
+		{\renewcommand{\baselinestretch}{1}\normalsize
+			\listoftables
+		}
+		\newpage
+	\fi
 
-\pagenumbering{arabic}
+	%LIST OF FIGURES
+	\ifx\nofigurelist\undefined
+		\phantomsection
+		\addcontentsline{toc}{chapter}{List of Figures}
+		{\renewcommand{\baselinestretch}{1}\normalsize
+			\listoffigures
+		}
+		\newpage
+	\fi
 
-% Return to normal chapters
-\titleformat{\chapter}[block]{\LARGE\bfseries\centering}{\thechapter{ }}{0pt}{\LARGE\bfseries}
- 
-% Old title format with the word "Chapter" in the title. 
-%\titleformat{\chapter}[display]{\renewcommand{\baselinestretch}{1.5}\LARGE\sc\fillast}{Chapter
-%  \thechapter}{0pt}{}[\renewcommand{\baselinestretch}{\spacemultiplier}\normalsize]  
-  
-\titlespacing{\chapter}{0pt}{1.4cm}{20pt}
-\setcounter{chapter}{0}
+	%LIST OF ABBREVIATIONS
+	\ifx \@loa \@empty
+		\relax
+	\else
+		%        \addcontentsline{toc}{chapter}{List of Abbreviations}
+		{
+			\phantomsection
+			\addcontentsline{toc}{chapter}{List of Abbreviations}
+			\chapter*{List of Abbreviations}
+
+			%          \renewcommand{\baselinestretch}{1}\normalsize
+			\begin{center}
+				\begin{tabularx}{\textwidth}{lX}
+					\@loa
+				\end{tabularx}
+			\end{center}
+		}
+		\newpage
+	\fi
+
+	\pagenumbering{arabic}
+
+	% Return to normal chapters
+	\titleformat{\chapter}[block]{\LARGE\bfseries\centering}{\thechapter{ }}{0pt}{\LARGE\bfseries}
+
+	% Old title format with the word "Chapter" in the title. 
+	%\titleformat{\chapter}[display]{\renewcommand{\baselinestretch}{1.5}\LARGE\sc\fillast}{Chapter
+	%  \thechapter}{0pt}{}[\renewcommand{\baselinestretch}{\spacemultiplier}\normalsize]  
+
+	\titlespacing{\chapter}{0pt}{1.4cm}{20pt}
+	\setcounter{chapter}{0}
 }
 
 
@@ -821,24 +821,24 @@ Saskatoon, Saskatchewan S7N 5C9 Canada
 % This command is defined to simplify setup for the typesetting of appendices.
 
 \newcommand{\uofsappendix}{
-% Sets chapter counter to appendix mode (counts by letters instead of numbers)
-\appendix
+	% Sets chapter counter to appendix mode (counts by letters instead of numbers)
+	\appendix
 
-% This next line is needed to change the appendix chapter titles from reading
-% "Chapter A" to "Appendix A".  This should not be necessary but it seems that
-% the titlesec package overrides the changes to the chapter headings that
-% the \appendix commands make.  We use the following workround:
-\titleformat{\chapter}[display]{\renewcommand{\baselinestretch}{1.5}\normalsize
-\LARGE\bfseries\fillast}{Appendix \thechapter}{0pt}{}
+	% This next line is needed to change the appendix chapter titles from reading
+	% "Chapter A" to "Appendix A".  This should not be necessary but it seems that
+	% the titlesec package overrides the changes to the chapter headings that
+	% the \appendix commands make.  We use the following workround:
+	\titleformat{\chapter}[display]{\renewcommand{\baselinestretch}{1.5}\normalsize
+		\LARGE\bfseries\fillast}{Appendix \thechapter}{0pt}{}
 
-% This is needed to put a one-inch top margin on the first page of 
-% appendices -- this seems to be what CGSR wants.  If not, just comment 
-% out the next line. 
-\titlespacing{\chapter}{0pt}{-30pt}{20pt}
+	% This is needed to put a one-inch top margin on the first page of 
+	% appendices -- this seems to be what CGSR wants.  If not, just comment 
+	% out the next line. 
+	\titlespacing{\chapter}{0pt}{-30pt}{20pt}
 
-% Appendices need to be single-spaced.  Reset spacing to single
-% regardless of global document spacing.
-\renewcommand{\baselinestretch}{1}\normalsize
+	% Appendices need to be single-spaced.  Reset spacing to single
+	% regardless of global document spacing.
+	\renewcommand{\baselinestretch}{1}\normalsize
 }
 
 
@@ -853,42 +853,42 @@ Saskatoon, Saskatchewan S7N 5C9 Canada
 
 
 \newcommand{\uofsbibliography}[2][plain]{
-% We need to force single spacing for the bibliography which must be single
-% spaced according to CGSR rules.  The line below changes spacing to single space.
-% This command does not take effect until a new font size is selected, so we add
-% the \normalsize command to make the spacing take effect.
-{
-\renewcommand{\baselinestretch}{1}\normalsize
+	% We need to force single spacing for the bibliography which must be single
+	% spaced according to CGSR rules.  The line below changes spacing to single space.
+	% This command does not take effect until a new font size is selected, so we add
+	% the \normalsize command to make the spacing take effect.
+	{
+			\renewcommand{\baselinestretch}{1}\normalsize
 
-% Select the title of the bibliography section by redefining the \bibname 
-% command:
-\renewcommand{\bibname}{References} 
+			% Select the title of the bibliography section by redefining the \bibname 
+			% command:
+			\renewcommand{\bibname}{References}
 
-% Add references to Table of Contents
-\newpage
-\phantomsection
-\addcontentsline{toc}{chapter}{References}
+			% Add references to Table of Contents
+			\newpage
+			\phantomsection
+			\addcontentsline{toc}{chapter}{References}
 
-\bibliographystyle{#1}
-\bibliography{#2}  
-}
+			\bibliographystyle{#1}
+			\bibliography{#2}
+		}
 }
 
 % Alternate setup for use with bibitems
 
 \newcommand{\uofsbibliographynobibtex}{
-% We need to force single spacing for the bibliography which must be single
-% spaced according to CGSR rules.  The line below changes spacing to single 
-% space. This command does not take effect until a new font size is selected,
-% so we add the \normalsize command to make the spacing take effect.
+	% We need to force single spacing for the bibliography which must be single
+	% spaced according to CGSR rules.  The line below changes spacing to single 
+	% space. This command does not take effect until a new font size is selected,
+	% so we add the \normalsize command to make the spacing take effect.
 
-\renewcommand{\baselinestretch}{1}\normalsize
+	\renewcommand{\baselinestretch}{1}\normalsize
 
-\renewcommand{\bibname}{References} 
+	\renewcommand{\bibname}{References}
 
-\newpage
-% Add references to Table of Contents
-\phantomsection
-\addcontentsline{toc}{chapter}{References}
+	\newpage
+	% Add references to Table of Contents
+	\phantomsection
+	\addcontentsline{toc}{chapter}{References}
 }
 

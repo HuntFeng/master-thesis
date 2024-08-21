@@ -1,5 +1,5 @@
 \begin{tikzpicture}
-	\draw[fill=gray] (1,0) arc[start angle=0, end angle=180, radius=4];
-	\draw[thick, fill=white] (0,0) arc[start angle=0, end angle=180, radius=3];
-	\draw[thick] (-3,2.8) circle (0.2);
+	\draw[thick, fill=gray] (1,0) arc[start angle=0, end angle=180, radius=4];
+	\draw[fill=white] (0,0) arc[start angle=0, end angle=180, radius=3];
+	\draw[thick] (-3,4.2) circle (0.2);
 \end{tikzpicture}

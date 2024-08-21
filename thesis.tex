@@ -14,6 +14,8 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{tikz, tikzscale, pgfplots}
+\usepackage[square,numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -107,7 +109,7 @@ S7N 5E2
 
 % ABSTRACT
 \abstract{
-In this thesis, spectral stability of plasmas is understood as an eigenvalue problem of linearized plasma equations describing time dynamics near some equilibrium state. Presence of eigenvalues with positive imaginary part would indicate the instability when small fluctuations will grow (typically exponentially) in time. A particular focus is the stability of plasma with stationary flows, in particular, flows in the magnetic nozzle. Magnetic nozzle, or magnetic mirror configurations, with converging-diverging magnetic field are used to accelerate plasma in plasma propulsion systems (magnetic Laval nozzle) and in fusion devices aiming to confine plasma and reach controlled thermonuclear fusion. We consider the linear stability of plasma flows under different boundary conditions. The linearized plasma equations are discretized and spectral stability  problem is reduced to a polynomial eigenvalue problem. We found that the subsonic and supersonic flows are stable for Dirichlet boundary conditions. The subsonic flow is stable for the mixed (fixed-open) boundary conditions, but the supersonic flow is unstable. We show that different spectral methods, i.e. spectral collocation and spectral Galerkin methods, agree. Phenomena of spectral pollution resulting in spurious unstable modes is discussed. By studying the convergence of different modes, we successfully eliminated the spurious modes. The stability problem of the transonic velocity profile has an additional difficulty due to the singularity at the sonic point, i.e. at the point when the flow velocity is equal to the local sound velocity. At this point, the coefficient in front of the highest derivative of the differential eigenvalue equation becomes zero. In this case, the direct application of the spectral  methods is problematic. To solve this problem, we solve the equation near the singularity by the Frobenius method and then use the regular solution with  the shooting method to find the eigenvalues. We find that the transonic accelerating velocity profile is stable.
+In this thesis, spectral stability of plasmas is understood as an eigenvalue problem of linearized plasma equations describing time dynamics near some equilibrium state. Presence of eigenvalues with positive imaginary part would indicate the instability when small fluctuations will grow (typically exponentially) in time. A particular focus is the stability of plasma with stationary flows, in particular, flows in the magnetic nozzle. Magnetic nozzle, or magnetic mirror configurations, with converging-diverging magnetic field are used to accelerate plasma in plasma propulsion systems (magnetic Laval nozzle) and in fusion devices aiming to confine plasma and reach controlled thermonuclear fusion. We consider the linear stability of plasma flows under different boundary conditions. The linearized plasma equations are discretized and spectral stability  problem is reduced to a polynomial eigenvalue problem. We found that the subsonic and supersonic flows are stable for Dirichlet boundary conditions. The supersonic flow is unstable for the mixed (fixed-open) boundary conditions. The subsonic flow has conflicting modes; i.e., the ground mode is unstable while the rest are stable. We show that different spectral methods, spectral-collocation and spectral-Galerkin methods agree. Phenomena of spectral pollution resulting in spurious unstable modes is discussed. By studying the convergence of different modes, we successfully eliminated the spurious modes. The stability problem of the transonic velocity profile has an additional difficulty due to the singularity at the sonic point, the point when the flow velocity is equal to the local sound velocity. At this point, the coefficient in front of the highest derivative of the differential eigenvalue equation becomes zero. In this case, the direct application of the spectral  methods is problematic. To solve this problem, we solve the equation near the singularity by the Frobenius method and then use the regular solution with  the shooting method to find the eigenvalues. We find that the transonic accelerating velocity profile is stable.
 }
 
 % THESIS ACKNOWLEDGEMENTS -- This can be free-form.
@@ -145,7 +147,8 @@ In this thesis, spectral stability of plasmas is understood as an eigenvalue pro
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{introduction}
-\input{polynomial-eigenvalue-problem}
+\input{fluid-equations}
+\input{eigenvalue-problem}
 \input{spectral-method}
 \input{singular-perturbation}
 \input{discussion}
@@ -178,7 +181,12 @@ In this thesis, spectral stability of plasmas is understood as an eigenvalue pro
 % Optionally, you can specify the bibliography style to use:
 % \uofsbibliography[stylename]{yourbibfile}
 
-\uofsbibliography[plain]{references}
+% \uofsbibliography[plain]{references}
+\uofsbibliography{references}
+% comment the following in production
+% \bibliographystyle{plain}
+% \bibliography{references}
+% \nocite{*}
 
 % If you are not using bibtex, comment the line above and uncomment
 % the line below.  
@@ -203,7 +211,7 @@ In this thesis, spectral stability of plasmas is understood as an eigenvalue pro
 % Put appendix chapters in the appendices environment so that they appear correcty
 % in the table of contents.  You can use \input's here as well.
 \begin{appendices}
-	\input{verification-of-analytical-solutions}
+	\input{analytical-solutions.tex}
 \end{appendices}
 
 \end{document}

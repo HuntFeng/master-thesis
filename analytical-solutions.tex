@@ -1,0 +1,50 @@
+\chapter{Analytical Solutions} \label{chap:analytical-solutions}
+The polynomial eigenvalue problem with constant velocity profile is given by
+\begin{equation}
+	\omega^2\tilde{v} + 2i\omega v_0\pdv{\tilde{v}}{z} + (1-v_0^2)\pdv[2]{\tilde{v}}{z} = 0.
+	\label{eq:constant-v-problem-appendix}
+\end{equation}
+This is a second-order differential equation with constant coefficients. To solve this equation, the first step is to get the roots of the following algebraic equation,
+\begin{equation}
+	\omega^2 + 2i\omega v_0 r + (1-v_0^2)r^2 = 0.
+\end{equation}
+The roots are complex and they are
+\begin{equation}
+	r_1 = \frac{i\omega}{1+v_0}, \quad r_2=-\frac{i\omega}{1-v_0}.
+\end{equation}
+Therefore, the general solution to Eq.~(\ref{eq:constant-v-problem-appendix}) is given by
+\begin{equation}
+	\tilde{v}(z) = A\exp(\frac{i\omega(z+1)}{1+v_0}) + B\exp(-\frac{i\omega(z+1)}{1-v_0}).
+\end{equation}
+To simplify the subsequent calculation, the constants $A$ and $B$ are adjusted so that $z+1$ appears in the exponential. Depending on the boundary conditions, Dirichlet $\tilde{v}(\pm 1) = 0$ or fixed-open $\tilde{v}(-1)=\partial_z\tilde{v}(1)=0$, the eigenvalues $\omega$ will be different.
+
+\subsection*{Dirichlet Boundary}
+With Dirichlet boundary, $\tilde{v}(\pm 1)=0$, we obtain the following system of equations,
+\begin{align*}
+	0 & = A + B                                                          \\
+	0 & = A\exp(\frac{2i\omega}{1+v_0}) + B\exp(-\frac{2i\omega}{1-v_0})
+\end{align*}
+From the first equation we get $B = -A$, substitute it into the second equation we have
+\begin{equation}
+	\exp(\frac{4i\omega}{1-v_0^2}) - 1 = 0.
+\end{equation}
+We see that to make this equality holds, the eigenvalues must be
+\begin{equation}
+	\omega_n = n\pi(1-v_0^2).
+\end{equation}
+
+\subsection*{Fixed-Open Boundary}
+With fixed-open boundary, $\tilde{v}(-1)=\partial_z\tilde{v}=0$, we obtain the following system of equations,
+\begin{align*}
+	0 & = A + B                                                                                                    \\
+	0 & = A\exp(\frac{2i\omega}{1+v_0})\frac{i\omega}{1+v_0} - B\exp(-\frac{2i\omega}{1-v_0})\frac{i\omega}{1-v_0}
+\end{align*}
+Again, we get $B = -A$ from the first equation, put it into the second equation we obtain
+\begin{equation}
+	\exp(\frac{-4i\omega}{1-v_0^2}) + \frac{v_0-1}{v_0+1} = 0.
+\end{equation}
+Take the logarithm, we are able to get eigenvalues,
+\begin{equation}
+	\omega_n = (v_0^2-1)\left[ \frac{n\pi}{2} - \frac{1}{4}i\ln\abs{\frac{v_0-1}{v_0+1}}\right]
+\end{equation}
+
